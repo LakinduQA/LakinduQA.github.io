@@ -4,82 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lakindu De Silva – QA Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KxQ4xjqA4J2ZQOeD0G0+vxzB2YshE7LJxT9WkQ3VRHBi8eH2NNKZMi7zYUxqA+yVZ/kdNrcH1GrMv2tZXB+6mQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #f9f9f9;
-      color: #222;
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --accent: #003366;
+      --card: #ffffff;
     }
-    h1, h2 {
-      color: #003366;
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #f0f0f0;
+      --accent: #00bcd4;
+      --card: #1e1e1e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--accent), transparent 70%);
+      border-radius: 20px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 20%, transparent 70%);
+      animation: rotateBG 20s linear infinite;
+    }
+
+    @keyframes rotateBG {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--card);
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      z-index: 1;
+    }
+
+    .tagline {
+      font-style: italic;
+      margin-top: 10px;
+      z-index: 1;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2;
+      background: var(--card);
+      color: var(--text);
+      padding: 6px 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: var(--accent);
       margin-bottom: 10px;
     }
-    .skills {
+
+    .skills, .tools {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
     }
+
     .skill-tag {
-      background: #e0e0e0;
+      background: var(--card);
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 14px;
     }
+
+    .tools i {
+      font-size: 24px;
+      padding: 10px;
+      background: var(--card);
+      border-radius: 10px;
+      color: var(--accent);
+    }
+
+    .test-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .test-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 200px;
+    }
+
     .contact a {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 8px;
-      color: #003366;
+      color: var(--accent);
       text-decoration: none;
     }
+
     .contact a:hover {
       text-decoration: underline;
+    }
+
+    .projects {
+      text-align: center;
+      font-style: italic;
+      color: gray;
     }
   </style>
 </head>
 <body>
+  <div class="container">
 
-  <h1>Lakindu De Silva</h1>
-  <p>QA student focused on software quality assurance, test automation, and development life cycle methodologies.</p>
+    <div class="hero">
+      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      <img src="profile.jpg" alt="Lakindu" class="profile-pic" />
+      <h1>Lakindu De Silva</h1>
+      <p class="tagline">Breaking things with purpose. Building confidence through testing.</p>
+    </div>
 
-  <h2>Technical Skills</h2>
-  <div class="skills">
-    <span class="skill-tag">Playwright</span>
-    <span class="skill-tag">JavaScript</span>
-    <span class="skill-tag">Postman API</span>
-    <span class="skill-tag">Test Automation</span>
-    <span class="skill-tag">Manual Testing</span>
-    <span class="skill-tag">SDLC</span>
-    <span class="skill-tag">Agile</span>
-    <span class="skill-tag">SQL</span>
-    <span class="skill-tag">Database Design</span>
-    <span class="skill-tag">Information Security</span>
-    <span class="skill-tag">UML</span>
-    <span class="skill-tag">PHP</span>
-    <span class="skill-tag">HTML</span>
-    <span class="skill-tag">CSS</span>
-    <span class="skill-tag">Git</span>
-    <span class="skill-tag">GitHub</span>
+    <section>
+      <h2>About Me</h2>
+      <p>QA student focused on software quality assurance, test automation, and development life cycle methodologies.</p>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <span class="skill-tag">Playwright</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Postman API</span>
+        <span class="skill-tag">Test Automation</span>
+        <span class="skill-tag">Manual Testing</span>
+        <span class="skill-tag">SDLC</span>
+        <span class="skill-tag">Agile</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Database Design</span>
+        <span class="skill-tag">Information Security</span>
+        <span class="skill-tag">UML</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tools I Use</h2>
+      <div class="tools">
+        <i class="fab fa-js-square" title="JavaScript"></i>
+        <i class="fab fa-github" title="GitHub"></i>
+        <i class="fas fa-vial" title="Testing"></i>
+        <i class="fas fa-database" title="SQL/DB"></i>
+        <i class="fab fa-html5" title="HTML5"></i>
+        <i class="fab fa-css3-alt" title="CSS3"></i>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I Test For</h2>
+      <div class="test-cards">
+        <div class="test-card"><strong>Functionality</strong><br>Ensure features work as expected.</div>
+        <div class="test-card"><strong>Usability</strong><br>Deliver great user experiences.</div>
+        <div class="test-card"><strong>Performance</strong><br>Verify speed and responsiveness.</div>
+        <div class="test-card"><strong>Security</strong><br>Test for vulnerabilities & risks.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="projects">Coming soon... 🚧</div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact">
+        <a href="https://github.com/LakinduQA" target="_blank">
+          <i class="fab fa-github"></i> GitHub: LakinduQA
+        </a>
+        <a href="https://www.linkedin.com/in/lakindu-de-silva-460581344" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn: Lakindu De Silva
+        </a>
+        <a href="mailto:your@email.com">
+          <i class="fas fa-envelope"></i> Email: your@email.com
+        </a>
+      </div>
+    </section>
+
   </div>
 
-  <h2>Contact</h2>
-  <div class="contact">
-    <a href="https://github.com/LakinduQA" target="_blank">
-      <i class="fab fa-github"></i> GitHub: LakinduQA
-    </a>
-    <a href="https://www.linkedin.com/in/lakindu-de-silva-460581344" target="_blank">
-      <i class="fab fa-linkedin"></i> LinkedIn: Lakindu De Silva
-    </a>
-    <a href="mailto:your@email.com">
-      <i class="fas fa-envelope"></i> Email: lakindudesilva007@email.com
-    </a>
-  </div>
-
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+    // Set light as default
+    document.documentElement.setAttribute("data-theme", "light");
+  </script>
 </body>
 </html>
