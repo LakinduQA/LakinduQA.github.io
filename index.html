@@ -44,7 +44,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px 20px 20px;
       background: linear-gradient(135deg, var(--accent), transparent 70%);
       border-radius: 20px;
       margin-bottom: 40px;
@@ -72,9 +72,11 @@
       width: 150px;
       height: 150px;
       object-fit: cover;
+      object-position: top;
       border-radius: 50%;
       border: 4px solid var(--card);
-      margin-bottom: 20px;
+      margin-top: -20px;
+      margin-bottom: 15px;
       z-index: 1;
     }
 
@@ -112,24 +114,27 @@
       margin-bottom: 10px;
     }
 
-    .skills, .tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
     }
 
     .skill-tag {
       background: var(--card);
-      padding: 6px 14px;
-      border-radius: 20px;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
       font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text);
     }
 
-    .tools i {
-      font-size: 24px;
-      padding: 10px;
-      background: var(--card);
-      border-radius: 10px;
+    .skill-tag i {
+      font-size: 22px;
       color: var(--accent);
     }
 
@@ -179,40 +184,28 @@
 
     <section>
       <h2>About Me</h2>
-      <p>QA student focused on software quality assurance, test automation, and development life cycle methodologies.</p>
+      <p>A motivated QA learner with a strong interest in software testing. Currently building skills through self-guided learning in both manual and automated testing. Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.</p>
     </section>
 
     <section>
-      <h2>Technical Skills</h2>
-      <div class="skills">
-        <span class="skill-tag">Playwright</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Postman API</span>
-        <span class="skill-tag">Test Automation</span>
-        <span class="skill-tag">Manual Testing</span>
-        <span class="skill-tag">SDLC</span>
-        <span class="skill-tag">Agile</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Database Design</span>
-        <span class="skill-tag">Information Security</span>
-        <span class="skill-tag">UML</span>
-        <span class="skill-tag">PHP</span>
-        <span class="skill-tag">HTML</span>
-        <span class="skill-tag">CSS</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">GitHub</span>
-      </div>
-    </section>
-
-    <section>
-      <h2>Tools I Use</h2>
-      <div class="tools">
-        <i class="fab fa-js-square" title="JavaScript"></i>
-        <i class="fab fa-github" title="GitHub"></i>
-        <i class="fas fa-vial" title="Testing"></i>
-        <i class="fas fa-database" title="SQL/DB"></i>
-        <i class="fab fa-html5" title="HTML5"></i>
-        <i class="fab fa-css3-alt" title="CSS3"></i>
+      <h2>Technical Skills & Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-tag"><i class="fas fa-cogs"></i> Playwright</div>
+        <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+        <div class="skill-tag"><i class="fas fa-network-wired"></i> Postman API</div>
+        <div class="skill-tag"><i class="fas fa-vial"></i> Test Automation</div>
+        <div class="skill-tag"><i class="fas fa-user-check"></i> Manual Testing</div>
+        <div class="skill-tag"><i class="fas fa-project-diagram"></i> Agile</div>
+        <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-tag"><i class="fas fa-stream"></i> SDLC</div>
+        <div class="skill-tag"><i class="fas fa-database"></i> Database Design</div>
+        <div class="skill-tag"><i class="fas fa-draw-polygon"></i> UML</div>
+        <div class="skill-tag"><i class="fab fa-php"></i> PHP</div>
+        <div class="skill-tag"><i class="fab fa-html5"></i> HTML</div>
+        <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</div>
+        <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
+        <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
+        <div class="skill-tag"><i class="fas fa-shield-alt"></i> Information Security</div>        
       </div>
     </section>
 
@@ -240,8 +233,8 @@
         <a href="https://www.linkedin.com/in/lakindu-de-silva-460581344" target="_blank">
           <i class="fab fa-linkedin"></i> LinkedIn: Lakindu De Silva
         </a>
-        <a href="mailto:your@email.com">
-          <i class="fas fa-envelope"></i> Email: your@email.com
+        <a href="mailto:lakindudesilva007@gmail.com">
+          <i class="fas fa-envelope"></i> Email: lakindudesilva007@gmail.com
         </a>
       </div>
     </section>
@@ -253,7 +246,6 @@
       const current = document.documentElement.getAttribute("data-theme");
       document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
     }
-    // Set light as default
     document.documentElement.setAttribute("data-theme", "light");
   </script>
 </body>
