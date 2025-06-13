@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Lakindu De Silva – QA Engineer portfolio. Manual & automated testing, Playwright, Postman, and more.">
-  <meta name="keywords" content="QA Portfolio, Lakindu De Silva, Quality Assurance, Software Testing, Playwright, Manual Testing, Automation, lakinduqa.github.io">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Lakindu De Silva – QA Engineer portfolio. Manual & automated testing, Playwright, Postman, and more.">
+  <meta name="keywords"
+    content="QA Portfolio, Lakindu De Silva, Quality Assurance, Software Testing, Playwright, Manual Testing, Automation, lakinduqa.github.io">
   <meta name="author" content="Lakindu De Silva">
   <meta name="google-site-verification" content="dO4eFPMtvHbfTNPqoY8zkGnM1XNC778ci9Ug_Z_XPsU" />
 
@@ -64,13 +67,18 @@
       height: 200%;
       top: -50%;
       left: -50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 20%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 70%);
       animation: rotateBG 20s linear infinite;
     }
 
     @keyframes rotateBG {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .profile-pic {
@@ -169,14 +177,9 @@
     .contact a:hover {
       text-decoration: underline;
     }
-
-    .projects {
-      text-align: center;
-      font-style: italic;
-      color: gray;
-    }
   </style>
 </head>
+
 <body>
   <div class="container">
 
@@ -189,7 +192,10 @@
 
     <section>
       <h2>About Me</h2>
-      <p>A motivated QA learner with a strong interest in software testing. Currently building skills through self-guided learning in both manual and automated testing. Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.</p>
+      <p>A motivated QA learner with a strong interest in software testing. Currently building skills through
+        self-guided learning in both manual and automated testing. Focused on learning automation frameworks,
+        understanding real-world testing practices and writing reliable tests that help ensure software quality.
+        Passionate about continuous learning and aiming to grow into a skilled QA Engineer.</p>
     </section>
 
     <section>
@@ -210,7 +216,7 @@
         <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</div>
         <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
         <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
-        <div class="skill-tag"><i class="fas fa-shield-alt"></i> Information Security</div>        
+        <div class="skill-tag"><i class="fas fa-shield-alt"></i> Information Security</div>
       </div>
     </section>
 
@@ -226,7 +232,17 @@
 
     <section>
       <h2>Projects</h2>
-      <div class="projects">Coming soon... 🚧</div>
+      <div class="test-cards">
+        <div class="test-card">
+          <strong>HackerNews Sorting Test</strong><br>
+          This project uses <strong>Playwright</strong> to test whether the first 100 articles on the Hacker News
+          <em>"newest"</em> page are sorted from newest to oldest by timestamp.<br><br>
+          <a href="https://github.com/LakinduQA/hacker-news-sorting-test" target="_blank"
+            style="color: var(--accent); text-decoration: none;">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -253,4 +269,5 @@
     }
   </script>
 </body>
+
 </html>
