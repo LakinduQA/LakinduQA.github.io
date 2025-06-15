@@ -12,7 +12,7 @@ This site showcases my skills, tools, and interests in software quality assuranc
 
 ## 🚀 About Me
 
-A motivated QA learner with a strong interest in software testing. Currently building skills through self-guided learning in both manual and automated testing. Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.
+A second year undergraduate student with a growing passion for software testing and quality assurance. Currently building skills through self guided learning in both manual and automated testing. Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.
 
 ---
 
