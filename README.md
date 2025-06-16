@@ -37,7 +37,8 @@ A second year undergraduate student with a growing passion for software testing 
 
 ## 📂 Projects
 
-🚧 *Projects section coming soon...*
+- [Playwright Automation – ifs.com](https://github.com/LakinduQA/playwright_ifs.com)  
+- [Hacker News Sorting Test](https://github.com/LakinduQA/hacker-news-sorting-test)
 
 ---
 
