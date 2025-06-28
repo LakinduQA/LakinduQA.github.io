@@ -1,282 +1,358 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lakindu De Silva – QA Engineer portfolio. Manual & automated testing, Playwright, Postman, and more."
+    />
+    <meta
+      name="keywords"
+      content="QA Portfolio, Lakindu De Silva, Quality Assurance, Software Testing, Playwright, Manual Testing, Automation, lakinduqa.github.io"
+    />
+    <meta name="author" content="Lakindu De Silva" />
+    <meta
+      name="google-site-verification"
+      content="dO4eFPMtvHbfTNPqoY8zkGnM1XNC778ci9Ug_Z_XPsU"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Lakindu De Silva – QA Engineer portfolio. Manual & automated testing, Playwright, Postman, and more.">
-  <meta name="keywords"
-    content="QA Portfolio, Lakindu De Silva, Quality Assurance, Software Testing, Playwright, Manual Testing, Automation, lakinduqa.github.io">
-  <meta name="author" content="Lakindu De Silva">
-  <meta name="google-site-verification" content="dO4eFPMtvHbfTNPqoY8zkGnM1XNC778ci9Ug_Z_XPsU" />
-
-  <title>Lakindu De Silva – QA Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root {
-      --bg: #f9f9f9;
-      --text: #222;
-      --accent: #003366;
-      --card: #ffffff;
-    }
-
-    [data-theme="dark"] {
-      --bg: #121212;
-      --text: #f0f0f0;
-      --accent: #00bcd4;
-      --card: #1e1e1e;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px 20px;
-      background: linear-gradient(135deg, var(--accent), transparent 70%);
-      border-radius: 20px;
-      margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 70%);
-      animation: rotateBG 20s linear infinite;
-    }
-
-    @keyframes rotateBG {
-      from {
-        transform: rotate(0deg);
+    <title>Lakindu De Silva – QA Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg: #f9f9f9;
+        --text: #222;
+        --accent: #003366;
+        --card: #ffffff;
       }
 
-      to {
-        transform: rotate(360deg);
+      [data-theme="dark"] {
+        --bg: #121212;
+        --text: #f0f0f0;
+        --accent: #00bcd4;
+        --card: #1e1e1e;
       }
-    }
 
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      object-position: top;
-      border-radius: 50%;
-      border: 4px solid var(--card);
-      margin-top: -20px;
-      margin-bottom: 15px;
-      z-index: 1;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    h1 {
-      font-size: 2.5rem;
-      color: var(--accent);
-      z-index: 1;
-    }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        transition: background 0.3s, color 0.3s;
+        padding: 20px;
+      }
 
-    .tagline {
-      font-style: italic;
-      margin-top: 10px;
-      z-index: 1;
-    }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+      }
 
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 2;
-      background: var(--card);
-      color: var(--text);
-      padding: 6px 10px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px 20px;
+        background: linear-gradient(135deg, var(--accent), transparent 70%);
+        border-radius: 20px;
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+      }
 
-    section {
-      margin-bottom: 40px;
-    }
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.05) 20%,
+          transparent 70%
+        );
+        animation: rotateBG 20s linear infinite;
+      }
 
-    h2 {
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
+      @keyframes rotateBG {
+        from {
+          transform: rotate(0deg);
+        }
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-    }
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-    .skill-tag {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 10px;
-      text-align: center;
-      font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: var(--text);
-    }
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 50%;
+        border: 4px solid var(--card);
+        margin-top: -20px;
+        margin-bottom: 15px;
+        z-index: 1;
+      }
 
-    .skill-tag i {
-      font-size: 22px;
-      color: var(--accent);
-    }
+      h1 {
+        font-size: 2.5rem;
+        color: var(--accent);
+        z-index: 1;
+      }
 
-    .test-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+      .tagline {
+        font-style: italic;
+        margin-top: 10px;
+        z-index: 1;
+      }
 
-    .test-card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      flex: 1;
-      min-width: 200px;
-    }
+      .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 2;
+        background: var(--card);
+        color: var(--text);
+        padding: 6px 10px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
 
-    .contact a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      color: var(--accent);
-      text-decoration: none;
-    }
+      section {
+        margin-bottom: 40px;
+      }
 
-    .contact a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
+      h2 {
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
 
-<body>
-  <div class="container">
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+      }
 
-    <div class="hero">
-      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-      <img src="profile.jpg" alt="Lakindu" class="profile-pic" />
-      <h1>Lakindu De Silva</h1>
-      <p class="tagline">Breaking things with purpose. Building confidence through testing.</p>
+      .skill-tag {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: var(--text);
+      }
+
+      .skill-tag i {
+        font-size: 22px;
+        color: var(--accent);
+      }
+
+      .test-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .test-card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .contact a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .contact a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="hero">
+        <button class="theme-toggle" onclick="toggleTheme()">
+          Toggle Theme
+        </button>
+        <img src="profile.jpg" alt="Lakindu" class="profile-pic" />
+        <h1>Lakindu De Silva</h1>
+        <p class="tagline">
+          Breaking things with purpose. Building confidence through testing.
+        </p>
+      </div>
+
+      <section>
+        <h2>About Me</h2>
+        <p>
+          A second year undergraduate student with a growing passion for
+          software testing and quality assurance. Currently building skills
+          through self guided learning in both manual and automated testing.
+          Focused on learning automation frameworks, understanding real-world
+          testing practices and writing reliable tests that help ensure software
+          quality. Passionate about continuous learning and aiming to grow into
+          a skilled QA Engineer.
+        </p>
+      </section>
+
+      <section>
+        <h2>Technical Skills & Tools</h2>
+        <div class="skills-grid">
+          <div class="skill-tag"><i class="fas fa-cogs"></i> Playwright</div>
+          <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+          <div class="skill-tag">
+            <i class="fas fa-network-wired"></i> Postman API
+          </div>
+          <div class="skill-tag">
+            <i class="fas fa-vial"></i> Test Automation
+          </div>
+          <div class="skill-tag">
+            <i class="fas fa-project-diagram"></i> Agile
+          </div>
+          <div class="skill-tag"><i class="fas fa-tasks"></i> Jira</div>
+          <div class="skill-tag">
+            <i class="fas fa-user-check"></i> Manual Testing
+          </div>
+          <div class="skill-tag">
+            <i class="fas fa-check-double"></i> Zephyr
+          </div>
+          <div class="skill-tag"><i class="fas fa-bolt"></i> JMeter</div>
+          <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
+          <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
+          <div class="skill-tag"><i class="fas fa-stream"></i> SDLC</div>
+          <div class="skill-tag"><i class="fas fa-route"></i> STLC</div>
+          <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
+          <div class="skill-tag">
+            <i class="fas fa-database"></i> Database Design
+          </div>
+          <div class="skill-tag"><i class="fas fa-draw-polygon"></i> UML</div>
+          <div class="skill-tag"><i class="fab fa-php"></i> PHP</div>
+          <div class="skill-tag"><i class="fab fa-html5"></i> HTML</div>
+          <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</div>
+
+          <div class="skill-tag">
+            <i class="fas fa-shield-alt"></i> Information Security
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>What I Test For</h2>
+        <div class="test-cards">
+          <div class="test-card">
+            <strong>Functionality</strong><br />Ensure features work as
+            expected.
+          </div>
+          <div class="test-card">
+            <strong>Usability</strong><br />Deliver great user experiences.
+          </div>
+          <div class="test-card">
+            <strong>Performance</strong><br />Verify speed and responsiveness.
+          </div>
+          <div class="test-card">
+            <strong>Security</strong><br />Test for vulnerabilities & risks.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <div class="test-cards">
+          <div class="test-card">
+            <strong>Playwright Automation – ifs.com</strong><br />
+            UI automation project using <strong>Playwright</strong> to validate
+            key elements and user interactions on the official
+            <em>ifs.com</em> website.<br /><br />
+            <a
+              href="https://github.com/LakinduQA/playwright_ifs.com"
+              target="_blank"
+              style="color: var(--accent); text-decoration: none"
+            >
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+
+          <div class="test-card">
+            <strong>ReqRes.com JMeter Test Suite</strong><br />
+            Performance and functional test suite for <em>reqres.in</em> using
+            <strong>Apache JMeter</strong>. Covers user registration, login,
+            CRUD operations with assertions and reporting.<br /><br />
+            <a
+              href="https://github.com/LakinduQA/ReqRes-Jmeter-Performance-Test"
+              target="_blank"
+              style="color: var(--accent); text-decoration: none"
+            >
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+
+          <div class="test-card">
+            <strong>HackerNews Sorting Test</strong><br />
+            This project uses <strong>Playwright</strong> to test whether the
+            first 100 articles on the Hacker News <em>"newest"</em> page are
+            sorted from newest to oldest by timestamp.<br /><br />
+            <a
+              href="https://github.com/LakinduQA/hacker-news-sorting-test"
+              target="_blank"
+              style="color: var(--accent); text-decoration: none"
+            >
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <div class="contact">
+          <a href="https://github.com/LakinduQA" target="_blank">
+            <i class="fab fa-github"></i> GitHub: LakinduQA
+          </a>
+          <a
+            href="https://www.linkedin.com/in/lakindu-de-silva-460581344"
+            target="_blank"
+          >
+            <i class="fab fa-linkedin"></i> LinkedIn: Lakindu De Silva
+          </a>
+          <a href="mailto:lakindudesilva007@gmail.com">
+            <i class="fas fa-envelope"></i> Email: lakindudesilva007@gmail.com
+          </a>
+        </div>
+      </section>
     </div>
 
-    <section>
-      <h2>About Me</h2>
-      <p>A second year undergraduate student with a growing passion for software testing and quality assurance. Currently building skills through self guided learning in both manual and automated testing. 
-        Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.</p>
-    </section>
-
-    <section>
-      <h2>Technical Skills & Tools</h2>
-      <div class="skills-grid">
-        <div class="skill-tag"><i class="fas fa-cogs"></i> Playwright</div>
-        <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
-        <div class="skill-tag"><i class="fas fa-network-wired"></i> Postman API</div>
-        <div class="skill-tag"><i class="fas fa-vial"></i> Test Automation</div>
-        <div class="skill-tag"><i class="fas fa-user-check"></i> Manual Testing</div>
-        <div class="skill-tag"><i class="fas fa-project-diagram"></i> Agile</div>
-        <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
-        <div class="skill-tag"><i class="fas fa-stream"></i> SDLC</div>
-        <div class="skill-tag"><i class="fas fa-database"></i> Database Design</div>
-        <div class="skill-tag"><i class="fas fa-draw-polygon"></i> UML</div>
-        <div class="skill-tag"><i class="fab fa-php"></i> PHP</div>
-        <div class="skill-tag"><i class="fab fa-html5"></i> HTML</div>
-        <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</div>
-        <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
-        <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
-        <div class="skill-tag"><i class="fas fa-shield-alt"></i> Information Security</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>What I Test For</h2>
-      <div class="test-cards">
-        <div class="test-card"><strong>Functionality</strong><br>Ensure features work as expected.</div>
-        <div class="test-card"><strong>Usability</strong><br>Deliver great user experiences.</div>
-        <div class="test-card"><strong>Performance</strong><br>Verify speed and responsiveness.</div>
-        <div class="test-card"><strong>Security</strong><br>Test for vulnerabilities & risks.</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Projects</h2>
-      <div class="test-cards">
-
-        <div class="test-card">
-          <strong>Playwright Automation – ifs.com</strong><br>
-          UI automation project using <strong>Playwright</strong> to validate key elements and user interactions on the official <em>ifs.com</em> website.<br><br>
-          <a href="https://github.com/LakinduQA/playwright_ifs.com" target="_blank"
-            style="color: var(--accent); text-decoration: none;">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-
-        <div class="test-card">
-          <strong>HackerNews Sorting Test</strong><br>
-          This project uses <strong>Playwright</strong> to test whether the first 100 articles on the Hacker News
-          <em>"newest"</em> page are sorted from newest to oldest by timestamp.<br><br>
-          <a href="https://github.com/LakinduQA/hacker-news-sorting-test" target="_blank"
-            style="color: var(--accent); text-decoration: none;">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <h2>Contact</h2>
-      <div class="contact">
-        <a href="https://github.com/LakinduQA" target="_blank">
-          <i class="fab fa-github"></i> GitHub: LakinduQA
-        </a>
-        <a href="https://www.linkedin.com/in/lakindu-de-silva-460581344" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn: Lakindu De Silva
-        </a>
-        <a href="mailto:lakindudesilva007@gmail.com">
-          <i class="fas fa-envelope"></i> Email: lakindudesilva007@gmail.com
-        </a>
-      </div>
-    </section>
-
-  </div>
-
-  <script>
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme");
-      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
-    }
-  </script>
-</body>
-
+    <script>
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        document.documentElement.setAttribute(
+          "data-theme",
+          current === "dark" ? "light" : "dark"
+        );
+      }
+    </script>
+  </body>
 </html>
