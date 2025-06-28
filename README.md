@@ -18,19 +18,23 @@ A second year undergraduate student with a growing passion for software testing 
 
 ## Technical Skills
 
-- Playwright (Test Automation)  
+- Playwright 
 - JavaScript  
-- Postman API Testing  
+- Postman API Testing
+- JMeter
 - Manual Testing  
+- Zephyr
 - Agile Methodologies  
-- SQL  
+- Jira
+- Git & GitHub
 - SDLC  
+- STLC
+- SQL  
 - Database Design  
 - UML  
 - PHP  
 - HTML  
-- CSS  
-- Git & GitHub  
+- CSS    
 - Information Security  
 
 ---
@@ -39,6 +43,7 @@ A second year undergraduate student with a growing passion for software testing 
 
 - [Playwright Automation – ifs.com](https://github.com/LakinduQA/playwright_ifs.com)  
 - [Hacker News Sorting Test](https://github.com/LakinduQA/hacker-news-sorting-test)
+- [JMeter ReqRes API Test Suite](https://github.com/LakinduQA/ReqRes-Jmeter-Performance-Test)
 
 ---
 
