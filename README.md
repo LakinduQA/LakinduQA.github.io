@@ -12,38 +12,48 @@ This site showcases my skills, tools, and interests in software quality assuranc
 
 ## About Me
 
-A second year undergraduate student with a growing passion for software testing and quality assurance. Currently building skills through self guided learning in both manual and automated testing. Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.
+A second year undergraduate student with a growing passion for software testing and quality assurance. Currently building skills through self-guided learning in both manual and automated testing. Focused on learning automation frameworks, understanding real-world testing practices and writing reliable tests that help ensure software quality. Passionate about continuous learning and aiming to grow into a skilled QA Engineer.
 
 ---
 
 ## Technical Skills
 
-- Playwright 
+- Playwright  
 - JavaScript  
-- Postman API Testing
-- JMeter
+- Postman API Testing  
+- JMeter  
 - Manual Testing  
-- Zephyr
+- Zephyr  
 - Agile Methodologies  
-- Jira
-- Git & GitHub
+- Jira  
+- Git & GitHub  
 - SDLC  
-- STLC
+- STLC  
 - SQL  
 - Database Design  
 - UML  
 - PHP  
 - HTML  
-- CSS    
+- CSS  
 - Information Security  
+- Burp Suite  
+- Security Testing  
 
 ---
 
 ## Projects
 
 - [Playwright Automation – ifs.com](https://github.com/LakinduQA/playwright_ifs.com)  
-- [Hacker News Sorting Test](https://github.com/LakinduQA/hacker-news-sorting-test)
-- [JMeter ReqRes API Test Suite](https://github.com/LakinduQA/ReqRes-Jmeter-Performance-Test)
+  Automated UI testing project using Playwright for ifs.com. Covers test navigation, element assertions, and reporting.
+
+- [Hacker News Sorting Test](https://github.com/LakinduQA/hacker-news-sorting-test)  
+  Functional test automation project focused on validating sort order logic on the Hacker News site.
+
+- [JMeter ReqRes API Test Suite](https://github.com/LakinduQA/ReqRes-Jmeter-Performance-Test)  
+  A performance test suite for ReqRes APIs using Apache JMeter. Includes load testing, assertions, and test reports.
+
+- [Burp Suite Security Testing – Juice Shop](https://github.com/LakinduQA/Burp-Suite_JuiceShop_Security-Testing)  
+  Ongoing security testing project using **Burp Suite** on *OWASP Juice Shop*. Includes findings like **IDOR**, **SQLi**, and **Data Leakage** with documentation and fixes.
 
 ---
 
