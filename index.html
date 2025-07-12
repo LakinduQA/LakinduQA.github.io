@@ -737,10 +737,8 @@
       /* Section-specific animations */
       .section-animated {
         opacity: 0;
-        transform: translateY(
-          60px
-        ); /* Increased distance for more dramatic effect */
-        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+        transform: translateY(30px); /* Balanced travel distance */
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth but responsive - 0.6s */
         transition-delay: var(--section-delay, 0s); /* Use staggered delay */
       }
 
@@ -2312,17 +2310,17 @@
       // Scroll Animation Observer for SQA sections
       function initScrollAnimations() {
         const observerOptions = {
-          threshold: 0.2, // Wait until 20% of section is visible
-          rootMargin: "0px 0px -100px 0px", // Start animation earlier
+          threshold: 0.08, // Sweet spot - trigger when 8% visible
+          rootMargin: "0px 0px -30px 0px", // Balanced start distance
         };
 
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // Add a slight delay for smoother section-by-section appearance
+              // Reduced delay for faster section appearance
               setTimeout(() => {
                 entry.target.classList.add("visible");
-              }, 100);
+              }, 30); // Balanced timing - not instant, not slow
 
               // Trigger specific animations based on section
               const sectionTitle = entry.target.querySelector("h2");
@@ -2377,7 +2375,7 @@
           .querySelectorAll(".section-animated")
           .forEach((section, index) => {
             // Add a CSS custom property for staggered animation delays
-            section.style.setProperty("--section-delay", `${index * 0.1}s`);
+            section.style.setProperty("--section-delay", `${index * 0.08}s`); // Balanced stagger timing
             observer.observe(section);
           });
       }
