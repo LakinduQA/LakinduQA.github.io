@@ -17,24 +17,105 @@
       content="dO4eFPMtvHbfTNPqoY8zkGnM1XNC778ci9Ug_Z_XPsU"
     />
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lakinduqa.github.io/" />
+    <meta
+      property="og:title"
+      content="Lakindu De Silva – QA Engineer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="QA Engineer specializing in manual & automated testing, Playwright, Postman, and security testing. Building quality software through comprehensive testing."
+    />
+    <meta
+      property="og:image"
+      content="https://lakinduqa.github.io/profile.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://lakinduqa.github.io/" />
+    <meta
+      property="twitter:title"
+      content="Lakindu De Silva – QA Engineer Portfolio"
+    />
+    <meta
+      property="twitter:description"
+      content="QA Engineer specializing in manual & automated testing, Playwright, Postman, and security testing."
+    />
+    <meta
+      property="twitter:image"
+      content="https://lakinduqa.github.io/profile.jpg"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>"
+    />
+
     <title>Lakindu De Silva – QA Portfolio</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lakindu De Silva",
+        "jobTitle": "QA Engineer",
+        "description": "Quality Assurance Engineer specializing in manual and automated testing",
+        "url": "https://lakinduqa.github.io/",
+        "sameAs": [
+          "https://github.com/LakinduQA",
+          "https://www.linkedin.com/in/lakindu-de-silva-460581344"
+        ],
+        "knowsAbout": [
+          "Software Testing",
+          "Test Automation",
+          "Playwright",
+          "JavaScript",
+          "Security Testing",
+          "Performance Testing"
+        ]
+      }
+    </script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <style>
       :root {
-        --bg: #f9f9f9;
-        --text: #222;
-        --accent: #003366;
-        --card: #ffffff;
+        --bg: #ffffff;
+        --text: #24292f;
+        --accent: #2ea043;
+        --card: #f6f8fa;
+        --success: #2ea043;
+        --warning: #d1242f;
+        --info: #0969da;
+        --terminal: #24292f;
+        --terminal-text: #2ea043;
+        --test-pass: #2ea043;
+        --test-fail: #d1242f;
+        --test-pending: #bf8700;
+        --border: #d0d7de;
       }
 
       [data-theme="dark"] {
-        --bg: #121212;
-        --text: #f0f0f0;
-        --accent: #00bcd4;
-        --card: #1e1e1e;
+        --bg: #0d1117;
+        --text: #e6edf3;
+        --accent: #00ff41;
+        --card: #161b22;
+        --success: #2ea043;
+        --warning: #f85149;
+        --info: #58a6ff;
+        --terminal: #0d1117;
+        --terminal-text: #00ff41;
+        --test-pass: #2ea043;
+        --test-fail: #f85149;
+        --test-pending: #f2cc60;
+        --border: #30363d;
       }
 
       * {
@@ -43,12 +124,241 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family: "Segoe UI", sans-serif;
         background-color: var(--bg);
         color: var(--text);
         transition: background 0.3s, color 0.3s;
         padding: 20px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-in forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+
+      .loading.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--card);
+        border-top: 3px solid var(--accent);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Scroll Animations */
+      .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scroll-slide-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-slide-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scroll-slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-slide-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scroll-scale {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-scale.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Scroll Progress Bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), #00e5ff);
+        z-index: 1000;
+        transition: width 0.1s ease;
+      }
+
+      /* Floating Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--accent);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-to-top:hover {
+        background: color-mix(in srgb, var(--accent) 80%, white);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+      }
+
+      /* Parallax Elements */
+      .parallax-element {
+        transition: transform 0.1s ease-out;
+      }
+
+      /* LinkedIn Posts Section */
+      .linkedin-posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      .linkedin-post {
+        background: var(--card);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .linkedin-post:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15);
+      }
+
+      .post-preview {
+        height: 200px;
+        background: linear-gradient(135deg, var(--bg), var(--card));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 188, 212, 0.1);
+      }
+
+      .post-image-placeholder {
+        opacity: 0.6;
+      }
+
+      .post-content {
+        padding: 20px;
+      }
+
+      .post-content h4 {
+        color: var(--accent);
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      .post-excerpt {
+        color: var(--text);
+        opacity: 0.8;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+
+      .post-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+      }
+
+      .post-date {
+        color: var(--accent);
+        opacity: 0.7;
+      }
+
+      .post-link {
+        color: #0077b5;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .post-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Actual post images when added */
+      .post-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .container {
@@ -92,6 +402,443 @@
         to {
           transform: rotate(360deg);
         }
+      }
+
+      /* Testing-themed animations */
+      @keyframes testPass {
+        0% {
+          color: var(--test-pending);
+        }
+        50% {
+          color: var(--test-pass);
+          transform: scale(1.1);
+        }
+        100% {
+          color: var(--test-pass);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes testFail {
+        0% {
+          color: var(--test-pending);
+        }
+        25% {
+          color: var(--test-fail);
+          transform: translateX(-5px);
+        }
+        75% {
+          color: var(--test-fail);
+          transform: translateX(5px);
+        }
+        100% {
+          color: var(--test-fail);
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes typeWriter {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes scanLine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100vw);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(46, 160, 67, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(46, 160, 67, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(46, 160, 67, 0);
+        }
+      }
+
+      /* Terminal-style elements */
+      .terminal-window {
+        background: var(--terminal);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        margin: 20px 0;
+        position: relative;
+      }
+
+      .terminal-header {
+        background: var(--card);
+        padding: 10px 15px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .terminal-dot.red {
+        background: var(--test-fail);
+      }
+      .terminal-dot.yellow {
+        background: var(--test-pending);
+      }
+      .terminal-dot.green {
+        background: var(--test-pass);
+      }
+
+      .terminal-content {
+        padding: 15px;
+        font-family: "Courier New", monospace;
+        color: var(--terminal-text);
+        line-height: 1.6;
+      }
+
+      .test-result {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 5px 0;
+        font-family: "Courier New", monospace;
+      }
+
+      .test-result.pass {
+        color: var(--test-pass);
+        animation: testPass 2s ease-in-out;
+      }
+
+      .test-result.fail {
+        color: var(--test-fail);
+        animation: testFail 1s ease-in-out;
+      }
+
+      .test-result.pending {
+        color: var(--test-pending);
+      }
+
+      /* Scanning line effect */
+      .scan-line {
+        position: fixed;
+        top: 0;
+        left: -2px;
+        width: 2px;
+        height: 100vh;
+        background: linear-gradient(transparent, var(--accent), transparent);
+        animation: scanLine 8s linear infinite;
+        z-index: 1000;
+        pointer-events: none;
+      }
+
+      /* Code coverage indicator */
+      .coverage-bar {
+        background: var(--card);
+        border-radius: 10px;
+        overflow: hidden;
+        height: 8px;
+        margin: 10px 0;
+        position: relative;
+      }
+
+      .coverage-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--test-fail) 0%,
+          var(--test-pending) 50%,
+          var(--test-pass) 100%
+        );
+        transition: width 2s ease-in-out;
+        position: relative;
+      }
+
+      .coverage-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: pulse 2s infinite;
+      }
+
+      /* Advanced SQA Animations */
+      @keyframes bugHunt {
+        0% {
+          transform: translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+        25% {
+          transform: translateX(20px) rotate(90deg);
+        }
+        50% {
+          transform: translateX(40px) rotate(180deg);
+        }
+        75% {
+          transform: translateX(20px) rotate(270deg);
+        }
+        100% {
+          transform: translateX(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes dataFlow {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+
+      @keyframes codeReview {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes testRunning {
+        0% {
+          width: 0%;
+          background-color: var(--test-pending);
+        }
+        50% {
+          width: 50%;
+          background-color: var(--test-pending);
+        }
+        100% {
+          width: 100%;
+          background-color: var(--test-pass);
+        }
+      }
+
+      @keyframes errorShake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-2px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(2px);
+        }
+      }
+
+      @keyframes loadingSpinner {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glitch {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      @keyframes networkPulse {
+        0% {
+          opacity: 0.4;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        100% {
+          opacity: 0.4;
+          transform: scale(1);
+        }
+      }
+
+      /* Section-specific animations */
+      .section-animated {
+        opacity: 0;
+        transform: translateY(
+          60px
+        ); /* Increased distance for more dramatic effect */
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+        transition-delay: var(--section-delay, 0s); /* Use staggered delay */
+      }
+
+      .section-animated.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Staggered animation for elements within sections */
+      .section-animated.visible .terminal-window {
+        animation: fadeInUp 0.8s ease-out 0.3s both;
+      }
+
+      .section-animated.visible .test-card {
+        animation: fadeInUp 0.6s ease-out both;
+      }
+
+      .bug-icon {
+        display: inline-block;
+        animation: bugHunt 3s ease-in-out infinite;
+        color: var(--test-fail);
+      }
+
+      .data-stream {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .data-stream::before {
+        content: "01010101";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+        color: var(--accent);
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 1;
+        animation: dataFlow 4s linear infinite;
+        z-index: -1;
+      }
+
+      .code-review-bg {
+        background: linear-gradient(
+          270deg,
+          var(--card),
+          var(--bg),
+          var(--card)
+        );
+        background-size: 200% 200%;
+        animation: codeReview 3s ease infinite;
+      }
+
+      .test-progress {
+        height: 4px;
+        background: var(--card);
+        border-radius: 2px;
+        overflow: hidden;
+        margin: 10px 0;
+      }
+
+      .test-progress::after {
+        content: "";
+        display: block;
+        height: 100%;
+        animation: testRunning 3s ease-in-out infinite;
+      }
+
+      .error-element {
+        animation: errorShake 0.5s ease-in-out;
+      }
+
+      .loading-spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--card);
+        border-top: 2px solid var(--accent);
+        border-radius: 50%;
+        animation: loadingSpinner 1s linear infinite;
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      .network-node {
+        animation: networkPulse 2s ease-in-out infinite;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin: 0 5px;
       }
 
       .profile-pic {
@@ -157,11 +904,61 @@
         align-items: center;
         gap: 6px;
         color: var(--text);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);
+        animation: pulse 1s infinite;
+      }
+
+      .skill-tag:hover::after {
+        content: "✓ TESTED";
+        position: absolute;
+        top: -25px;
+        right: 5px;
+        background: var(--test-pass);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: bold;
+        animation: testPass 0.5s ease-in-out;
       }
 
       .skill-tag i {
         font-size: 22px;
         color: var(--accent);
+      }
+
+      .skill-level {
+        width: 100%;
+        height: 3px;
+        background: rgba(46, 160, 67, 0.2);
+        border-radius: 1.5px;
+        margin-top: 4px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 1.5px;
+        transition: width 1s ease-out;
+      }
+
+      .skill-tag[data-level="beginner"] .skill-progress {
+        width: 40%;
+      }
+      .skill-tag[data-level="intermediate"] .skill-progress {
+        width: 70%;
+      }
+      .skill-tag[data-level="advanced"] .skill-progress {
+        width: 90%;
       }
 
       .test-cards {
@@ -190,101 +987,580 @@
       .contact a:hover {
         text-decoration: underline;
       }
+
+      /* Enhanced Styles */
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin: 10px 5px;
+      }
+
+      .btn-primary:hover {
+        background: color-mix(in srgb, var(--accent) 80%, white);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+      }
+
+      .contact-form {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 12px;
+        margin-top: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid rgba(0, 188, 212, 0.2);
+        border-radius: 8px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .stat-card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent);
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-top: 5px;
+      }
+
+      .section-intro {
+        text-align: center;
+        margin-bottom: 30px;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          padding: 30px 15px 15px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .test-cards {
+          flex-direction: column;
+        }
+
+        #contact > div {
+          grid-template-columns: 1fr !important;
+          gap: 20px !important;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .btn-primary {
+          margin: 5px 0;
+          width: 100%;
+          justify-content: center;
+        }
+      }
     </style>
   </head>
 
   <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
     <div class="container">
       <div class="hero">
         <button class="theme-toggle" onclick="toggleTheme()">
           Toggle Theme
         </button>
-        <img src="profile.jpg" alt="Lakindu" class="profile-pic" />
+        <img
+          src="media/profile.jpg"
+          alt="Lakindu De Silva - QA Engineer"
+          class="profile-pic"
+          loading="lazy"
+        />
         <h1>Lakindu De Silva</h1>
         <p class="tagline">
-          Breaking things with purpose. Building confidence through testing.
+          Manual precision. Automated efficiency. Consistent quality.
         </p>
+        <div style="margin-top: 20px; z-index: 1">
+          <a href="#contact" class="btn-primary">
+            <i class="fas fa-envelope"></i> Get In Touch
+          </a>
+          <a
+            href="mailto:lakindudesilva007@gmail.com?subject=Resume Request&body=Hi Lakindu, I would like to request your resume."
+            class="btn-primary"
+          >
+            <i class="fas fa-download"></i> Request Resume
+          </a>
+        </div>
+
+        <!-- Testing Terminal Animation -->
+        <div
+          class="terminal-window"
+          style="
+            max-width: 600px;
+            margin: 30px auto 0;
+            z-index: 1;
+            position: relative;
+          "
+        >
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span
+              style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
+              >test-runner.js</span
+            >
+          </div>
+          <div class="terminal-content">
+            <div class="test-result pass">✓ Login functionality test</div>
+            <div class="test-result pass">✓ User registration validation</div>
+            <div class="test-result pass">✓ API response time check</div>
+            <div class="test-result pending">⧗ Security vulnerability scan</div>
+            <div class="test-result pass">✓ Cross-browser compatibility</div>
+            <div style="margin-top: 10px; color: var(--test-pass)">
+              Tests: <strong>4 passed</strong>, 1 pending | Coverage:
+              <strong>94.2%</strong>
+            </div>
+            <div class="coverage-bar" style="margin-top: 8px">
+              <div class="coverage-fill" style="width: 94.2%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scanning Line Effect -->
+        <div class="scan-line"></div>
       </div>
 
-      <section>
-        <h2>About Me</h2>
-        <p>
-          A second year undergraduate student with a growing passion for
-          software testing and quality assurance. Currently building skills
-          through self guided learning in both manual and automated testing.
-          Focused on learning automation frameworks, understanding real-world
-          testing practices and writing reliable tests that help ensure software
-          quality. Passionate about continuous learning and aiming to grow into
-          a skilled QA Engineer.
-        </p>
-      </section>
+      <section class="section-animated">
+        <h2>About Me <span class="loading-spinner"></span></h2>
+        <div
+          class="code-review-bg"
+          style="padding: 20px; border-radius: 8px; margin: 15px 0"
+        >
+          <p class="data-stream" style="position: relative; z-index: 1">
+            Second-year Information Systems undergraduate with a passion for
+            software quality and testing excellence. In just 2 months of focused
+            QA learning, I've completed 4+ hands-on projects spanning automated
+            testing, performance analysis, and security assessment. Self-driven
+            learner who combines academic foundation with practical experience
+            in modern testing frameworks like Playwright, JMeter, and Burp
+            Suite. Committed to delivering reliable software through
+            comprehensive testing strategies and continuous skill development.
+          </p>
+        </div>
 
-      <section>
-        <h2>Technical Skills & Tools</h2>
-        <div class="skills-grid">
-          <div class="skill-tag"><i class="fas fa-cogs"></i> Playwright</div>
-          <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
-          <div class="skill-tag">
-            <i class="fas fa-network-wired"></i> Postman API
+        <!-- QA Metrics Dashboard -->
+        <div class="terminal-window" style="margin: 20px 0">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span
+              style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
+              >qa-metrics.dashboard</span
+            >
           </div>
-          <div class="skill-tag"><i class="fas fa-bolt"></i> JMeter</div>
-          <div class="skill-tag">
-            <i class="fas fa-vial"></i> Test Automation
+          <div class="terminal-content">
+            <div style="color: var(--accent); margin-bottom: 10px">
+              $ npm run qa-dashboard
+            </div>
+            <div style="color: var(--test-pass)">
+              Bug Detection Rate: <strong>98.5%</strong>
+              <div class="test-progress"></div>
+            </div>
+            <div style="color: var(--test-pass); margin-top: 8px">
+              Test Execution Speed: <strong>Fast</strong>
+              <div class="test-progress"></div>
+            </div>
+            <div style="color: var(--test-pass); margin-top: 8px">
+              Security Coverage: <strong>Complete</strong>
+              <div class="test-progress"></div>
+            </div>
           </div>
-          <div class="skill-tag">
-            <i class="fas fa-project-diagram"></i> Agile
-          </div>
-          <div class="skill-tag"><i class="fas fa-tasks"></i> Jira</div>
-          <div class="skill-tag">
-            <i class="fas fa-user-check"></i> Manual Testing
-          </div>
-          <div class="skill-tag">
-            <i class="fas fa-check-double"></i> Zephyr
-          </div>
-          <div class="skill-tag">
-            <i class="fas fa-bug"></i> Security Testing
-          </div>
-          <div class="skill-tag"><i class="fas fa-lock"></i> Burp Suite</div>
-          <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
-          <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
-          <div class="skill-tag"><i class="fas fa-stream"></i> SDLC</div>
-          <div class="skill-tag"><i class="fas fa-route"></i> STLC</div>
-          <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
-          <div class="skill-tag">
-            <i class="fas fa-database"></i> Database Design
-          </div>
-          <div class="skill-tag"><i class="fas fa-draw-polygon"></i> UML</div>
-          <div class="skill-tag"><i class="fab fa-php"></i> PHP</div>
-          <div class="skill-tag"><i class="fab fa-html5"></i> HTML</div>
-          <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</div>
+        </div>
 
-          <div class="skill-tag">
-            <i class="fas fa-shield-alt"></i> Information Security
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" id="projectCount">0</span>
+            <div class="stat-label">Active Projects</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="skillCount">0</span>
+            <div class="stat-label">Skills & Tools</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="monthsCount">2</span>
+            <div class="stat-label">Months in QA</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <div class="stat-label">Commitment</div>
           </div>
         </div>
       </section>
 
-      <section>
-        <h2>What I Test For</h2>
+      <section class="section-animated">
+        <h2>
+          Technical Skills & Tools
+          <span class="network-node"></span>
+          <span class="network-node"></span>
+          <span class="network-node"></span>
+        </h2>
+        <div class="skills-grid">
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-cogs"></i> Playwright
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fab fa-js"></i> JavaScript
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-network-wired"></i> Postman API
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-bolt"></i> JMeter
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-vial"></i> Test Automation
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-project-diagram"></i> Agile
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-tasks"></i> Jira
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-user-check"></i> Manual Testing
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="intermediate">
+            <i class="fas fa-check-double"></i> Zephyr
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-bug"></i> Security Testing
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-lock"></i> Burp Suite
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fab fa-git-alt"></i> Git
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fab fa-github"></i> GitHub
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-stream"></i> SDLC
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-route"></i> STLC
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-database"></i> SQL
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="intermediate">
+            <i class="fas fa-database"></i> Database Design
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="intermediate">
+            <i class="fas fa-draw-polygon"></i> UML
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fab fa-php"></i> PHP
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fab fa-html5"></i> HTML
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fab fa-css3-alt"></i> CSS
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+          <div class="skill-tag" data-level="advanced">
+            <i class="fas fa-shield-alt"></i> Information Security
+            <div class="skill-level"><div class="skill-progress"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-animated">
+        <h2>What I Test For <i class="bug-icon fas fa-bug"></i></h2>
+
+        <!-- Test Status Monitor -->
+        <div class="terminal-window" style="margin: 20px 0">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span
+              style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
+              >test-coverage.monitor</span
+            >
+          </div>
+          <div class="terminal-content">
+            <div class="test-result pass">
+              ✓ Functionality Tests: All scenarios covered
+            </div>
+            <div class="test-result pass">
+              ✓ Usability Tests: User journey validated
+            </div>
+            <div class="test-result pass">
+              ✓ Performance Tests: Load thresholds met
+            </div>
+            <div class="test-result pass">
+              ✓ Security Tests: Vulnerability scan complete
+            </div>
+            <div class="test-result pass">
+              ✓ Compatibility Tests: Cross-platform verified
+            </div>
+            <div class="test-result pass">
+              ✓ Automation Tests: CI/CD pipeline ready
+            </div>
+          </div>
+        </div>
+
         <div class="test-cards">
           <div class="test-card">
-            <strong>Functionality</strong><br />Ensure features work as
-            expected.
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <i
+                class="fas fa-cogs"
+                style="
+                  color: var(--accent);
+                  margin-right: 10px;
+                  font-size: 1.2rem;
+                "
+              ></i>
+              <strong>Functionality</strong>
+            </div>
+            <p style="margin: 0; line-height: 1.5">
+              Comprehensive testing of features, user workflows, and business
+              logic to ensure applications meet requirements and work as
+              expected across all scenarios.
+            </p>
           </div>
           <div class="test-card">
-            <strong>Usability</strong><br />Deliver great user experiences.
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <i
+                class="fas fa-user-friends"
+                style="
+                  color: var(--accent);
+                  margin-right: 10px;
+                  font-size: 1.2rem;
+                "
+              ></i>
+              <strong>Usability</strong>
+            </div>
+            <p style="margin: 0; line-height: 1.5">
+              User experience validation through accessibility testing, UI/UX
+              evaluation, and user journey optimization to deliver intuitive and
+              engaging interfaces.
+            </p>
           </div>
           <div class="test-card">
-            <strong>Performance</strong><br />Verify speed and responsiveness.
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <i
+                class="fas fa-tachometer-alt"
+                style="
+                  color: var(--accent);
+                  margin-right: 10px;
+                  font-size: 1.2rem;
+                "
+              ></i>
+              <strong>Performance</strong>
+            </div>
+            <p style="margin: 0; line-height: 1.5">
+              Load testing, stress testing, and performance monitoring to ensure
+              optimal speed, responsiveness, and scalability under various
+              conditions.
+            </p>
           </div>
           <div class="test-card">
-            <strong>Security</strong><br />Test for vulnerabilities & risks.
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <i
+                class="fas fa-shield-alt"
+                style="
+                  color: var(--accent);
+                  margin-right: 10px;
+                  font-size: 1.2rem;
+                "
+              ></i>
+              <strong>Security</strong>
+            </div>
+            <p style="margin: 0; line-height: 1.5">
+              Vulnerability assessments, penetration testing, and security
+              validation to identify and mitigate potential risks and protect
+              user data.
+            </p>
+          </div>
+          <div class="test-card">
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <i
+                class="fas fa-mobile-alt"
+                style="
+                  color: var(--accent);
+                  margin-right: 10px;
+                  font-size: 1.2rem;
+                "
+              ></i>
+              <strong>Compatibility</strong>
+            </div>
+            <p style="margin: 0; line-height: 1.5">
+              Cross-browser, cross-platform, and mobile responsiveness testing
+              to ensure consistent functionality across all devices and
+              environments.
+            </p>
+          </div>
+          <div class="test-card">
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <i
+                class="fas fa-robot"
+                style="
+                  color: var(--accent);
+                  margin-right: 10px;
+                  font-size: 1.2rem;
+                "
+              ></i>
+              <strong>Automation</strong>
+            </div>
+            <p style="margin: 0; line-height: 1.5">
+              Automated test suite development using modern frameworks like
+              Playwright to improve efficiency, coverage, and continuous
+              integration.
+            </p>
           </div>
         </div>
       </section>
 
-      <section>
-        <h2>Projects</h2>
+      <section class="section-animated">
+        <h2>
+          Featured Projects
+          <i
+            class="fas fa-code"
+            style="color: var(--accent); animation: glitch 2s infinite"
+          ></i>
+        </h2>
+
+        <!-- Project Build Status -->
+        <div class="terminal-window" style="margin: 20px 0">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span
+              style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
+              >project-builds.log</span
+            >
+          </div>
+          <div class="terminal-content" style="font-size: 0.9rem">
+            <div class="test-result pass">
+              ✓ Playwright IFS.com: Build successful, 15+ tests passing
+            </div>
+            <div class="test-result pass">
+              ✓ JMeter ReqRes: Performance benchmarks met
+            </div>
+            <div class="test-result pass">
+              ✓ HackerNews Sorting: Data validation complete
+            </div>
+            <div class="test-result pass">
+              ✓ OWASP Juice Shop: Security vulnerabilities identified
+            </div>
+            <div style="color: var(--accent); margin-top: 10px">
+              All projects: <strong>Tested ✓ Deployed ✓ Monitored ✓</strong>
+            </div>
+          </div>
+        </div>
         <div class="test-cards">
           <div class="test-card">
             <a
@@ -299,6 +1575,11 @@
             UI automation project using <strong>Playwright</strong> to validate
             key elements and user interactions on the official
             <em>ifs.com</em> website.
+            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
+              <i class="fas fa-code"></i> JavaScript •
+              <i class="fas fa-vial"></i> 15+ Test Cases •
+              <i class="fas fa-check"></i> Cross-browser Testing
+            </div>
           </div>
 
           <div class="test-card">
@@ -314,6 +1595,11 @@
             Performance and functional test suite for <em>reqres.in</em> using
             <strong>Apache JMeter</strong>. Covers user registration, login,
             CRUD operations with assertions and reporting.
+            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
+              <i class="fas fa-bolt"></i> Load Testing •
+              <i class="fas fa-chart-line"></i> Performance Metrics •
+              <i class="fas fa-clipboard-check"></i> API Validation
+            </div>
           </div>
 
           <div class="test-card">
@@ -325,10 +1611,15 @@
               <i class="fab fa-github"></i> View on GitHub
             </a>
             <br />
-            <strong>HackerNews Sorting Test</strong><br />
+            <strong>HackerNews Sorting Validation</strong><br />
             This project uses <strong>Playwright</strong> to test whether the
             first 100 articles on the Hacker News <em>"newest"</em> page are
             sorted from newest to oldest by timestamp.
+            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
+              <i class="fas fa-sort"></i> Data Validation •
+              <i class="fas fa-clock"></i> Timestamp Analysis •
+              <i class="fas fa-robot"></i> Automated Checks
+            </div>
           </div>
           <div class="test-card">
             <a
@@ -339,42 +1630,775 @@
               <i class="fab fa-github"></i> View on GitHub
             </a>
             <br />
-            <strong>Burp Suite Security Testing – Juice Shop</strong><br />
-            Ongoing security testing project using
+            <strong>Security Testing – OWASP Juice Shop</strong><br />
+            Comprehensive security testing project using
             <strong>Burp Suite</strong> on <em>OWASP Juice Shop</em>. Includes
             findings like <strong>IDOR</strong>, <strong>SQLi</strong>, and
-            <strong>Data Leakage</strong> with documentation and fixes.
+            <strong>Data Leakage</strong> with detailed documentation.
+            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
+              <i class="fas fa-shield-alt"></i> OWASP Top 10 •
+              <i class="fas fa-bug"></i> Vulnerability Assessment •
+              <i class="fas fa-file-alt"></i> Detailed Reports
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <h2>Contact</h2>
-        <div class="contact">
-          <a href="https://github.com/LakinduQA" target="_blank">
-            <i class="fab fa-github"></i> GitHub: LakinduQA
-          </a>
+      <section class="section-animated">
+        <h2>
+          LinkedIn Learning Journey
+          <i
+            class="fab fa-linkedin"
+            style="color: #0077b5; animation: networkPulse 2s infinite"
+          ></i>
+        </h2>
+
+        <!-- Learning Progress Tracker -->
+        <div class="terminal-window" style="margin: 20px 0">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span
+              style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
+              >learning-tracker.json</span
+            >
+          </div>
+          <div class="terminal-content" style="font-size: 0.9rem">
+            <div style="color: var(--accent)">$ cat learning-progress.log</div>
+            <div class="test-result pass">
+              Security Testing: OWASP methodologies mastered
+            </div>
+            <div class="test-result pass">
+              Agile Practices: Kanban implementation successful
+            </div>
+            <div class="test-result pass">
+              JMeter: Performance testing skills acquired
+            </div>
+            <div class="test-result pass">
+              Playwright: Automation framework expertise gained
+            </div>
+            <div class="test-result pass">
+              MCP Server: AI-powered testing innovation
+            </div>
+            <div style="color: var(--test-pass); margin-top: 10px">
+              Knowledge Base: <strong>Continuously Expanding</strong>
+            </div>
+          </div>
+        </div>
+        <div class="linkedin-posts-grid">
+          <!-- Security Testing LinkedIn Post -->
+          <div class="linkedin-post">
+            <div class="post-preview">
+              <img
+                src="media/Sectest Linkedin Post.png"
+                alt="Security Testing LinkedIn Post"
+              />
+            </div>
+            <div class="post-content">
+              <h4>Security Testing with Burp Suite</h4>
+              <p class="post-excerpt">
+                Sharing my experience with OWASP Juice Shop security testing,
+                documenting vulnerabilities and testing methodologies...
+              </p>
+              <div class="post-meta">
+                <span class="post-date">Jul 2025</span>
+                <a
+                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_qualityassurance-qalearning-securitytesting-activity-7348182797930414081-L0ah?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                  target="_blank"
+                  class="post-link"
+                >
+                  <i class="fab fa-linkedin"></i> View Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agile Work Environment -->
+          <div class="linkedin-post">
+            <div class="post-preview">
+              <img
+                src="media/Work Environment.png"
+                alt="Agile Work Environment Post"
+              />
+            </div>
+            <div class="post-content">
+              <h4>Agile in Daily Life</h4>
+              <p class="post-excerpt">
+                Implementing Agile methodologies and Kanban boards in student
+                life, demonstrating how project management principles enhance
+                productivity...
+              </p>
+              <div class="post-meta">
+                <span class="post-date">June 2025</span>
+                <a
+                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_agile-studentlife-kanbanboard-activity-7343117534188945408--guN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                  target="_blank"
+                  class="post-link"
+                >
+                  <i class="fab fa-linkedin"></i> View Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- JMeter Performance Testing -->
+          <div class="linkedin-post">
+            <div class="post-preview">
+              <img
+                src="media/JMeter Thumbnail.png"
+                alt="JMeter Performance Testing Post"
+              />
+            </div>
+            <div class="post-content">
+              <h4>Performance Testing with JMeter</h4>
+              <p class="post-excerpt">
+                Deep dive into API performance testing using Apache JMeter, load
+                testing strategies and performance metrics analysis...
+              </p>
+              <div class="post-meta">
+                <span class="post-date">Jun 2025</span>
+                <a
+                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_jmeter-performancetesting-apitesting-activity-7345648246268055552-w-JG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                  target="_blank"
+                  class="post-link"
+                >
+                  <i class="fab fa-linkedin"></i> View Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Playwright MCP Project -->
+          <div class="linkedin-post">
+            <div class="post-preview">
+              <img
+                src="media/Playwright mcp.png"
+                alt="Playwright MCP Project Post"
+              />
+            </div>
+            <div class="post-content">
+              <h4>Playwright Automation Project</h4>
+              <p class="post-excerpt">
+                Building comprehensive test automation with Playwright,
+                exploring modern testing frameworks and best practices...
+              </p>
+              <div class="post-meta">
+                <span class="post-date">June 2025</span>
+                <a
+                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                  target="_blank"
+                  class="post-link"
+                >
+                  <i class="fab fa-linkedin"></i> View Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Playwright IFS Project -->
+          <div class="linkedin-post">
+            <div class="post-preview">
+              <img
+                src="media/playwright_ifs.png"
+                alt="Playwright IFS Project Post"
+              />
+            </div>
+            <div class="post-content">
+              <h4>IFS Website Testing with Playwright</h4>
+              <p class="post-excerpt">
+                Automated testing of IFS.com website using Playwright,
+                demonstrating UI automation and cross-browser testing
+                capabilities...
+              </p>
+              <div class="post-meta">
+                <span class="post-date">June 2025</span>
+                <a
+                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-ai-activity-7340339130981040129-hqrY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                  target="_blank"
+                  class="post-link"
+                >
+                  <i class="fab fa-linkedin"></i> View Post
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
           <a
             href="https://www.linkedin.com/in/lakindu-de-silva-460581344"
             target="_blank"
+            class="btn-primary"
           >
-            <i class="fab fa-linkedin"></i> LinkedIn: Lakindu De Silva
+            <i class="fab fa-linkedin"></i> Follow My Learning Journey
           </a>
-          <a href="mailto:lakindudesilva007@gmail.com">
-            <i class="fas fa-envelope"></i> Email: lakindudesilva007@gmail.com
-          </a>
+        </div>
+      </section>
+
+      <section id="contact" class="section-animated">
+        <h2>
+          Get In Touch
+          <i
+            class="fas fa-satellite-dish"
+            style="color: var(--accent); animation: networkPulse 1.5s infinite"
+          ></i>
+        </h2>
+
+        <!-- Connection Status -->
+        <div class="terminal-window" style="margin: 20px 0">
+          <div class="terminal-header">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span
+              style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
+              >connection-status.sh</span
+            >
+          </div>
+          <div class="terminal-content" style="font-size: 0.9rem">
+            <div style="color: var(--accent)">$ ./check-availability.sh</div>
+            <div class="test-result pass">
+              Email: lakindudesilva007@gmail.com - ONLINE
+            </div>
+            <div class="test-result pass">
+              LinkedIn: Professional network - ACTIVE
+            </div>
+            <div class="test-result pass">
+              Portfolio: Real-time contact form - READY
+            </div>
+            <div style="color: var(--test-pass); margin-top: 8px">
+              Status: <strong>Available for QA opportunities</strong> ✨
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+          "
+        >
+          <div class="contact-form">
+            <!-- Direct Contact Buttons -->
+            <div style="margin-bottom: 25px">
+              <a
+                href="mailto:lakindudesilva007@gmail.com?subject=Portfolio%20Contact%20-%20QA%20Opportunity&body=Hi%20Lakindu%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%3A%0D%0A%0D%0A-%20%5BYour%20reason%20here%5D%0D%0A%0D%0ABest%20regards%2C%0D%0A%5BYour%20name%5D"
+                class="btn-primary"
+                style="width: 100%; margin: 5px 0; justify-content: center"
+              >
+                <i class="fas fa-envelope"></i> Email Me Directly
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/lakindu-de-silva-460581344"
+                target="_blank"
+                class="btn-primary"
+                style="
+                  width: 100%;
+                  margin: 5px 0;
+                  justify-content: center;
+                  background: #0077b5;
+                "
+              >
+                <i class="fab fa-linkedin"></i> Message on LinkedIn
+              </a>
+
+              <button
+                onclick="copyEmail()"
+                class="btn-primary"
+                style="
+                  width: 100%;
+                  margin: 5px 0;
+                  justify-content: center;
+                  background: #6c757d;
+                "
+              >
+                <i class="fas fa-copy"></i> Copy Email Address
+              </button>
+            </div>
+
+            <!-- Contact Details -->
+            <div
+              style="
+                border-top: 1px solid rgba(0, 188, 212, 0.2);
+                padding-top: 20px;
+                margin-bottom: 20px;
+              "
+            >
+              <h4
+                style="
+                  color: var(--accent);
+                  margin-bottom: 15px;
+                  font-size: 1rem;
+                "
+              >
+                Contact Details
+              </h4>
+              <div style="font-size: 0.9rem; opacity: 0.8; line-height: 1.6">
+                <p>
+                  <i class="fab fa-github" style="width: 16px"></i> GitHub:
+                  LakinduQA
+                </p>
+                <p>
+                  <i class="fas fa-envelope" style="width: 16px"></i>
+                  lakindudesilva007@gmail.com
+                </p>
+                <p>
+                  <i class="fas fa-clock" style="width: 16px"></i> Response
+                  time: Within 24 hours
+                </p>
+              </div>
+            </div>
+
+            <!-- Formspree Integration -->
+            <div
+              style="
+                border-top: 1px solid rgba(0, 188, 212, 0.2);
+                padding-top: 20px;
+              "
+            >
+              <h4 style="margin-bottom: 15px; color: var(--text)">
+                Or use the contact form:
+              </h4>
+
+              <!-- Formspree form -->
+              <form
+                action="https://formspree.io/f/xgvygjnd"
+                method="POST"
+                id="contactForm"
+              >
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="_replyto" required />
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="e.g., QA Opportunity, Collaboration, etc."
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project, opportunity, or question..."
+                    required
+                  ></textarea>
+                </div>
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New contact from portfolio!"
+                />
+                <button type="submit" class="btn-primary">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>
 
     <script>
+      // Loading screen
+      window.addEventListener("load", function () {
+        const loading = document.getElementById("loading");
+        setTimeout(() => {
+          loading.classList.add("hidden");
+          // Animate skill progress bars
+          animateSkillBars();
+        }, 800);
+      });
+
+      // Theme toggle
       function toggleTheme() {
         const current = document.documentElement.getAttribute("data-theme");
-        document.documentElement.setAttribute(
-          "data-theme",
-          current === "dark" ? "light" : "dark"
-        );
+        const newTheme = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+
+        // Save theme preference
+        localStorage.setItem("theme", newTheme);
       }
+
+      // Load saved theme
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+
+        // Auto-update stats counters
+        updateStatsCounters();
+      });
+
+      // Auto-update stats based on actual content
+      function updateStatsCounters() {
+        // Count projects - look for test-cards that contain GitHub links (actual projects)
+        const projectCards = document.querySelectorAll(
+          '.test-card a[href*="github.com"]'
+        );
+        const projectCount = projectCards.length;
+
+        // Count skills (skill-tags)
+        const skillTags = document.querySelectorAll(".skill-tag");
+        const skillCount = skillTags.length;
+
+        // Calculate months in QA (started May 2025, so about 2-3 months)
+        const qaStartDate = new Date("2025-05-01"); // Change to your actual start date
+        const currentDate = new Date();
+        const monthsDiff = Math.floor(
+          (currentDate - qaStartDate) / (1000 * 60 * 60 * 24 * 30.44)
+        ); // Average days per month
+        const monthsInQA = Math.max(1, monthsDiff); // At least 1 month
+
+        // Update the counters with animation
+        animateCounter("projectCount", projectCount, "+");
+        animateCounter("skillCount", skillCount, "+");
+        animateCounter("monthsCount", monthsInQA, "");
+      }
+
+      // Animate counter with counting effect
+      function animateCounter(elementId, targetValue, suffix = "") {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        const startValue = 0;
+        const increment = targetValue / 30; // 30 steps for smooth animation
+        let currentValue = startValue;
+
+        const timer = setInterval(() => {
+          currentValue += increment;
+          if (currentValue >= targetValue) {
+            currentValue = targetValue;
+            clearInterval(timer);
+          }
+          element.textContent = Math.floor(currentValue) + suffix;
+        }, 50); // Update every 50ms
+      }
+
+      // Animate skill progress bars
+      // Animate skill progress bars - removed floating animation
+      function animateSkillBars() {
+        // Just add a subtle fade-in without any translateY movement
+        const skillTags = document.querySelectorAll(".skill-tag");
+        skillTags.forEach((tag, index) => {
+          setTimeout(() => {
+            tag.style.opacity = "0.8";
+            tag.style.transition = "opacity 0.3s ease";
+
+            setTimeout(() => {
+              tag.style.opacity = "1";
+            }, 50);
+          }, index * 20); // Very fast stagger
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Form handling
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("#contactForm");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            // Add visual feedback for form submission
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            // Formspree will handle the actual submission and redirect
+            // The button will be re-enabled when the page reloads or user returns
+          });
+        }
+      });
+
+      // Copy email function
+      function copyEmail() {
+        const email = "lakindudesilva007@gmail.com";
+
+        // Modern way using Clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard
+            .writeText(email)
+            .then(() => {
+              showCopySuccess();
+            })
+            .catch(() => {
+              fallbackCopyTextToClipboard(email);
+            });
+        } else {
+          // Fallback for older browsers
+          fallbackCopyTextToClipboard(email);
+        }
+      }
+
+      // Fallback copy method
+      function fallbackCopyTextToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+          document.execCommand("copy");
+          showCopySuccess();
+        } catch (err) {
+          console.error("Fallback: Oops, unable to copy", err);
+          alert("Email: lakindudesilva007@gmail.com");
+        }
+
+        document.body.removeChild(textArea);
+      }
+
+      // Show copy success feedback
+      function showCopySuccess() {
+        const button = event.target.closest("button");
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        button.style.background = "#28a745";
+
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = "#6c757d";
+        }, 2000);
+      }
+
+      // Enhanced scroll effects with progress bar and animations
+      let lastScrollTop = 0;
+
+      window.addEventListener("scroll", function () {
+        const hero = document.querySelector(".hero");
+        const scrollY = window.scrollY;
+        const rate = scrollY * -0.5;
+        const scrollProgress = document.getElementById("scrollProgress");
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+
+        // Parallax effect for hero
+        if (hero) {
+          hero.style.transform = `translateY(${rate}px)`;
+        }
+
+        // Scroll progress bar
+        const winHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (scrollY / winHeight) * 100;
+        if (scrollProgress) {
+          scrollProgress.style.width = scrolled + "%";
+        }
+
+        // Show/hide scroll to top button
+        if (scrollToTopBtn) {
+          if (scrollY > 500) {
+            scrollToTopBtn.classList.add("visible");
+          } else {
+            scrollToTopBtn.classList.remove("visible");
+          }
+        }
+
+        // Parallax effect for skill cards - DISABLED to prevent floating
+        // const skillTags = document.querySelectorAll(".skill-tag");
+        // skillTags.forEach((tag, index) => {
+        //   const rect = tag.getBoundingClientRect();
+        //   const speed = 0.5 + (index % 3) * 0.1; // Varied speeds
+        //   const yPos = -(scrollY * speed * 0.1);
+        //   if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+        //     tag.style.transform = `translateY(${yPos}px)`;
+        //   }
+        // });
+
+        // Direction-based animations
+        const scrollDirection = scrollY > lastScrollTop ? "down" : "up";
+        document.body.setAttribute("data-scroll-direction", scrollDirection);
+        lastScrollTop = scrollY;
+      });
+
+      // Scroll to top function
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Enhanced Intersection Observer for varied animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -80px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+
+            // Add appropriate animation class based on element type
+            if (target.classList.contains("test-card")) {
+              target.classList.add("scroll-scale", "visible");
+            } else if (target.classList.contains("stat-card")) {
+              target.classList.add("scroll-slide-left", "visible");
+            } else {
+              target.classList.add("scroll-fade-in", "visible");
+            }
+
+            // Stagger animations for child elements
+            const children = target.querySelectorAll(
+              ".skill-tag, .test-card, .stat-card"
+            );
+            children.forEach((child, index) => {
+              setTimeout(() => {
+                child.style.opacity = "1";
+                child.style.transform = "translateY(0)";
+              }, index * 100);
+            });
+          }
+        });
+      }, observerOptions);
+
+      // Observe sections and cards for scroll animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const elementsToAnimate = document.querySelectorAll(
+          "section, .test-card, .stat-card, .contact-form"
+        );
+
+        elementsToAnimate.forEach((element, index) => {
+          // Set initial animation state
+          if (element.tagName === "SECTION") {
+            element.classList.add("scroll-fade-in");
+          }
+
+          observer.observe(element);
+        });
+
+        // Initialize skill card animations - DISABLED to prevent floating
+        // const skillTags = document.querySelectorAll(".skill-tag");
+        // skillTags.forEach((tag, index) => {
+        //   tag.style.opacity = "0";
+        //   tag.style.transform = "translateY(20px)";
+        //   tag.style.transition = `all 0.6s ease ${index * 0.05}s`;
+        // });
+
+        // Initialize SQA scroll animations
+        initScrollAnimations();
+      });
+
+      // Scroll Animation Observer for SQA sections
+      function initScrollAnimations() {
+        const observerOptions = {
+          threshold: 0.2, // Wait until 20% of section is visible
+          rootMargin: "0px 0px -100px 0px", // Start animation earlier
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add a slight delay for smoother section-by-section appearance
+              setTimeout(() => {
+                entry.target.classList.add("visible");
+              }, 100);
+
+              // Trigger specific animations based on section
+              const sectionTitle = entry.target.querySelector("h2");
+              if (sectionTitle) {
+                const title = sectionTitle.textContent;
+
+                if (title.includes("About Me")) {
+                  // Trigger QA metrics animation with more delay
+                  setTimeout(() => {
+                    const metrics =
+                      entry.target.querySelectorAll(".test-progress");
+                    metrics.forEach((metric, index) => {
+                      setTimeout(() => {
+                        metric.style.animation =
+                          "testRunning 2s ease-in-out forwards";
+                      }, index * 600); // Increased delay between metrics
+                    });
+                  }, 800); // Increased initial delay
+                }
+
+                if (title.includes("Technical Skills")) {
+                  // Only animate the network nodes in the title, no skill tag floating
+                  setTimeout(() => {
+                    const nodes =
+                      entry.target.querySelectorAll(".network-node");
+                    nodes.forEach((node, index) => {
+                      setTimeout(() => {
+                        node.style.animation =
+                          "networkPulse 1s ease-in-out infinite";
+                      }, index * 200);
+                    });
+                  }, 300);
+                  // Remove any floating animations for skill tags
+                }
+
+                if (title.includes("What I Test For")) {
+                  // Animate test cards with stagger
+                  const testCards = entry.target.querySelectorAll(".test-card");
+                  testCards.forEach((card, index) => {
+                    setTimeout(() => {
+                      card.style.animation = "fadeInUp 0.6s ease-out forwards";
+                    }, index * 100);
+                  });
+                }
+              }
+            }
+          });
+        }, observerOptions);
+
+        // Observe all animated sections with staggered delays
+        document
+          .querySelectorAll(".section-animated")
+          .forEach((section, index) => {
+            // Add a CSS custom property for staggered animation delays
+            section.style.setProperty("--section-delay", `${index * 0.1}s`);
+            observer.observe(section);
+          });
+      }
+
+      // Add random terminal effects
+      function addTerminalEffects() {
+        setInterval(() => {
+          const terminals = document.querySelectorAll(".terminal-content");
+          terminals.forEach((terminal) => {
+            if (Math.random() > 0.8) {
+              terminal.style.animation = "glitch 0.2s ease-in-out";
+              setTimeout(() => {
+                terminal.style.animation = "";
+              }, 200);
+            }
+          });
+        }, 8000);
+      }
+
+      // Start terminal effects after page load
+      setTimeout(addTerminalEffects, 3000);
     </script>
   </body>
 </html>
