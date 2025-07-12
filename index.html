@@ -855,12 +855,149 @@
         font-size: 2.5rem;
         color: var(--accent);
         z-index: 1;
+        position: relative;
+        opacity: 0;
+        animation: nameAppear 1.5s ease-out 0.5s forwards;
+        overflow: hidden;
+      }
+
+      h1::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--accent);
+        animation: typingCursor 1s infinite,
+          cursorFade 0.5s ease-out 3s forwards;
+      }
+
+      /* Typing effect for name */
+      @keyframes nameAppear {
+        0% {
+          opacity: 1;
+          width: 0;
+        }
+        100% {
+          opacity: 1;
+          width: 100%;
+        }
+      }
+
+      @keyframes typingCursor {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes cursorFade {
+        to {
+          opacity: 0;
+        }
       }
 
       .tagline {
         font-style: italic;
         margin-top: 10px;
         z-index: 1;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: taglineSlideIn 1s ease-out 2.5s forwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tagline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+        animation: taglineReveal 1.5s ease-out 2.5s forwards;
+        opacity: 0.3;
+      }
+
+      @keyframes taglineSlideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes taglineReveal {
+        0% {
+          width: 0;
+          left: 0;
+        }
+        50% {
+          width: 100%;
+          left: 0;
+        }
+        100% {
+          width: 0;
+          left: 100%;
+        }
+      }
+
+      /* Hover effects for interactivity */
+      h1:hover {
+        text-shadow: 0 0 10px var(--accent);
+        transform: scale(1.02);
+        transition: all 0.3s ease;
+      }
+
+      .tagline:hover {
+        color: var(--accent);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+      }
+
+      /* Enhanced tagline word animations */
+      .tagline-word {
+        display: inline-block;
+        margin-right: 8px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: wordAppear 0.8s ease-out forwards;
+      }
+
+      .tagline-word:nth-child(1) {
+        animation-delay: 3s;
+      }
+
+      .tagline-word:nth-child(2) {
+        animation-delay: 3.3s;
+      }
+
+      .tagline-word:nth-child(3) {
+        animation-delay: 3.6s;
+      }
+
+      .tagline-word:hover {
+        color: var(--accent);
+        transform: translateY(-3px) scale(1.05);
+        transition: all 0.3s ease;
+        text-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+      }
+
+      @keyframes wordAppear {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .theme-toggle {
@@ -915,6 +1052,177 @@
 
       .theme-toggle:hover .theme-icon {
         transform: rotate(180deg);
+      }
+
+      /* Social/Contact Buttons */
+      .contact-connections {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+      }
+
+      .social-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          rgba(0, 188, 212, 0.6)
+        );
+        opacity: 0.1;
+        transition: opacity 0.3s ease;
+        border-radius: 10px;
+      }
+
+      .social-btn:hover::before {
+        opacity: 0.2;
+      }
+
+      .social-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+        border-color: var(--accent);
+      }
+
+      .social-btn.github {
+        background: #333;
+        color: white;
+      }
+
+      .social-btn.github:hover {
+        background: #24292e;
+        box-shadow: 0 8px 25px rgba(36, 41, 46, 0.4);
+      }
+
+      .social-btn.linkedin {
+        background: #0077b5;
+        color: white;
+      }
+
+      .social-btn.linkedin:hover {
+        background: #005885;
+        box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+      }
+
+      .social-btn.email {
+        background: var(--accent);
+        color: white;
+      }
+
+      .social-btn.email:hover {
+        background: color-mix(in srgb, var(--accent) 80%, white);
+      }
+
+      /* Tooltip for social buttons */
+      .social-btn::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card);
+        color: var(--text);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        border: 1px solid var(--accent);
+      }
+
+      .social-btn:hover::after {
+        opacity: 1;
+      }
+
+      .connection-status {
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--test-pass);
+        margin-top: 15px;
+        font-family: "Courier New", monospace;
+      }
+
+      /* Professional Tech Badges */
+      .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      .tech-badge {
+        background: linear-gradient(
+          135deg,
+          var(--card),
+          rgba(0, 188, 212, 0.1)
+        );
+        border: 1px solid rgba(0, 188, 212, 0.3);
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 0.75rem;
+        font-family: "Courier New", monospace;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .tech-badge:hover {
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          rgba(0, 188, 212, 0.2)
+        );
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+      }
+
+      .tech-badge i {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      .tech-badge.language {
+        border-color: #f39c12;
+      }
+
+      .tech-badge.testing {
+        border-color: #27ae60;
+      }
+
+      .tech-badge.security {
+        border-color: #e74c3c;
+      }
+
+      .tech-badge.performance {
+        border-color: #9b59b6;
       }
 
       section {
@@ -1012,6 +1320,100 @@
         border-radius: 12px;
         flex: 1;
         min-width: 200px;
+        border: 1px solid rgba(0, 188, 212, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        animation: testCardEntrance 0.8s ease-out forwards;
+      }
+
+      .test-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .test-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .test-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .test-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .test-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .test-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      .test-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 188, 212, 0.1),
+          transparent
+        );
+        transition: left 0.8s ease;
+      }
+
+      .test-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: var(--accent);
+        background: linear-gradient(
+          135deg,
+          var(--card) 0%,
+          rgba(0, 188, 212, 0.05) 100%
+        );
+        box-shadow: 0 12px 40px rgba(0, 188, 212, 0.15),
+          0 0 20px rgba(0, 188, 212, 0.1);
+      }
+
+      .test-card:hover::before {
+        left: 100%;
+      }
+
+      .test-card:hover .fas {
+        transform: scale(1.2) rotate(5deg);
+        color: var(--accent) !important;
+        text-shadow: 0 0 8px rgba(0, 188, 212, 0.6);
+      }
+
+      .test-card .fas {
+        transition: all 0.3s ease;
+      }
+
+      .test-card strong {
+        transition: color 0.3s ease;
+      }
+
+      .test-card:hover strong {
+        color: var(--accent);
+        text-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+      }
+
+      @keyframes testCardEntrance {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes cardPulse {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-2px) scale(1.02);
+        }
       }
 
       .contact a {
@@ -1040,14 +1442,129 @@
         align-items: center;
         gap: 8px;
         font-weight: 500;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         margin: 10px 5px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
       }
 
       .btn-primary:hover {
         background: color-mix(in srgb, var(--accent) 80%, white);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0) scale(0.98);
+        transition: all 0.1s ease;
+      }
+
+      /* Icon animations for each button */
+      .btn-primary i {
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover i.fa-code {
+        animation: codeFlicker 0.6s ease-in-out;
+      }
+
+      .btn-primary:hover i.fa-envelope {
+        animation: emailPulse 0.6s ease-in-out;
+      }
+
+      .btn-primary:hover i.fa-download {
+        animation: downloadBounce 0.6s ease-in-out;
+      }
+
+      /* Button-specific animations */
+      @keyframes codeFlicker {
+        0%,
+        100% {
+          opacity: 1;
+          transform: rotate(0deg);
+        }
+        25% {
+          opacity: 0.7;
+          transform: rotate(-5deg);
+        }
+        75% {
+          opacity: 0.9;
+          transform: rotate(5deg);
+        }
+      }
+
+      @keyframes emailPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      @keyframes downloadBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        25% {
+          transform: translateY(-3px);
+        }
+        50% {
+          transform: translateY(0);
+        }
+        75% {
+          transform: translateY(-2px);
+        }
+      }
+
+      /* Staggered entrance animation for hero buttons */
+      .hero .btn-primary {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: heroButtonEntrance 0.8s ease-out forwards;
+      }
+
+      .hero .btn-primary:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      .hero .btn-primary:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .hero .btn-primary:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes heroButtonEntrance {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .contact-form {
@@ -1103,6 +1620,101 @@
         padding: 20px;
         border-radius: 12px;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        animation: statCardEntrance 0.8s ease-out forwards;
+      }
+
+      .stat-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .stat-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .stat-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .stat-card:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 188, 212, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .stat-card:hover::before {
+        left: 100%;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        border-color: var(--accent);
+        box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+        background: linear-gradient(
+          135deg,
+          var(--card),
+          rgba(0, 188, 212, 0.05)
+        );
+      }
+
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          rgba(0, 188, 212, 0.6),
+          var(--accent)
+        );
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .stat-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      @keyframes statCardEntrance {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes counterPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Counting state styles */
+      .stat-number.counting {
+        color: #f39c12;
+        text-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
       }
 
       .stat-number {
@@ -1110,12 +1722,71 @@
         font-weight: bold;
         color: var(--accent);
         display: block;
+        position: relative;
+        font-family: "Courier New", monospace;
+        transition: all 0.3s ease;
+      }
+
+      .stat-number::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      .stat-card:hover .stat-number {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+      }
+
+      .stat-card:hover .stat-number::after {
+        width: 60px;
+        height: 60px;
+        opacity: 0.2;
+      }
+
+      /* Individual stat card themes */
+      .stat-card:nth-child(1):hover {
+        border-color: #27ae60;
+        box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+      }
+
+      .stat-card:nth-child(2):hover {
+        border-color: #f39c12;
+        box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
+      }
+
+      .stat-card:nth-child(3):hover {
+        border-color: #9b59b6;
+        box-shadow: 0 10px 30px rgba(155, 89, 182, 0.3);
+      }
+
+      .stat-card:nth-child(4):hover {
+        border-color: #e74c3c;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
       }
 
       .stat-label {
         font-size: 0.9rem;
         opacity: 0.8;
         margin-top: 5px;
+        transition: all 0.3s ease;
+        font-family: "Courier New", monospace;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .stat-card:hover .stat-label {
+        opacity: 1;
+        color: var(--accent);
+        transform: translateY(-2px);
       }
 
       .section-intro {
@@ -1181,9 +1852,11 @@
           class="profile-pic"
           loading="lazy"
         />
-        <h1>Lakindu De Silva</h1>
-        <p class="tagline">
-          Manual precision. Automated efficiency. Consistent quality.
+        <h1 id="hero-name">Lakindu De Silva</h1>
+        <p class="tagline" id="hero-tagline">
+          <span class="tagline-word">Manual precision.</span>
+          <span class="tagline-word">Automated efficiency.</span>
+          <span class="tagline-word">Consistent quality.</span>
         </p>
         <div style="margin-top: 20px; z-index: 1">
           <a href="#projects" class="btn-primary">
@@ -1251,8 +1924,8 @@
             QA learning, I've completed 4+ hands-on projects spanning automated
             testing, performance analysis, and security assessment. Self-driven
             learner who combines academic foundation with practical experience
-            in modern testing frameworks like Playwright, JMeter, and Burp
-            Suite. Committed to delivering reliable software through
+            in modern testing frameworks and tools like Playwright, JMeter, and
+            Burp Suite. Committed to delivering reliable software through
             comprehensive testing strategies and continuous skill development.
           </p>
         </div>
@@ -1600,7 +2273,7 @@
               ✓ OWASP Juice Shop: Security vulnerabilities identified
             </div>
             <div style="color: var(--accent); margin-top: 10px">
-              All projects: <strong>Tested ✓ Deployed ✓ Monitored ✓</strong>
+              All projects: <strong>Planned ✓ Tested ✓ Reported ✓</strong>
             </div>
           </div>
         </div>
@@ -1618,10 +2291,19 @@
             UI automation project using <strong>Playwright</strong> to validate
             key elements and user interactions on the official
             <em>ifs.com</em> website.
-            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
-              <i class="fas fa-code"></i> JavaScript •
-              <i class="fas fa-vial"></i> 15+ Test Cases •
-              <i class="fas fa-check"></i> Cross-browser Testing
+            <div class="tech-badges">
+              <span class="tech-badge language">
+                <i class="fab fa-js-square"></i> JavaScript
+              </span>
+              <span class="tech-badge testing">
+                <i class="fas fa-vial"></i> 15+ Test Cases
+              </span>
+              <span class="tech-badge testing">
+                <i class="fas fa-globe"></i> Cross-browser
+              </span>
+              <span class="tech-badge">
+                <i class="fas fa-cogs"></i> Playwright
+              </span>
             </div>
           </div>
 
@@ -1638,10 +2320,19 @@
             Performance and functional test suite for <em>reqres.in</em> using
             <strong>Apache JMeter</strong>. Covers user registration, login,
             CRUD operations with assertions and reporting.
-            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
-              <i class="fas fa-bolt"></i> Load Testing •
-              <i class="fas fa-chart-line"></i> Performance Metrics •
-              <i class="fas fa-clipboard-check"></i> API Validation
+            <div class="tech-badges">
+              <span class="tech-badge performance">
+                <i class="fas fa-bolt"></i> Load Testing
+              </span>
+              <span class="tech-badge performance">
+                <i class="fas fa-chart-line"></i> Performance Metrics
+              </span>
+              <span class="tech-badge testing">
+                <i class="fas fa-network-wired"></i> API Validation
+              </span>
+              <span class="tech-badge">
+                <i class="fas fa-fire"></i> JMeter
+              </span>
             </div>
           </div>
 
@@ -1658,10 +2349,19 @@
             This project uses <strong>Playwright</strong> to test whether the
             first 100 articles on the Hacker News <em>"newest"</em> page are
             sorted from newest to oldest by timestamp.
-            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
-              <i class="fas fa-sort"></i> Data Validation •
-              <i class="fas fa-clock"></i> Timestamp Analysis •
-              <i class="fas fa-robot"></i> Automated Checks
+            <div class="tech-badges">
+              <span class="tech-badge testing">
+                <i class="fas fa-database"></i> Data Validation
+              </span>
+              <span class="tech-badge testing">
+                <i class="fas fa-clock"></i> Timestamp Analysis
+              </span>
+              <span class="tech-badge testing">
+                <i class="fas fa-robot"></i> Automated Checks
+              </span>
+              <span class="tech-badge">
+                <i class="fas fa-cogs"></i> Playwright
+              </span>
             </div>
           </div>
           <div class="test-card">
@@ -1678,10 +2378,19 @@
             <strong>Burp Suite</strong> on <em>OWASP Juice Shop</em>. Includes
             findings like <strong>IDOR</strong>, <strong>SQLi</strong>, and
             <strong>Data Leakage</strong> with detailed documentation.
-            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8">
-              <i class="fas fa-shield-alt"></i> OWASP Top 10 •
-              <i class="fas fa-bug"></i> Vulnerability Assessment •
-              <i class="fas fa-file-alt"></i> Detailed Reports
+            <div class="tech-badges">
+              <span class="tech-badge security">
+                <i class="fas fa-shield-alt"></i> OWASP Top 10
+              </span>
+              <span class="tech-badge security">
+                <i class="fas fa-bug"></i> Vulnerability Assessment
+              </span>
+              <span class="tech-badge security">
+                <i class="fas fa-file-medical-alt"></i> Detailed Reports
+              </span>
+              <span class="tech-badge">
+                <i class="fas fa-search"></i> Burp Suite
+              </span>
             </div>
           </div>
         </div>
@@ -1897,19 +2606,22 @@
             <div class="terminal-dot green"></div>
             <span
               style="margin-left: 10px; font-size: 0.9rem; color: var(--text)"
-              >connection-status.sh</span
+              >check-availability.sh</span
             >
           </div>
           <div class="terminal-content" style="font-size: 0.9rem">
             <div style="color: var(--accent)">$ ./check-availability.sh</div>
             <div class="test-result pass">
-              Email: lakindudesilva007@gmail.com - ONLINE
+              Direct Email: lakindudesilva007@gmail.com - ONLINE
             </div>
             <div class="test-result pass">
-              LinkedIn: Professional network - ACTIVE
+              LinkedIn Messages: Professional channel - ACTIVE
             </div>
             <div class="test-result pass">
-              Portfolio: Real-time contact form - READY
+              Contact Form: Real-time submission - READY
+            </div>
+            <div class="test-result pass">
+              Email Copy Function: Clipboard utility - READY
             </div>
             <div style="color: var(--test-pass); margin-top: 8px">
               Status: <strong>Available for QA opportunities</strong>
@@ -1964,7 +2676,7 @@
               </button>
             </div>
 
-            <!-- Contact Details -->
+            <!-- Connection Hub -->
             <div
               style="
                 border-top: 1px solid rgba(0, 188, 212, 0.2);
@@ -1975,25 +2687,54 @@
               <h4
                 style="
                   color: var(--accent);
-                  margin-bottom: 15px;
+                  margin-bottom: 20px;
                   font-size: 1rem;
+                  text-align: center;
+                  font-family: 'Courier New', monospace;
                 "
               >
-                Contact Details
+                <i
+                  class="fas fa-satellite-dish"
+                  style="animation: networkPulse 2s infinite; margin-right: 8px"
+                ></i>
+                Professional Presence
               </h4>
-              <div style="font-size: 0.9rem; opacity: 0.8; line-height: 1.6">
-                <p>
-                  <i class="fab fa-github" style="width: 16px"></i> GitHub:
-                  LakinduQA
-                </p>
-                <p>
-                  <i class="fas fa-envelope" style="width: 16px"></i>
-                  lakindudesilva007@gmail.com
-                </p>
-                <p>
-                  <i class="fas fa-clock" style="width: 16px"></i> Response
-                  time: Within 24 hours
-                </p>
+
+              <div class="contact-connections">
+                <a
+                  href="https://github.com/LakinduQA"
+                  target="_blank"
+                  class="social-btn github"
+                  data-tooltip="GitHub Profile"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/lakindu-de-silva-460581344"
+                  target="_blank"
+                  class="social-btn linkedin"
+                  data-tooltip="LinkedIn Profile"
+                >
+                  <i class="fab fa-linkedin"></i>
+                </a>
+
+                <a
+                  href="mailto:lakindudesilva007@gmail.com?subject=Portfolio%20Contact%20-%20QA%20Opportunity&body=Hi%20Lakindu%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%3A%0D%0A%0D%0A-%20%5BYour%20reason%20here%5D%0D%0A%0D%0ABest%20regards%2C%0D%0A%5BYour%20name%5D"
+                  class="social-btn email"
+                  data-tooltip="Send Email"
+                >
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+
+              <div class="connection-status">
+                <i
+                  class="fas fa-wifi"
+                  style="color: var(--test-pass); margin-right: 5px"
+                ></i>
+                All endpoints: <strong>ONLINE</strong> | Response time:
+                <strong>&lt; 24h</strong>
               </div>
             </div>
 
@@ -2004,8 +2745,18 @@
                 padding-top: 20px;
               "
             >
-              <h4 style="margin-bottom: 15px; color: var(--text)">
-                Or use the contact form:
+              <h4
+                style="
+                  margin-bottom: 15px;
+                  color: var(--text);
+                  font-family: 'Courier New', monospace;
+                "
+              >
+                <i
+                  class="fas fa-terminal"
+                  style="color: var(--accent); margin-right: 8px"
+                ></i>
+                Structured Message Interface:
               </h4>
 
               <!-- Formspree form -->
@@ -2141,17 +2892,29 @@
         if (!element) return;
 
         const startValue = 0;
-        const increment = targetValue / 30; // 30 steps for smooth animation
+        const increment = targetValue / 50; // More steps for smoother animation
         let currentValue = startValue;
+
+        // Add counting animation class
+        element.classList.add("counting");
+        element.style.animation = "counterPulse 0.1s ease-in-out infinite";
 
         const timer = setInterval(() => {
           currentValue += increment;
           if (currentValue >= targetValue) {
             currentValue = targetValue;
             clearInterval(timer);
+            // Remove counting animation when done
+            element.classList.remove("counting");
+            element.style.animation = "";
+            // Add completion effect
+            element.style.transform = "scale(1.1)";
+            setTimeout(() => {
+              element.style.transform = "scale(1)";
+            }, 200);
           }
           element.textContent = Math.floor(currentValue) + suffix;
-        }, 50); // Update every 50ms
+        }, 30); // Faster updates for smoother counting
       }
 
       // Animate skill progress bars
@@ -2427,12 +3190,19 @@
                 }
 
                 if (title.includes("What I Test For")) {
-                  // Animate test cards with stagger
+                  // Animate test cards with enhanced stagger effect
                   const testCards = entry.target.querySelectorAll(".test-card");
                   testCards.forEach((card, index) => {
                     setTimeout(() => {
-                      card.style.animation = "fadeInUp 0.6s ease-out forwards";
-                    }, index * 100);
+                      card.style.opacity = "1";
+                      card.style.transform = "translateY(0) scale(1)";
+                      card.style.animation = `testCardEntrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+
+                      // Add a subtle pulse effect on entrance
+                      setTimeout(() => {
+                        card.style.animation += ", cardPulse 0.3s ease-out";
+                      }, 800);
+                    }, index * 120); // Slightly longer stagger for better visual flow
                   });
                 }
               }
