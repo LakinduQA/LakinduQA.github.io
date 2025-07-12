@@ -870,10 +870,51 @@
         z-index: 2;
         background: var(--card);
         color: var(--text);
-        padding: 6px 10px;
-        border: none;
+        border: 2px solid var(--accent);
         border-radius: 8px;
+        padding: 8px 12px;
         cursor: pointer;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 188, 212, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 120px;
+        justify-content: center;
+      }
+
+      .theme-toggle:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+        animation: pulse 0.6s ease-in-out;
+      }
+
+      .theme-toggle:active {
+        transform: scale(0.95);
+      }
+
+      .theme-toggle::before {
+        content: "$ ";
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      .theme-toggle:hover::before {
+        color: white;
+      }
+
+      /* Theme icon animation */
+      .theme-icon {
+        transition: transform 0.3s ease;
+      }
+
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
       }
 
       section {
@@ -1131,7 +1172,8 @@
     <div class="container">
       <div class="hero">
         <button class="theme-toggle" onclick="toggleTheme()">
-          Toggle Theme
+          <i class="fas fa-adjust theme-icon"></i>
+          <span id="theme-text">DARK</span>
         </button>
         <img
           src="media/profile.jpg"
@@ -1144,6 +1186,9 @@
           Manual precision. Automated efficiency. Consistent quality.
         </p>
         <div style="margin-top: 20px; z-index: 1">
+          <a href="#projects" class="btn-primary">
+            <i class="fas fa-code"></i> View Projects
+          </a>
           <a href="#contact" class="btn-primary">
             <i class="fas fa-envelope"></i> Get In Touch
           </a>
@@ -1521,7 +1566,7 @@
         </div>
       </section>
 
-      <section class="section-animated">
+      <section class="section-animated" id="projects">
         <h2>
           Featured Projects
           <i
@@ -1767,33 +1812,6 @@
             </div>
           </div>
 
-          <!-- Playwright MCP Project -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/Playwright mcp.png"
-                alt="Playwright MCP Project Post"
-              />
-            </div>
-            <div class="post-content">
-              <h4>Playwright Automation Project</h4>
-              <p class="post-excerpt">
-                Building comprehensive test automation with Playwright,
-                exploring modern testing frameworks and best practices...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">June 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
-              </div>
-            </div>
-          </div>
-
           <!-- Playwright IFS Project -->
           <div class="linkedin-post">
             <div class="post-preview">
@@ -1813,6 +1831,34 @@
                 <span class="post-date">June 2025</span>
                 <a
                   href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-ai-activity-7340339130981040129-hqrY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                  target="_blank"
+                  class="post-link"
+                >
+                  <i class="fab fa-linkedin"></i> View Post
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Playwright MCP Project -->
+          <div class="linkedin-post">
+            <div class="post-preview">
+              <img
+                src="media/Playwright mcp.png"
+                alt="Playwright MCP Project Post"
+              />
+            </div>
+            <div class="post-content">
+              <h4>Playwright MCP Server</h4>
+              <p class="post-excerpt">
+                Exploring Playwright's Model Context Protocol (MCP). setting up
+                the MCP server, understanding its architecture, and leveraging
+                it for scalable, context-aware automation workflows...
+              </p>
+              <div class="post-meta">
+                <span class="post-date">June 2025</span>
+                <a
+                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
                   target="_blank"
                   class="post-link"
                 >
@@ -1866,7 +1912,7 @@
               Portfolio: Real-time contact form - READY
             </div>
             <div style="color: var(--test-pass); margin-top: 8px">
-              Status: <strong>Available for QA opportunities</strong> ✨
+              Status: <strong>Available for QA opportunities</strong>
             </div>
           </div>
         </div>
@@ -2026,6 +2072,18 @@
         const newTheme = current === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", newTheme);
 
+        // Update button text and icon
+        const themeText = document.getElementById("theme-text");
+        const themeIcon = document.querySelector(".theme-icon");
+
+        if (newTheme === "dark") {
+          themeText.textContent = "DARK";
+          themeIcon.className = "fas fa-moon theme-icon";
+        } else {
+          themeText.textContent = "LIGHT";
+          themeIcon.className = "fas fa-sun theme-icon";
+        }
+
         // Save theme preference
         localStorage.setItem("theme", newTheme);
       }
@@ -2034,6 +2092,18 @@
       document.addEventListener("DOMContentLoaded", function () {
         const savedTheme = localStorage.getItem("theme") || "dark";
         document.documentElement.setAttribute("data-theme", savedTheme);
+
+        // Set initial button state
+        const themeText = document.getElementById("theme-text");
+        const themeIcon = document.querySelector(".theme-icon");
+
+        if (savedTheme === "dark") {
+          themeText.textContent = "DARK";
+          themeIcon.className = "fas fa-moon theme-icon";
+        } else {
+          themeText.textContent = "LIGHT";
+          themeIcon.className = "fas fa-sun theme-icon";
+        }
 
         // Auto-update stats counters
         updateStatsCounters();
