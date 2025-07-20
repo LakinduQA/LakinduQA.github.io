@@ -414,20 +414,17 @@
       }
 
       .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0;
+        width: 100%;
+        padding: 0 24px;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: flex-start;
         height: 70px;
         position: relative;
       }
 
       .nav-logo {
-        position: absolute;
-        left: 0;
-        top: 0;
+        /* Remove absolute positioning */
         font-size: 26px;
         font-weight: 800;
         color: #ffffff;
@@ -442,6 +439,7 @@
         display: flex;
         align-items: center;
         padding: 15px 20px;
+        margin-right: auto;
       }
 
       .nav-logo:hover {
@@ -2549,7 +2547,6 @@
           </li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <i class="fas fa-bars"></i>
         </button>
