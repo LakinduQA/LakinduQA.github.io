@@ -385,6 +385,134 @@
         object-fit: cover;
       }
 
+      /* Post Tags Styling */
+      .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+        margin-bottom: 15px;
+      }
+
+      .post-tag {
+        background: linear-gradient(
+          135deg,
+          var(--card),
+          rgba(0, 119, 181, 0.1)
+        );
+        border: 1px solid rgba(0, 119, 181, 0.3);
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        font-family: "Segoe UI", sans-serif;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-transform: capitalize;
+        letter-spacing: 0.3px;
+      }
+
+      .post-tag:hover {
+        background: linear-gradient(135deg, #0077b5, rgba(0, 119, 181, 0.2));
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 119, 181, 0.3);
+      }
+
+      .post-tag i {
+        font-size: 0.65rem;
+        opacity: 0.8;
+      }
+
+      /* Different tag colors for different categories */
+      .post-tag.domain {
+        border-color: #8b5cf6;
+      }
+      .post-tag.testing {
+        border-color: #10b981;
+      }
+      .post-tag.learning {
+        border-color: #f59e0b;
+      }
+      .post-tag.database {
+        border-color: #3b82f6;
+      }
+      .post-tag.skills {
+        border-color: #06b6d4;
+      }
+      .post-tag.ai {
+        border-color: #ec4899;
+      }
+      .post-tag.future {
+        border-color: #8b5cf6;
+      }
+      .post-tag.career {
+        border-color: #10b981;
+      }
+      .post-tag.automation {
+        border-color: #f59e0b;
+      }
+      .post-tag.productivity {
+        border-color: #06b6d4;
+      }
+      .post-tag.devops {
+        border-color: #3b82f6;
+      }
+      .post-tag.tools {
+        border-color: #64748b;
+      }
+      .post-tag.integration {
+        border-color: #8b5cf6;
+      }
+      .post-tag.evolution {
+        border-color: #10b981;
+      }
+      .post-tag.engineering {
+        border-color: #f59e0b;
+      }
+      .post-tag.mindset {
+        border-color: #ec4899;
+      }
+      .post-tag.linux {
+        border-color: #059669;
+      }
+      .post-tag.migration {
+        border-color: #0ea5e9;
+      }
+      .post-tag.playwright {
+        border-color: #8b5cf6;
+      }
+      .post-tag.security {
+        border-color: #dc2626;
+      }
+      .post-tag.burpsuite {
+        border-color: #ea580c;
+      }
+      .post-tag.owasp {
+        border-color: #991b1b;
+      }
+      .post-tag.agile {
+        border-color: #059669;
+      }
+      .post-tag.kanban {
+        border-color: #0284c7;
+      }
+      .post-tag.performance {
+        border-color: #7c3aed;
+      }
+      .post-tag.jmeter {
+        border-color: #dc2626;
+      }
+      .post-tag.api {
+        border-color: #0891b2;
+      }
+      .post-tag.mcp {
+        border-color: #8b5cf6;
+      }
+
       .container {
         max-width: none;
         margin: 0;
@@ -1562,6 +1690,16 @@
         background: color-mix(in srgb, var(--accent) 80%, white);
       }
 
+      .social-btn.medium {
+        background: #00ab6c;
+        color: white;
+      }
+
+      .social-btn.medium:hover {
+        background: #00d084;
+        box-shadow: 0 4px 20px rgba(0, 171, 108, 0.3);
+      }
+
       /* Tooltip for social buttons */
       .social-btn::after {
         content: attr(data-tooltip);
@@ -1830,10 +1968,17 @@
       }
 
       .test-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 24px;
         margin-top: 32px;
+      }
+      
+      .test-cards .test-card {
+        flex: 1 1 300px;
+        max-width: 380px;
+        min-width: 300px;
       }
 
       .test-card {
@@ -1959,6 +2104,193 @@
         box-shadow: 0 6px 20px rgba(0, 119, 181, 0.3);
       }
 
+      /* Medium Blog Section */
+      .medium-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .medium-article {
+        background: var(--card);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        position: relative;
+        backdrop-filter: blur(10px);
+      }
+
+      .medium-article::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #00ab6c, #1a8917);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .medium-article:hover::before {
+        transform: scaleX(1);
+      }
+
+      .medium-article:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 171, 108, 0.15);
+        border-color: rgba(0, 171, 108, 0.3);
+      }
+
+      .medium-image-placeholder {
+        height: 200px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 171, 108, 0.1),
+          rgba(26, 137, 23, 0.05)
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--text);
+        opacity: 0.7;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .medium-image-placeholder i {
+        font-size: 3rem;
+        color: #00ab6c;
+        margin-bottom: 10px;
+      }
+
+      .medium-image-placeholder p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .medium-image {
+        height: 220px;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+      }
+
+      .medium-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .medium-article:hover .medium-image img {
+        transform: scale(1.05);
+      }
+
+      .medium-content {
+        padding: 24px;
+      }
+
+      .medium-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        color: var(--text);
+        opacity: 0.7;
+        font-size: 0.85rem;
+      }
+
+      .medium-date {
+        color: #00ab6c;
+        font-weight: 500;
+      }
+
+      .medium-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 16px 0;
+        line-height: 1.4;
+        transition: color 0.3s ease;
+      }
+
+      .medium-article:hover .medium-title {
+        color: var(--accent);
+      }
+
+      .medium-excerpt {
+        color: var(--text);
+        opacity: 0.8;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+        font-size: 0.95rem;
+      }
+
+      .medium-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .medium-tag {
+        background: rgba(0, 171, 108, 0.1);
+        color: #00ab6c;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 171, 108, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .medium-article:hover .medium-tag {
+        background: rgba(0, 171, 108, 0.2);
+        border-color: rgba(0, 171, 108, 0.4);
+      }
+
+      .medium-read-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 171, 108, 0.1);
+        color: #00ab6c;
+        padding: 10px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 171, 108, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 16px;
+      }
+
+      .medium-read-btn:hover {
+        background: rgba(0, 171, 108, 0.2);
+        border-color: rgba(0, 171, 108, 0.4);
+        transform: translateY(-2px);
+        color: #00ab6c;
+      }
+
+      .medium-read-btn i {
+        font-size: 0.8rem;
+      }
+
+      .medium-blog-btn {
+        background: rgba(0, 171, 108, 0.9) !important;
+        border-color: rgba(0, 171, 108, 0.7) !important;
+      }
+
+      .medium-blog-btn:hover {
+        background: rgba(0, 171, 108, 1) !important;
+        border-color: rgba(0, 171, 108, 0.9) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 171, 108, 0.3);
+      }
+
       .btn-secondary {
         background: transparent;
         color: var(--accent);
@@ -2080,12 +2412,38 @@
       .contact-info-container {
         background: var(--card);
         padding: 40px;
-        border-radius: 16px;
+        border-radius: 20px;
         border: 1px solid var(--border);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         height: 100%;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-info-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), #00bcd4);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-info-container:hover::before {
+        opacity: 1;
+      }
+
+      .contact-info-container:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        border-color: rgba(139, 92, 246, 0.3);
       }
 
       .contact-actions {
@@ -2145,78 +2503,151 @@
       }
 
       .professional-presence {
-        border-top: 1px solid rgba(0, 188, 212, 0.2);
-        padding-top: 20px;
-        margin-bottom: auto;
+        background: rgba(139, 92, 246, 0.05);
+        border: 1px solid rgba(139, 92, 246, 0.15);
+        border-radius: 16px;
+        padding: 24px;
+        margin: 20px 0;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .professional-presence:hover {
+        background: rgba(139, 92, 246, 0.08);
+        border-color: rgba(139, 92, 246, 0.25);
+        transform: translateY(-2px);
       }
 
       .presence-title {
         color: var(--accent);
         margin-bottom: 20px;
-        font-size: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
         text-align: center;
-        font-family: "Courier New", monospace;
+        font-family: inherit;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 10px;
+        letter-spacing: 0.025em;
+      }
+
+      .presence-title i {
+        font-size: 1.2rem;
+        background: linear-gradient(135deg, var(--accent), #00bcd4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .connection-status {
         text-align: center;
         margin-top: auto;
-        padding-top: 20px;
-        border-top: 1px solid rgba(0, 188, 212, 0.2);
+        padding: 20px;
+        background: rgba(0, 188, 212, 0.05);
+        border: 1px solid rgba(0, 188, 212, 0.15);
+        border-radius: 12px;
         font-size: 0.9rem;
         color: var(--text);
-        opacity: 0.8;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .connection-status:hover {
+        background: rgba(0, 188, 212, 0.08);
+        border-color: rgba(0, 188, 212, 0.25);
+        transform: translateY(-1px);
       }
 
       .status-icon {
-        color: var(--test-pass);
-        margin-right: 5px;
+        color: #00bcd4;
+        margin-right: 8px;
+        font-size: 1rem;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
       }
 
       .form-title {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         color: var(--text);
-        font-family: "Courier New", monospace;
+        font-family: inherit;
+        font-size: 1.5rem;
+        font-weight: 700;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid var(--border);
       }
 
       .form-title i {
         color: var(--accent);
+        font-size: 1.3rem;
       }
 
       .contact-form {
         background: var(--card);
         padding: 40px;
-        border-radius: 16px;
+        border-radius: 20px;
         border: 1px solid var(--border);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         height: 100%;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-form::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), #00bcd4);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-form:hover::before {
+        opacity: 1;
+      }
+
+      .contact-form:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        border-color: rgba(139, 92, 246, 0.3);
       }
 
       .form-group {
-        margin-bottom: 24px;
+        margin-bottom: 28px;
       }
 
       .form-group label {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         font-weight: 600;
         color: var(--text);
         font-size: 0.95rem;
+        letter-spacing: 0.025em;
       }
 
       .form-group input,
       .form-group textarea {
         width: 100%;
-        padding: 14px 16px;
+        padding: 16px 20px;
         border: 2px solid var(--border);
         border-radius: 12px;
         background: var(--bg);
@@ -2224,6 +2655,7 @@
         font-family: inherit;
         transition: all 0.3s ease;
         font-size: 0.95rem;
+        backdrop-filter: blur(10px);
       }
 
       .form-group input:focus,
@@ -2231,6 +2663,7 @@
         outline: none;
         border-color: var(--accent);
         box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        transform: translateY(-2px);
       }
 
       .form-group textarea {
@@ -2314,6 +2747,436 @@
         text-align: center;
         margin-bottom: 30px;
         opacity: 0.8;
+      }
+
+      /* Smart Responsive Carousel */
+      .smart-carousel-container {
+        position: relative;
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      .carousel-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 25px;
+        justify-content: center;
+      }
+
+      .carousel-badge {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 8px 16px;
+        color: var(--text);
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .carousel-badge:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .carousel-badge.active {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.4);
+        color: white;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 30px;
+      }
+
+      .carousel-item {
+        flex: 0 0 auto;
+        transition: all 0.3s ease;
+        width: calc((100% - 60px) / 3); /* Default: 3 posts */
+        min-width: 0;
+        height: 520px; /* Fixed height for all project cards */
+      }
+
+      .carousel-item .test-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+
+      .carousel-item .test-card > a {
+        flex-shrink: 0;
+        margin-bottom: 15px;
+      }
+
+      .carousel-item .test-card > div:nth-child(2) {
+        /* Project title */
+        flex-shrink: 0;
+        margin-bottom: 12px;
+        min-height: 50px; /* Fixed height for title area */
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .carousel-item .test-card > div:nth-child(2) strong {
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit title to 2 lines */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 1.1rem;
+        line-height: 1.3;
+      }
+
+      .carousel-item .test-card .project-description {
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* Limit description to 4 lines */
+        line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        min-height: 96px; /* Fixed height for description area (4 lines * 24px) */
+      }
+
+      .carousel-item .test-card .tech-badges {
+        flex-shrink: 0;
+        margin-top: auto;
+        max-height: 80px; /* Fixed height for tech badges area */
+        overflow: hidden;
+      }
+
+      .carousel-item .linkedin-post {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .carousel-item .post-preview {
+        height: 200px; /* Fixed height like Medium cards */
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .carousel-item .post-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-item .post-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        min-height: 0; /* Allow flex item to shrink */
+      }
+
+      .carousel-item .post-content h4 {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .carousel-item .post-excerpt {
+        flex: 1;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit excerpt to 3 lines */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .carousel-item .post-meta {
+        margin-top: auto;
+        flex-shrink: 0;
+      }
+
+      /* Medium article carousel styling */
+      .carousel-item .medium-article {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: var(--card);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        position: relative;
+        backdrop-filter: blur(10px);
+      }
+
+      .carousel-item .medium-article::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #00ab6c, #1a8917);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .carousel-item .medium-article:hover::before {
+        transform: scaleX(1);
+      }
+
+      .carousel-item .medium-article:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 171, 108, 0.15);
+        border-color: rgba(0, 171, 108, 0.3);
+      }
+
+      .carousel-item .medium-image {
+        height: 200px; /* Fixed height like Medium cards */
+        overflow: hidden;
+        flex-shrink: 0;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+      }
+
+      .carousel-item .medium-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .carousel-item .medium-article:hover .medium-image img {
+        transform: scale(1.05);
+      }
+
+      .carousel-item .medium-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+        min-height: 0; /* Allow flex item to shrink */
+      }
+
+      .carousel-item .medium-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        color: var(--text);
+        opacity: 0.7;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+
+      .carousel-item .medium-date {
+        color: #00ab6c;
+        font-weight: 500;
+      }
+
+      .carousel-item .medium-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 16px 0;
+        line-height: 1.4;
+        transition: color 0.3s ease;
+        flex-shrink: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .carousel-item .medium-article:hover .medium-title {
+        color: var(--accent);
+      }
+
+      .carousel-item .medium-excerpt {
+        color: var(--text);
+        opacity: 0.8;
+        line-height: 1.6;
+        margin: 0 0 16px 0; /* Reduced margin for better spacing */
+        font-size: 0.95rem;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit excerpt to 3 lines */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .carousel-item .medium-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px; /* Reduced margin for better spacing */
+        flex-shrink: 0;
+      }
+
+      .carousel-item .medium-tag {
+        background: rgba(0, 171, 108, 0.1);
+        color: #00ab6c;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 171, 108, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .carousel-item .medium-article:hover .medium-tag {
+        background: rgba(0, 171, 108, 0.2);
+        border-color: rgba(0, 171, 108, 0.4);
+      }
+
+      .carousel-item .medium-read-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 171, 108, 0.1);
+        color: #00ab6c;
+        padding: 10px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 171, 108, 0.2);
+        transition: all 0.3s ease;
+        margin-top: auto;
+        flex-shrink: 0;
+        align-self: flex-start;
+      }
+
+      .carousel-item .medium-read-btn:hover {
+        background: rgba(0, 171, 108, 0.2);
+        border-color: rgba(0, 171, 108, 0.4);
+        transform: translateY(-2px);
+        color: #00ab6c;
+      }
+
+      .carousel-item .medium-read-btn i {
+        font-size: 0.8rem;
+      }
+
+      /* Navigation Arrows */
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: rgba(255, 255, 255, 0.8);
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .carousel-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: white;
+        transform: translateY(-50%) scale(1.05);
+      }
+
+      .carousel-nav.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .carousel-nav.prev {
+        left: -25px;
+      }
+
+      .carousel-nav.next {
+        right: -25px;
+      }
+
+      .smart-carousel-container:hover .carousel-nav.visible {
+        opacity: 1;
+      }
+
+      /* Responsive Behavior */
+
+      /* Large Tablet: 2 posts */
+      @media (max-width: 1199px) and (min-width: 768px) {
+        .carousel-item {
+          width: calc((100% - 30px) / 2);
+          height: 520px; /* Maintain fixed height on tablet */
+        }
+      }
+
+      /* Mobile: 1 post */
+      @media (max-width: 767px) {
+        .carousel-item {
+          width: 100%;
+          height: 520px; /* Maintain fixed height on mobile */
+        }
+
+        /* Medium Blog needs extra height for proper button spacing */
+        #medium-blog .carousel-item {
+          height: 520px; /* Consistent height for Medium articles */
+        }
+
+        .carousel-track {
+          gap: 20px;
+        }
+
+        .carousel-nav {
+          width: 45px;
+          height: 45px;
+        }
+
+        .carousel-nav.prev {
+          left: -22px;
+        }
+
+        .carousel-nav.next {
+          right: -22px;
+        }
+
+        .carousel-badges {
+          gap: 6px;
+        }
+
+        .carousel-badge {
+          padding: 6px 12px;
+          font-size: 0.8rem;
+        }
       }
 
       /* Tablet styles */
@@ -2414,7 +3277,12 @@
         }
 
         .test-cards {
-          grid-template-columns: 1fr;
+          flex-direction: column;
+        }
+        
+        .test-cards .test-card {
+          flex: 1 1 auto;
+          max-width: none;
         }
 
         .skills-grid {
@@ -2491,6 +3359,19 @@
           margin: 6px 0;
         }
 
+        .medium-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .medium-article {
+          margin: 0 10px;
+        }
+
+        .medium-content {
+          padding: 20px;
+        }
+
         .professional-presence {
           padding-top: 20px;
         }
@@ -2535,16 +3416,17 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
-        <a href="#" class="nav-logo"> Lakindu QA </a>
+        <a href="#home" class="nav-logo"> Lakindu QA </a>
 
         <ul class="nav-menu">
-          <li><a href="#" class="nav-link active">Home</a></li>
+          <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li>
             <a href="#linkedin-journey" class="nav-link">LinkedIn Journey</a>
           </li>
+          <li><a href="#medium-blog" class="nav-link">Medium Blog</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -2563,6 +3445,7 @@
         <li>
           <a href="#linkedin-journey" class="nav-link">LinkedIn Journey</a>
         </li>
+        <li><a href="#medium-blog" class="nav-link">Medium Blog</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
@@ -2581,7 +3464,7 @@
     </button>
 
     <div class="container">
-      <div class="hero">
+      <div class="hero" id="home">
         <!-- Abstract floating elements -->
         <div class="hero-bg-element"></div>
         <div class="hero-bg-element"></div>
@@ -2608,6 +3491,15 @@
             >
               <i class="fab fa-linkedin-in"></i>
               LinkedIn
+            </a>
+            <a
+              href="https://medium.com/@lakindudesilva007"
+              target="_blank"
+              rel="noopener"
+              class="hero-btn"
+            >
+              <i class="fab fa-medium-m"></i>
+              Medium
             </a>
             <a
               href="https://github.com/LakinduQA"
@@ -2637,20 +3529,22 @@
               My Journey
             </h3>
             <p style="line-height: 1.6; color: var(--text); opacity: 0.8">
-              From
+              From an
               <span class="highlight-keyword">Information Systems</span>
-              undergraduate to passionate
-              <span class="highlight-keyword">QA enthusiast</span> in record
-              time. In just <span class="highlight-keyword">2 months</span> of
-              intensive self-learning, I've completed
-              <span class="highlight-keyword"
-                >4+ comprehensive testing projects</span
-              >
-              using <span class="highlight-keyword">Playwright</span> and
-              <span class="highlight-keyword">JMeter</span>. My academic
-              foundation accelerated my transition into real-world
-              <span class="highlight-keyword">automation</span> and
-              <span class="highlight-keyword">performance testing</span> skills.
+              undergraduate to a passionate
+              <span class="highlight-keyword">QA enthusiast</span>, I've
+              embraced
+              <span class="highlight-keyword">continuous learning</span> and
+              <span class="highlight-keyword">hands-on practice</span> to build
+              real-world <span class="highlight-keyword">testing skills</span>.
+              By working on projects across
+              <span class="highlight-keyword">automation</span>,
+              <span class="highlight-keyword">performance</span>, and
+              <span class="highlight-keyword">backend validation</span>, I've
+              gained practical experience in designing
+              <span class="highlight-keyword">robust test suites</span> and
+              exploring the full
+              <span class="highlight-keyword">QA lifecycle</span>.
             </p>
           </div>
 
@@ -2661,16 +3555,20 @@
               My Approach
             </h3>
             <p style="line-height: 1.6; color: var(--text); opacity: 0.8">
-              As a <span class="highlight-keyword">self-driven learner</span>, I
-              rapidly adapt to new technologies while maintaining
-              <span class="highlight-keyword">rigorous testing standards</span>.
-              I build comprehensive
-              <span class="highlight-keyword">test suites</span> that integrate
-              seamlessly with
-              <span class="highlight-keyword">CI/CD pipelines</span>, focusing
-              on real-world scenarios that deliver maintainable
-              <span class="highlight-keyword">automation solutions</span> for
-              fast-paced engineering teams.
+              I combine <span class="highlight-keyword">curiosity</span> with
+              <span class="highlight-keyword">discipline</span>,  always eager
+              to explore new
+              <span class="highlight-keyword">tools, frameworks</span>, and
+              <span class="highlight-keyword">testing strategies</span> while
+              maintaining <span class="highlight-keyword">strong fundamentals</span>.
+              Whether it's building
+              <span class="highlight-keyword">automation with Playwright</span>,
+              <span class="highlight-keyword">performance testing with JMeter</span>,
+              or <span class="highlight-keyword">sharing knowledge</span> through
+              articles, my goal is to bring a
+              <span class="highlight-keyword">proactive and quality-first mindset</span>
+              to every <span class="highlight-keyword">engineering team</span> I
+              work with.
             </p>
           </div>
 
@@ -2739,60 +3637,60 @@
         </p>
 
         <div class="skills-grid">
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-cogs"></i>
             <h4>Playwright</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-js"></i>
             <h4>JavaScript</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-network-wired"></i>
             <h4>Postman API</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-bolt"></i>
             <h4>JMeter</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-vial"></i>
             <h4>Test Automation</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-project-diagram"></i>
             <h4>Agile</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-tasks"></i>
             <h4>Jira</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-user-check"></i>
             <h4>Manual Testing</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
           <div class="skill-card" data-level="intermediate">
@@ -2802,60 +3700,67 @@
               <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-bug"></i>
             <h4>Security Testing</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-lock"></i>
             <h4>Burp Suite</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-git-alt"></i>
             <h4>Git</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-github"></i>
             <h4>GitHub</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-linux"></i>
             <h4>WSL2</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-stream"></i>
             <h4>SDLC</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-route"></i>
             <h4>STLC</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-database"></i>
             <h4>SQL</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="skill-card" data-level="intermediate">
+            <i class="fas fa-table"></i>
+            <h4>Database Testing</h4>
+            <div class="skill-level">
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
           <div class="skill-card" data-level="intermediate">
@@ -2872,32 +3777,32 @@
               <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-php"></i>
             <h4>PHP</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-html5"></i>
             <h4>HTML</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fab fa-css3-alt"></i>
             <h4>CSS</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
-          <div class="skill-card" data-level="advanced">
+          <div class="skill-card" data-level="intermediate">
             <i class="fas fa-shield-alt"></i>
             <h4>Information Security</h4>
             <div class="skill-level">
-              <div class="skill-progress" style="width: 90%"></div>
+              <div class="skill-progress" style="width: 70%"></div>
             </div>
           </div>
         </div>
@@ -3059,144 +3964,262 @@
           comprehensive test coverage.
         </p>
 
-        <div class="test-cards">
-          <div class="test-card">
-            <a
-              href="https://github.com/LakinduQA/playwright_ifs.com"
-              target="_blank"
-              style="color: var(--accent); text-decoration: none"
-            >
-              <i class="fab fa-github"></i> View on GitHub
-            </a>
-            <div style="margin: 15px 0 8px 0">
-              <strong>E2E Automation Suite – ifs.com</strong>
+        <div class="smart-carousel-container" id="projectsCarousel">
+          <!-- Navigation Badges -->
+          <div class="carousel-badges">
+            <div class="carousel-badge active" data-index="0">
+              STLC Implementation
             </div>
-            Comprehensive
-            <span class="highlight-keyword">end-to-end automation</span> project
-            using <strong>Playwright</strong> with
-            <strong>MCP Server</strong> integration, deployed in
-            <strong>WSL2/Linux</strong> environment. Validates critical
-            <span class="highlight-keyword">user workflows</span> and
-            <span class="highlight-keyword">business processes</span> on the
-            official <em>ifs.com</em> website.
-            <div class="tech-badges">
-              <span class="tech-badge language">
-                <i class="fab fa-js-square"></i> JavaScript
-              </span>
-              <span class="tech-badge testing">
-                <i class="fas fa-vial"></i> 15+ Test Cases
-              </span>
-              <span class="tech-badge testing">
-                <i class="fas fa-globe"></i> Cross-browser
-              </span>
-              <span class="tech-badge">
-                <i class="fas fa-cogs"></i> Playwright
-              </span>
-              <span class="tech-badge">
-                <i class="fab fa-linux"></i> WSL2
-              </span>
-              <span class="tech-badge">
-                <i class="fas fa-robot"></i> MCP Server
-              </span>
+            <div class="carousel-badge" data-index="1">
+              E2E Automation IFS.com
             </div>
+            <div class="carousel-badge" data-index="2">Performance Testing</div>
+            <div class="carousel-badge" data-index="3">Data Validation</div>
+            <div class="carousel-badge" data-index="4">Security Testing</div>
           </div>
 
-          <div class="test-card">
-            <a
-              href="https://github.com/LakinduQA/ReqRes-Jmeter-Performance-Test"
-              target="_blank"
-              style="color: var(--accent); text-decoration: none"
-            >
-              <i class="fab fa-github"></i> View on GitHub
-            </a>
-            <div style="margin: 15px 0 8px 0">
-              <strong>ReqRes.com JMeter Test Suite</strong>
-            </div>
-            <span class="highlight-keyword">Performance and functional</span>
-            test suite for <em>reqres.in</em> using
-            <strong>Apache JMeter</strong>. Covers
-            <span class="highlight-keyword">user registration</span>,
-            <span class="highlight-keyword">login</span>,
-            <span class="highlight-keyword">CRUD operations</span> with
-            <span class="highlight-keyword">assertions</span> and
-            <span class="highlight-keyword">reporting</span>.
-            <div class="tech-badges">
-              <span class="tech-badge performance">
-                <i class="fas fa-bolt"></i> Load Testing
-              </span>
-              <span class="tech-badge performance">
-                <i class="fas fa-chart-line"></i> Performance Metrics
-              </span>
-              <span class="tech-badge testing">
-                <i class="fas fa-network-wired"></i> API Validation
-              </span>
-              <span class="tech-badge">
-                <i class="fas fa-fire"></i> JMeter
-              </span>
-            </div>
-          </div>
+          <!-- Navigation Arrows -->
+          <button class="carousel-nav prev" id="projectsPrevBtn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" id="projectsNextBtn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
 
-          <div class="test-card">
-            <a
-              href="https://github.com/LakinduQA/hacker-news-sorting-test"
-              target="_blank"
-              style="color: var(--accent); text-decoration: none"
-            >
-              <i class="fab fa-github"></i> View on GitHub
-            </a>
-            <div style="margin: 15px 0 8px 0">
-              <strong>HackerNews Sorting Validation</strong>
-            </div>
-            This project uses <strong>Playwright</strong> to test whether the
-            first <span class="highlight-keyword">100 articles</span> on the
-            Hacker News <em>"newest"</em> page are sorted from
-            <span class="highlight-keyword">newest to oldest</span> by
-            <span class="highlight-keyword">timestamp</span>.
-            <div class="tech-badges">
-              <span class="tech-badge testing">
-                <i class="fas fa-database"></i> Data Validation
-              </span>
-              <span class="tech-badge testing">
-                <i class="fas fa-clock"></i> Timestamp Analysis
-              </span>
-              <span class="tech-badge testing">
-                <i class="fas fa-robot"></i> Automated Checks
-              </span>
-              <span class="tech-badge">
-                <i class="fas fa-cogs"></i> Playwright
-              </span>
-            </div>
-          </div>
-          <div class="test-card">
-            <a
-              href="https://github.com/LakinduQA/Burp-Suite_JuiceShop_Security-Testing"
-              target="_blank"
-              style="color: var(--accent); text-decoration: none"
-            >
-              <i class="fab fa-github"></i> View on GitHub
-            </a>
-            <div style="margin: 15px 0 8px 0">
-              <strong>Security Testing – OWASP Juice Shop</strong>
-            </div>
-            Comprehensive
-            <span class="highlight-keyword">security testing</span> project
-            using <strong>Burp Suite</strong> on <em>OWASP Juice Shop</em>.
-            Includes findings like <strong>IDOR</strong>, <strong>SQLi</strong>,
-            and <strong>Data Leakage</strong> with
-            <span class="highlight-keyword">detailed documentation</span>.
-            <div class="tech-badges">
-              <span class="tech-badge security">
-                <i class="fas fa-shield-alt"></i> OWASP Top 10
-              </span>
-              <span class="tech-badge security">
-                <i class="fas fa-bug"></i> Vulnerability Assessment
-              </span>
-              <span class="tech-badge security">
-                <i class="fas fa-file-medical-alt"></i> Detailed Reports
-              </span>
-              <span class="tech-badge">
-                <i class="fas fa-search"></i> Burp Suite
-              </span>
+          <!-- Carousel Wrapper -->
+          <div class="carousel-wrapper">
+            <!-- Carousel Track -->
+            <div class="carousel-track" id="projectsTrack">
+              <!-- Project 1: STLC Implementation -->
+              <div class="carousel-item">
+                <div class="test-card">
+                  <a
+                    href="https://github.com/LakinduQA/STLC-Implementation---Sauce-Demo-E-commerce-Platform"
+                    target="_blank"
+                    style="color: var(--accent); text-decoration: none"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                  <div style="margin: 15px 0 8px 0">
+                    <strong
+                      >STLC Implementation – Sauce Demo E-commerce
+                      Platform</strong
+                    >
+                  </div>
+                  <div class="project-description">
+                    Complete
+                    <span class="highlight-keyword"
+                      >Software Testing Life Cycle (STLC)</span
+                    >
+                    implementation on the Sauce Demo e-commerce platform.
+                    Demonstrates
+                    <span class="highlight-keyword"
+                      >end-to-end testing methodology</span
+                    >
+                    from <span class="highlight-keyword">test planning</span> to
+                    <span class="highlight-keyword">execution and reporting</span
+                    >, covering all critical e-commerce workflows and user
+                    scenarios.
+                  </div>
+                  <div class="tech-badges">
+                    <span class="tech-badge testing">
+                      <i class="fas fa-route"></i> STLC
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-shopping-cart"></i> E-commerce Testing
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-clipboard-list"></i> Test Planning
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-chart-bar"></i> Test Reporting
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-cogs"></i> Comprehensive QA
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 2: E2E Automation -->
+              <div class="carousel-item">
+                <div class="test-card">
+                  <a
+                    href="https://github.com/LakinduQA/playwright_ifs.com"
+                    target="_blank"
+                    style="color: var(--accent); text-decoration: none"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                  <div style="margin: 15px 0 8px 0">
+                    <strong>E2E Automation Suite – ifs.com</strong>
+                  </div>
+                  <div class="project-description">
+                    Comprehensive
+                    <span class="highlight-keyword">end-to-end automation</span>
+                    project using <strong>Playwright</strong> with
+                    <strong>MCP Server</strong> integration, deployed in
+                    <strong>WSL2/Linux</strong> environment. Validates critical
+                    <span class="highlight-keyword">user workflows</span> and
+                    <span class="highlight-keyword">business processes</span> on
+                    the official <em>ifs.com</em> website.
+                  </div>
+                  <div class="tech-badges">
+                    <span class="tech-badge language">
+                      <i class="fab fa-js-square"></i> JavaScript
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-vial"></i> 15+ Test Cases
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-globe"></i> Cross-browser
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-cogs"></i> Playwright
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fab fa-linux"></i> WSL2
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-robot"></i> MCP Server
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 3: Performance Testing -->
+              <div class="carousel-item">
+                <div class="test-card">
+                  <a
+                    href="https://github.com/LakinduQA/ReqRes-Jmeter-Performance-Test"
+                    target="_blank"
+                    style="color: var(--accent); text-decoration: none"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                  <div style="margin: 15px 0 8px 0">
+                    <strong>ReqRes.com JMeter Test Suite</strong>
+                  </div>
+                  <div class="project-description">
+                    <span class="highlight-keyword"
+                      >Performance and functional</span
+                    >
+                    test suite for <em>reqres.in</em> using
+                    <strong>Apache JMeter</strong>. Covers
+                    <span class="highlight-keyword">user registration</span>,
+                    <span class="highlight-keyword">login</span>,
+                    <span class="highlight-keyword">CRUD operations</span> with
+                    <span class="highlight-keyword">assertions</span> and
+                    <span class="highlight-keyword">reporting</span>.
+                  </div>
+                  <div class="tech-badges">
+                    <span class="tech-badge performance">
+                      <i class="fas fa-bolt"></i> Load Testing
+                    </span>
+                    <span class="tech-badge performance">
+                      <i class="fas fa-chart-line"></i> Performance Metrics
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-network-wired"></i> API Validation
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-fire"></i> JMeter
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 4: Data Validation -->
+              <div class="carousel-item">
+                <div class="test-card">
+                  <a
+                    href="https://github.com/LakinduQA/hacker-news-sorting-test"
+                    target="_blank"
+                    style="color: var(--accent); text-decoration: none"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                  <div style="margin: 15px 0 8px 0">
+                    <strong>HackerNews Sorting Validation</strong>
+                  </div>
+                  <div class="project-description">
+                    This project uses <strong>Playwright</strong> to test whether
+                    the first
+                    <span class="highlight-keyword">100 articles</span> on the
+                    Hacker News <em>"newest"</em> page are sorted from
+                    <span class="highlight-keyword">newest to oldest</span> by
+                    <span class="highlight-keyword">timestamp</span>.
+                  </div>
+                  <div class="tech-badges">
+                    <span class="tech-badge testing">
+                      <i class="fas fa-database"></i> Data Validation
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-clock"></i> Timestamp Analysis
+                    </span>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-robot"></i> Automated Checks
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-cogs"></i> Playwright
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 5: Security Testing -->
+              <div class="carousel-item">
+                <div class="test-card">
+                  <a
+                    href="https://github.com/LakinduQA/Burp-Suite_JuiceShop_Security-Testing"
+                    target="_blank"
+                    style="color: var(--accent); text-decoration: none"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                  <div style="margin: 15px 0 8px 0">
+                    <strong>Security Testing – OWASP Juice Shop</strong>
+                  </div>
+                  <div class="project-description">
+                    Comprehensive
+                    <span class="highlight-keyword">security testing</span>
+                    project using <strong>Burp Suite</strong> on
+                    <em>OWASP Juice Shop</em>. Includes findings like
+                    <strong>IDOR</strong>, <strong>SQLi</strong>, and
+                    <strong>Data Leakage</strong> with
+                    <span class="highlight-keyword">detailed documentation</span>.
+                  </div>
+                  <div class="tech-badges">
+                    <span class="tech-badge security">
+                      <i class="fas fa-shield-alt"></i> OWASP Top 10
+                    </span>
+                    <span class="tech-badge security">
+                      <i class="fas fa-bug"></i> Vulnerability Assessment
+                    </span>
+                    <span class="tech-badge security">
+                      <i class="fas fa-file-medical-alt"></i> Detailed Reports
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-search"></i> Burp Suite
+                    </span>
+                  </div>
+                </div>
+              </div>
+                    <span class="tech-badge testing">
+                      <i class="fas fa-globe"></i> Cross-browser
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-cogs"></i> Playwright
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fab fa-linux"></i> WSL2
+                    </span>
+                    <span class="tech-badge">
+                      <i class="fas fa-robot"></i> MCP Server
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -3209,207 +4232,890 @@
           my testing journey.
         </p>
 
-        <div class="linkedin-posts-grid">
-          <!-- Linux Playwright Setup -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/Linux_Playwright.png"
-                alt="Linux Playwright Setup Post"
-              />
+        <div class="smart-carousel-container" id="linkedinCarousel">
+          <!-- Navigation Badges -->
+          <div class="carousel-badges">
+            <div class="carousel-badge active" data-index="0">
+              Domain Knowledge
             </div>
-            <div class="post-content">
-              <h4>IFS Automation Migration: Windows to WSL</h4>
-              <p class="post-excerpt">
-                Successfully migrated my
-                <span class="highlight-keyword"
-                  >IFS.com UI automation suite</span
-                >
-                from <span class="highlight-keyword">Windows to WSL</span>...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">Jul 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-wsl-activity-7350726787338825729-Fm_6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
+            <div class="carousel-badge" data-index="1">Database Testing</div>
+            <div class="carousel-badge" data-index="2">Testing with AI</div>
+            <div class="carousel-badge" data-index="3">Test Automation</div>
+            <div class="carousel-badge" data-index="4">DevOps Tools for QA</div>
+            <div class="carousel-badge" data-index="5">Quality Engineering</div>
+            <div class="carousel-badge" data-index="6">Linux Migration</div>
+            <div class="carousel-badge" data-index="7">Security Testing</div>
+            <div class="carousel-badge" data-index="8">Agile Methodology</div>
+            <div class="carousel-badge" data-index="9">Performance Testing</div>
+            <div class="carousel-badge" data-index="10">IFS Playwright</div>
+            <div class="carousel-badge" data-index="11">Playwright MCP</div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button class="carousel-nav prev" id="linkedinPrevBtn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" id="linkedinNextBtn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <!-- Carousel Wrapper -->
+          <div class="carousel-wrapper">
+            <!-- Carousel Track -->
+            <div class="carousel-track" id="linkedinTrack">
+              <!-- Domain Knowledge Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media\Article Banners\IMG_9640.PNG"
+                      alt="Why Domain Knowledge Matters More Than Tools in QA"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>Why Domain Knowledge Matters More Than Tools in QA</h4>
+                    <p class="post-excerpt">
+                      Exploring why understanding the
+                      <span class="highlight-keyword">business domain</span>
+                      and user context is more valuable than mastering the
+                      latest
+                      <span class="highlight-keyword">testing tools</span>
+                      in quality assurance...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag domain">
+                        <i class="fas fa-brain"></i> Domain Knowledge
+                      </span>
+                      <span class="post-tag testing">
+                        <i class="fas fa-tools"></i> QA Strategy
+                      </span>
+                      <span class="post-tag learning">
+                        <i class="fas fa-lightbulb"></i> Best Practices
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Sep 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-domain-knowledge-matters-more-than-tools-activity-7368192852012519424-PIm5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Database Testing Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9017.PNG"
+                      alt="Database Testing: The Underrated Skill"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>
+                      Database Testing: The Underrated Skill Every QA Should
+                      Master
+                    </h4>
+                    <p class="post-excerpt">
+                      Deep dive into
+                      <span class="highlight-keyword"
+                        >database testing methodologies</span
+                      >, why it's often overlooked, and how mastering this skill
+                      can significantly enhance your
+                      <span class="highlight-keyword">QA expertise</span>...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag database">
+                        <i class="fas fa-database"></i> Database Testing
+                      </span>
+                      <span class="post-tag testing">
+                        <i class="fas fa-search"></i> SQL Testing
+                      </span>
+                      <span class="post-tag skills">
+                        <i class="fas fa-chart-line"></i> QA Skills
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Aug 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_database-testing-the-underrated-skill-every-activity-7366335711697924096-jbBk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Future Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9030.PNG"
+                      alt="The Future of QA in the Age of AI"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>The Future of QA in the Age of AI</h4>
+                    <p class="post-excerpt">
+                      Analyzing the impact of
+                      <span class="highlight-keyword"
+                        >AI on the QA profession</span
+                      >, exploring whether artificial intelligence will replace
+                      testers or enhance their
+                      <span class="highlight-keyword">capabilities</span>...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag ai">
+                        <i class="fas fa-robot"></i> AI in QA
+                      </span>
+                      <span class="post-tag future">
+                        <i class="fas fa-rocket"></i> Future Trends
+                      </span>
+                      <span class="post-tag career">
+                        <i class="fas fa-chart-line"></i> Career Growth
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Aug 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_the-future-of-qa-in-the-age-of-ai-ai-activity-7366698222611804161-IzV1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Automation Learning Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9099.PNG"
+                      alt="Why Every QA Engineer Should Learn Automation"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>Why Every QA Engineer Should Learn Automation</h4>
+                    <p class="post-excerpt">
+                      Understanding the importance of
+                      <span class="highlight-keyword">test automation</span>
+                      in today's fast-paced development environment and how it
+                      enhances
+                      <span class="highlight-keyword">QA effectiveness</span>...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag automation">
+                        <i class="fas fa-cogs"></i> Test Automation
+                      </span>
+                      <span class="post-tag productivity">
+                        <i class="fas fa-tachometer-alt"></i> Efficiency
+                      </span>
+                      <span class="post-tag learning">
+                        <i class="fas fa-graduation-cap"></i> Learning Path
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Aug 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-every-qa-engineer-should-learn-automation-activity-7367105682224934913-p9X8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DevOps Tools Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9140.PNG"
+                      alt="DevOps Tools Every QA Should Learn"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>DevOps Tools Every QA Should Learn and Why</h4>
+                    <p class="post-excerpt">
+                      A comprehensive guide to essential
+                      <span class="highlight-keyword">DevOps tools</span>
+                      that every QA engineer should master to stay relevant in
+                      modern
+                      <span class="highlight-keyword"
+                        >software development workflows</span
+                      >...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag devops">
+                        <i class="fab fa-docker"></i> DevOps
+                      </span>
+                      <span class="post-tag tools">
+                        <i class="fas fa-tools"></i> CI/CD
+                      </span>
+                      <span class="post-tag integration">
+                        <i class="fas fa-link"></i> Integration
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Aug 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_devops-tools-every-qa-should-learn-and-why-activity-7367426034012516352-bu5C?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- QA to Quality Engineering Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9321.PNG"
+                      alt="From QA to Quality Engineering"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>From QA to Quality Engineering: The Mindset Shift</h4>
+                    <p class="post-excerpt">
+                      Exploring the evolution from traditional
+                      <span class="highlight-keyword">Quality Assurance</span>
+                      to
+                      <span class="highlight-keyword">Quality Engineering</span
+                      >, understanding the mindset changes required for modern
+                      <span class="highlight-keyword"
+                        >software development practices</span
+                      >...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag evolution">
+                        <i class="fas fa-level-up-alt"></i> QA Evolution
+                      </span>
+                      <span class="post-tag engineering">
+                        <i class="fas fa-cog"></i> Quality Engineering
+                      </span>
+                      <span class="post-tag mindset">
+                        <i class="fas fa-brain"></i> Mindset Shift
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Aug 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_from-quality-assurance-to-quality-engineering-activity-7367848560391880705-c-hk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Linux Migration Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Linux_Playwright.png"
+                      alt="Linux Playwright Setup Post"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>IFS Automation Migration: Windows to WSL</h4>
+                    <p class="post-excerpt">
+                      Successfully migrated my
+                      <span class="highlight-keyword"
+                        >IFS.com UI automation suite</span
+                      >
+                      from
+                      <span class="highlight-keyword">Windows to WSL</span>...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag linux">
+                        <i class="fab fa-linux"></i> Linux/WSL
+                      </span>
+                      <span class="post-tag migration">
+                        <i class="fas fa-exchange-alt"></i> Migration
+                      </span>
+                      <span class="post-tag playwright">
+                        <i class="fas fa-theater-masks"></i> Playwright
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Jul 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-wsl-activity-7350726787338825729-Fm_6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Security Testing Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Sectest Linkedin Post.png"
+                      alt="Security Testing LinkedIn Post"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>Security Testing with Burp Suite</h4>
+                    <p class="post-excerpt">
+                      Sharing my experience with
+                      <span class="highlight-keyword">OWASP Juice Shop</span>
+                      security testing, documenting
+                      <span class="highlight-keyword">vulnerabilities</span> and
+                      <span class="highlight-keyword"
+                        >testing methodologies</span
+                      >...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag security">
+                        <i class="fas fa-shield-alt"></i> Security Testing
+                      </span>
+                      <span class="post-tag burpsuite">
+                        <i class="fas fa-bug"></i> Burp Suite
+                      </span>
+                      <span class="post-tag owasp">
+                        <i class="fas fa-lock"></i> OWASP
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Jul 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_qualityassurance-qalearning-securitytesting-activity-7348182797930414081-L0ah?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Agile Work Environment Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Work Environment.png"
+                      alt="Agile Work Environment Post"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>Agile in Daily Life</h4>
+                    <p class="post-excerpt">
+                      Implementing
+                      <span class="highlight-keyword">Agile methodologies</span>
+                      and
+                      <span class="highlight-keyword">Kanban boards</span> in
+                      student life, demonstrating how
+                      <span class="highlight-keyword"
+                        >project management principles</span
+                      >
+                      enhance
+                      <span class="highlight-keyword">productivity</span>...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag agile">
+                        <i class="fas fa-sync"></i> Agile
+                      </span>
+                      <span class="post-tag kanban">
+                        <i class="fas fa-columns"></i> Kanban
+                      </span>
+                      <span class="post-tag productivity">
+                        <i class="fas fa-chart-bar"></i> Productivity
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">June 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_agile-studentlife-kanbanboard-activity-7343117534188945408--guN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- JMeter Performance Testing Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/JMeter Thumbnail.png"
+                      alt="JMeter Performance Testing Post"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>Performance Testing with JMeter</h4>
+                    <p class="post-excerpt">
+                      Deep dive into
+                      <span class="highlight-keyword"
+                        >API performance testing</span
+                      >
+                      using
+                      <span class="highlight-keyword">Apache JMeter</span>,
+                      <span class="highlight-keyword"
+                        >load testing strategies</span
+                      >
+                      and
+                      <span class="highlight-keyword"
+                        >performance metrics analysis</span
+                      >...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag performance">
+                        <i class="fas fa-tachometer-alt"></i> Performance
+                      </span>
+                      <span class="post-tag jmeter">
+                        <i class="fas fa-bolt"></i> JMeter
+                      </span>
+                      <span class="post-tag api">
+                        <i class="fas fa-code"></i> API Testing
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">Jun 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_jmeter-performancetesting-apitesting-activity-7345648246268055552-w-JG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- IFS Playwright Project Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/playwright_ifs.png"
+                      alt="Playwright IFS Project Post"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>IFS Website Testing with Playwright</h4>
+                    <p class="post-excerpt">
+                      Automated testing of
+                      <span class="highlight-keyword">IFS.com website</span>
+                      using <span class="highlight-keyword">Playwright</span>,
+                      demonstrating
+                      <span class="highlight-keyword">UI automation</span> and
+                      <span class="highlight-keyword"
+                        >cross-browser testing</span
+                      >
+                      capabilities...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag playwright">
+                        <i class="fas fa-theater-masks"></i> Playwright
+                      </span>
+                      <span class="post-tag automation">
+                        <i class="fas fa-robot"></i> UI Automation
+                      </span>
+                      <span class="post-tag testing">
+                        <i class="fas fa-globe"></i> Cross-browser
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">June 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-ai-activity-7340339130981040129-hqrY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MCP Server Project Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Playwright mcp.png"
+                      alt="Playwright MCP Project Post"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h4>Playwright MCP Server</h4>
+                    <p class="post-excerpt">
+                      Exploring
+                      <span class="highlight-keyword"
+                        >Playwright's Model Context Protocol (MCP)</span
+                      >, setting up the
+                      <span class="highlight-keyword">MCP server</span>,
+                      understanding its
+                      <span class="highlight-keyword">architecture</span>, and
+                      leveraging it for
+                      <span class="highlight-keyword"
+                        >scalable, context-aware automation workflows</span
+                      >...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag mcp">
+                        <i class="fas fa-server"></i> MCP Server
+                      </span>
+                      <span class="post-tag playwright">
+                        <i class="fas fa-theater-masks"></i> Playwright
+                      </span>
+                      <span class="post-tag ai">
+                        <i class="fas fa-brain"></i> AI Integration
+                      </span>
+                    </div>
+                    <div class="post-meta">
+                      <span class="post-date">June 2025</span>
+                      <a
+                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                        target="_blank"
+                        class="post-link"
+                      >
+                        <i class="fab fa-linkedin"></i> View Post
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Security Testing LinkedIn Post -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/Sectest Linkedin Post.png"
-                alt="Security Testing LinkedIn Post"
-              />
-            </div>
-            <div class="post-content">
-              <h4>Security Testing with Burp Suite</h4>
-              <p class="post-excerpt">
-                Sharing my experience with
-                <span class="highlight-keyword">OWASP Juice Shop</span> security
-                testing, documenting
-                <span class="highlight-keyword">vulnerabilities</span> and
-                <span class="highlight-keyword">testing methodologies</span>...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">Jul 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_qualityassurance-qalearning-securitytesting-activity-7348182797930414081-L0ah?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Agile Work Environment -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/Work Environment.png"
-                alt="Agile Work Environment Post"
-              />
-            </div>
-            <div class="post-content">
-              <h4>Agile in Daily Life</h4>
-              <p class="post-excerpt">
-                Implementing
-                <span class="highlight-keyword">Agile methodologies</span> and
-                <span class="highlight-keyword">Kanban boards</span> in student
-                life, demonstrating how
-                <span class="highlight-keyword"
-                  >project management principles</span
-                >
-                enhance <span class="highlight-keyword">productivity</span>...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">June 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_agile-studentlife-kanbanboard-activity-7343117534188945408--guN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- JMeter Performance Testing -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/JMeter Thumbnail.png"
-                alt="JMeter Performance Testing Post"
-              />
-            </div>
-            <div class="post-content">
-              <h4>Performance Testing with JMeter</h4>
-              <p class="post-excerpt">
-                Deep dive into
-                <span class="highlight-keyword">API performance testing</span>
-                using <span class="highlight-keyword">Apache JMeter</span>,
-                <span class="highlight-keyword">load testing strategies</span>
-                and
-                <span class="highlight-keyword"
-                  >performance metrics analysis</span
-                >...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">Jun 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_jmeter-performancetesting-apitesting-activity-7345648246268055552-w-JG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Playwright IFS Project -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/playwright_ifs.png"
-                alt="Playwright IFS Project Post"
-              />
-            </div>
-            <div class="post-content">
-              <h4>IFS Website Testing with Playwright</h4>
-              <p class="post-excerpt">
-                Automated testing of
-                <span class="highlight-keyword">IFS.com website</span> using
-                <span class="highlight-keyword">Playwright</span>, demonstrating
-                <span class="highlight-keyword">UI automation</span> and
-                <span class="highlight-keyword">cross-browser testing</span>
-                capabilities...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">June 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-ai-activity-7340339130981040129-hqrY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Playwright MCP Project -->
-          <div class="linkedin-post">
-            <div class="post-preview">
-              <img
-                src="media/Playwright mcp.png"
-                alt="Playwright MCP Project Post"
-              />
-            </div>
-            <div class="post-content">
-              <h4>Playwright MCP Server</h4>
-              <p class="post-excerpt">
-                Exploring
-                <span class="highlight-keyword"
-                  >Playwright's Model Context Protocol (MCP)</span
-                >. setting up the
-                <span class="highlight-keyword">MCP server</span>, understanding
-                its <span class="highlight-keyword">architecture</span>, and
-                leveraging it for
-                <span class="highlight-keyword"
-                  >scalable, context-aware automation workflows</span
-                >...
-              </p>
-              <div class="post-meta">
-                <span class="post-date">June 2025</span>
-                <a
-                  href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                  target="_blank"
-                  class="post-link"
-                >
-                  <i class="fab fa-linkedin"></i> View Post
-                </a>
-              </div>
-            </div>
-          </div>
+          <!-- Navigation Arrows -->
+          <button class="carousel-nav prev" id="linkedinPrevBtn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" id="linkedinNextBtn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
 
-        <div style="text-align: center; margin-top: 30px">
+        <div style="text-align: center; margin-top: 40px">
           <a
             href="https://www.linkedin.com/in/lakindu-de-silva-460581344"
             target="_blank"
             class="btn-primary linkedin-journey-btn"
           >
-            <i class="fab fa-linkedin"></i> Follow My Learning Journey
+            <i class="fab fa-linkedin"></i> Follow My Journey
+          </a>
+        </div>
+      </section>
+
+      <!-- Medium Blog Section -->
+      <section
+        id="medium-blog"
+        class="section-animated scroll-fade-in"
+        style="--section-delay: 0.125s"
+      >
+        <h2>Medium Blog</h2>
+        <p class="section-subtitle">
+          Deep dive into the topics I share on LinkedIn - comprehensive
+          technical articles and detailed insights for those who want to
+          understand my QA expertise in depth.
+        </p>
+
+        <div class="smart-carousel-container" id="mediumCarousel">
+          <!-- Navigation Badges -->
+          <div class="carousel-badges">
+            <div class="carousel-badge active" data-index="0">
+              Domain Knowledge
+            </div>
+            <div class="carousel-badge" data-index="1">Quality Engineering</div>
+            <div class="carousel-badge" data-index="2">DevOps Tools for QA</div>
+            <div class="carousel-badge" data-index="3">Test Automation</div>
+            <div class="carousel-badge" data-index="4">Testing with AI</div>
+            <div class="carousel-badge" data-index="5">Database Testing</div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button class="carousel-nav prev" id="mediumPrevBtn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" id="mediumNextBtn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <!-- Carousel Wrapper -->
+          <div class="carousel-wrapper">
+            <!-- Carousel Track -->
+            <div class="carousel-track" id="mediumTrack">
+              <!-- Article 1: Domain Knowledge -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media\Article Banners\IMG_9640.PNG"
+                      alt="Why Domain Knowledge Matters More Than Tools in QA"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 6 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      Why Domain Knowledge Matters More Than Tools in QA
+                    </h3>
+                    <p class="medium-excerpt">
+                      Exploring why understanding the business domain and user
+                      context is more valuable than mastering the latest testing
+                      tools in quality assurance.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">Domain Knowledge</span>
+                      <span class="medium-tag">QA Strategy</span>
+                      <span class="medium-tag">Testing Philosophy</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/why-domain-knowledge-matters-more-than-tools-in-qa-1bdb15c74237"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 2: QA to Quality Engineering -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9321.PNG"
+                      alt="From QA to Quality Engineering"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 4 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      From QA to Quality Engineering: The Mindset Shift
+                    </h3>
+                    <p class="medium-excerpt">
+                      Exploring the evolution from traditional Quality Assurance
+                      to Quality Engineering, understanding the mindset changes
+                      required for modern software development practices.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">Quality Engineering</span>
+                      <span class="medium-tag">Mindset</span>
+                      <span class="medium-tag">Career Growth</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/from-qa-to-quality-engineering-the-mindset-shift-12440d093c55"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 2: DevOps Tools for QA -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9140.PNG"
+                      alt="DevOps Tools Every QA Should Learn"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 6 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      DevOps Tools Every QA Should Learn and Why
+                    </h3>
+                    <p class="medium-excerpt">
+                      A comprehensive guide to essential DevOps tools that every
+                      QA engineer should master to stay relevant in modern
+                      software development workflows.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">DevOps</span>
+                      <span class="medium-tag">Tools</span>
+                      <span class="medium-tag">CI/CD</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/devops-tools-every-qa-should-learn-and-why-67068a55b8a2"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 3: QA Automation -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9099.PNG"
+                      alt="Why Every QA Engineer Should Learn Automation"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 5 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      Why Every QA Engineer Should Learn Automation
+                    </h3>
+                    <p class="medium-excerpt">
+                      Understanding the importance of test automation in today's
+                      fast-paced development environment and how it enhances QA
+                      effectiveness and career prospects.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">Automation</span>
+                      <span class="medium-tag">Testing</span>
+                      <span class="medium-tag">Skills</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/why-every-qa-engineer-should-learn-automation-2a2ea5958e9d"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 4: Future of QA and AI -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9030.PNG"
+                      alt="The Future of QA in the Age of AI"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 7 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      The Future of QA in the Age of AI: Will AI Replace Testers
+                      or Make Us Stronger?
+                    </h3>
+                    <p class="medium-excerpt">
+                      Analyzing the impact of AI on the QA profession, exploring
+                      whether artificial intelligence will replace testers or
+                      enhance their capabilities in the future.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">AI</span>
+                      <span class="medium-tag">Future</span>
+                      <span class="medium-tag">Industry Trends</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/the-future-of-qa-in-the-age-of-ai-will-ai-replace-testers-or-make-us-stronger-3cfb7fbcee43"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 5: Database Testing -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9017.PNG"
+                      alt="Database Testing: The Underrated Skill"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 5 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      Database Testing: The Underrated Skill Every QA Should
+                      Master
+                    </h3>
+                    <p class="medium-excerpt">
+                      Deep dive into database testing methodologies, why it's
+                      often overlooked, and how mastering this skill can
+                      significantly enhance your QA expertise.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">Database Testing</span>
+                      <span class="medium-tag">SQL</span>
+                      <span class="medium-tag">Backend Testing</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/database-testing-the-underrated-skill-every-qa-should-master-a2239235bedc"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px">
+          <a
+            href="https://medium.com/@lakindudesilva007"
+            target="_blank"
+            class="btn-primary medium-blog-btn"
+          >
+            <i class="fab fa-medium-m"></i> Read More on Medium
           </a>
         </div>
       </section>
@@ -3476,6 +5182,15 @@
                 </a>
 
                 <a
+                  href="https://medium.com/@lakindudesilva007"
+                  target="_blank"
+                  class="social-btn medium"
+                  data-tooltip="Medium Blog"
+                >
+                  <i class="fab fa-medium-m"></i>
+                </a>
+
+                <a
                   href="mailto:lakindudesilva007@gmail.com?subject=Portfolio%20Contact%20-%20QA%20Opportunity&body=Hi%20Lakindu%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%3A%0D%0A%0D%0A-%20%5BYour%20reason%20here%5D%0D%0A%0D%0ABest%20regards%2C%0D%0A%5BYour%20name%5D"
                   class="social-btn email"
                   data-tooltip="Send Email"
@@ -3496,8 +5211,8 @@
           <!-- Right Side: Message Form -->
           <div class="contact-form">
             <h4 class="form-title">
-              <i class="fas fa-terminal"></i>
-              Structured Message Interface:
+              <i class="fas fa-paper-plane"></i>
+              Send Me a Message
             </h4>
 
             <!-- Formspree form -->
@@ -4057,6 +5772,185 @@
 
       // Start terminal effects after page load
       setTimeout(addTerminalEffects, 3000);
+
+      // Smart Responsive Carousel System
+      class SmartCarousel {
+        constructor(containerId) {
+          this.container = document.getElementById(containerId);
+          this.track = this.container.querySelector(".carousel-track");
+          this.items = this.track.querySelectorAll(".carousel-item");
+          this.badges = this.container.querySelectorAll(".carousel-badge");
+
+          // Look for navigation buttons in the parent container (outside the smart carousel container)
+          const parentContainer = this.container.parentElement;
+          this.prevBtn = parentContainer.querySelector(".carousel-nav.prev");
+          this.nextBtn = parentContainer.querySelector(".carousel-nav.next");
+
+          this.currentIndex = 0;
+          this.itemsPerView = this.getItemsPerView();
+          this.totalItems = this.items.length;
+
+          this.init();
+          this.setupEventListeners();
+          this.updateVisibility();
+        }
+
+        getItemsPerView() {
+          const containerWidth = this.container.offsetWidth;
+          if (containerWidth >= 1200) return 3;
+          if (containerWidth >= 768) return 2;
+          return 1;
+        }
+
+        init() {
+          this.updateCarousel();
+          this.updateBadges();
+        }
+
+        setupEventListeners() {
+          // Badge click handlers
+          this.badges.forEach((badge, index) => {
+            badge.addEventListener("click", () => {
+              this.goToSlide(index);
+            });
+          });
+
+          // Navigation button handlers
+          if (this.prevBtn) {
+            this.prevBtn.addEventListener("click", () => {
+              this.navigate(-1);
+            });
+          }
+
+          if (this.nextBtn) {
+            this.nextBtn.addEventListener("click", () => {
+              this.navigate(1);
+            });
+          }
+
+          // Window resize handler
+          window.addEventListener("resize", () => {
+            const oldItemsPerView = this.itemsPerView;
+            this.itemsPerView = this.getItemsPerView();
+
+            // Reset current index if items per view changed
+            if (oldItemsPerView !== this.itemsPerView) {
+              this.currentIndex = 0;
+            }
+
+            this.updateCarousel();
+            this.updateVisibility();
+          });
+        }
+
+        updateCarousel() {
+          // For single-post navigation, calculate width of one card regardless of screen size
+          const containerWidth = this.container.offsetWidth;
+
+          let slideDistance;
+          if (this.itemsPerView === 1) {
+            // Mobile: each slide should move container width + gap (20px gap on mobile)
+            slideDistance = containerWidth + 20;
+          } else {
+            // Desktop/tablet: calculate with gaps
+            const gap = 30;
+            const totalGapWidth = (this.itemsPerView - 1) * gap;
+            const singleCardWidth =
+              (containerWidth - totalGapWidth) / this.itemsPerView;
+            slideDistance = singleCardWidth + gap;
+          }
+
+          // Move by exactly one card width for smooth single-post navigation
+          const translateX = -(this.currentIndex * slideDistance);
+          this.track.style.transform = `translateX(${translateX}px)`;
+          this.track.style.transition =
+            "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; // Smooth easing
+
+          // Update button visibility
+          this.updateVisibility();
+        }
+
+        updateBadges() {
+          this.badges.forEach((badge, index) => {
+            badge.classList.toggle("active", index === this.currentIndex);
+          });
+        }
+
+        updateVisibility() {
+          // Always show navigation if there are more items than can fit on screen
+          const needsNavigation = this.totalItems > this.itemsPerView;
+
+          if (this.prevBtn) {
+            this.prevBtn.classList.toggle(
+              "visible",
+              needsNavigation && this.currentIndex > 0
+            );
+          }
+
+          if (this.nextBtn) {
+            // For single-post navigation, check if we can move to the next post
+            const maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+            this.nextBtn.classList.toggle(
+              "visible",
+              needsNavigation && this.currentIndex < maxIndex
+            );
+          }
+        }
+
+        goToSlide(index) {
+          // Constrain to valid range for single-post navigation
+          const maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+          this.currentIndex = Math.max(0, Math.min(index, maxIndex));
+          this.updateCarousel();
+          this.updateBadges();
+        }
+
+        navigate(direction) {
+          if (direction > 0) {
+            // Next: move by exactly 1 post regardless of screen size
+            const maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+            this.currentIndex = Math.min(this.currentIndex + 1, maxIndex);
+          } else {
+            // Previous: move by exactly 1 post regardless of screen size
+            this.currentIndex = Math.max(this.currentIndex - 1, 0);
+          }
+          this.updateCarousel();
+          this.updateBadges();
+        }
+      }
+
+      // Navigation function for buttons
+      function navigateCarousel(carouselId, direction) {
+        if (window.carousels && window.carousels[carouselId]) {
+          window.carousels[carouselId].navigate(direction);
+        }
+      }
+
+      // Initialize carousels on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        window.carousels = {};
+
+        // Initialize LinkedIn carousel
+        if (document.getElementById("linkedinCarousel")) {
+          window.carousels["linkedinCarousel"] = new SmartCarousel(
+            "linkedinCarousel"
+          );
+        }
+
+        // Initialize Projects carousel
+        if (document.getElementById("projectsCarousel")) {
+          window.carousels["projectsCarousel"] = new SmartCarousel(
+            "projectsCarousel"
+          );
+        }
+
+        // Initialize Medium carousel
+        if (document.getElementById("mediumCarousel")) {
+          window.carousels["mediumCarousel"] = new SmartCarousel(
+            "mediumCarousel"
+          );
+        }
+      });
     </script>
   </body>
 </html>
