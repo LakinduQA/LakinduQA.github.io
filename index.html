@@ -340,9 +340,14 @@
       }
 
       .post-content h4 {
-        color: var(--accent);
+        color: white;
         margin-bottom: 10px;
         font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      .linkedin-post:hover .post-content h4 {
+        color: var(--accent);
       }
 
       .post-excerpt {
@@ -395,31 +400,28 @@
       }
 
       .post-tag {
-        background: linear-gradient(
-          135deg,
-          var(--card),
-          rgba(0, 119, 181, 0.1)
-        );
-        border: 1px solid rgba(0, 119, 181, 0.3);
-        border-radius: 6px;
-        padding: 4px 8px;
-        font-size: 0.7rem;
-        font-family: "Segoe UI", sans-serif;
-        color: var(--text);
+        background: rgba(0, 119, 181, 0.1);
+        color: #0077b5;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 119, 181, 0.2);
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 4px;
-        font-weight: 500;
-        transition: all 0.3s ease;
         text-transform: capitalize;
         letter-spacing: 0.3px;
       }
 
+      .linkedin-post:hover .post-tag {
+        background: rgba(0, 119, 181, 0.2);
+        border-color: rgba(0, 119, 181, 0.4);
+      }
+
       .post-tag:hover {
-        background: linear-gradient(135deg, #0077b5, rgba(0, 119, 181, 0.2));
-        color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(0, 119, 181, 0.3);
+        background: rgba(0, 119, 181, 0.2);
+        border-color: rgba(0, 119, 181, 0.4);
       }
 
       .post-tag i {
@@ -427,90 +429,49 @@
         opacity: 0.8;
       }
 
-      /* Different tag colors for different categories */
-      .post-tag.domain {
-        border-color: #8b5cf6;
+      /* LinkedIn post layout styling */
+      .post-meta-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        color: var(--text);
+        opacity: 0.7;
+        font-size: 0.85rem;
       }
-      .post-tag.testing {
-        border-color: #10b981;
+
+      .post-meta-top .post-date {
+        color: #0077b5;
+        font-weight: 500;
       }
-      .post-tag.learning {
-        border-color: #f59e0b;
+
+      .post-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(0, 119, 181, 0.1);
+        color: #0077b5;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 119, 181, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 12px;
+        width: fit-content;
       }
-      .post-tag.database {
-        border-color: #3b82f6;
+
+      .post-link:hover {
+        background: rgba(0, 119, 181, 0.2);
+        border-color: rgba(0, 119, 181, 0.4);
+        transform: translateY(-2px);
+        color: #0077b5;
       }
-      .post-tag.skills {
-        border-color: #06b6d4;
-      }
-      .post-tag.ai {
-        border-color: #ec4899;
-      }
-      .post-tag.future {
-        border-color: #8b5cf6;
-      }
-      .post-tag.career {
-        border-color: #10b981;
-      }
-      .post-tag.automation {
-        border-color: #f59e0b;
-      }
-      .post-tag.productivity {
-        border-color: #06b6d4;
-      }
-      .post-tag.devops {
-        border-color: #3b82f6;
-      }
-      .post-tag.tools {
-        border-color: #64748b;
-      }
-      .post-tag.integration {
-        border-color: #8b5cf6;
-      }
-      .post-tag.evolution {
-        border-color: #10b981;
-      }
-      .post-tag.engineering {
-        border-color: #f59e0b;
-      }
-      .post-tag.mindset {
-        border-color: #ec4899;
-      }
-      .post-tag.linux {
-        border-color: #059669;
-      }
-      .post-tag.migration {
-        border-color: #0ea5e9;
-      }
-      .post-tag.playwright {
-        border-color: #8b5cf6;
-      }
-      .post-tag.security {
-        border-color: #dc2626;
-      }
-      .post-tag.burpsuite {
-        border-color: #ea580c;
-      }
-      .post-tag.owasp {
-        border-color: #991b1b;
-      }
-      .post-tag.agile {
-        border-color: #059669;
-      }
-      .post-tag.kanban {
-        border-color: #0284c7;
-      }
-      .post-tag.performance {
-        border-color: #7c3aed;
-      }
-      .post-tag.jmeter {
-        border-color: #dc2626;
-      }
-      .post-tag.api {
-        border-color: #0891b2;
-      }
-      .post-tag.mcp {
-        border-color: #8b5cf6;
+
+      .post-link i {
+        font-size: 0.85rem;
+        opacity: 0.8;
       }
 
       .container {
@@ -1742,54 +1703,113 @@
       .tech-badge {
         background: linear-gradient(
           135deg,
-          var(--card),
-          rgba(0, 188, 212, 0.1)
+          rgba(139, 92, 246, 0.08),
+          rgba(59, 130, 246, 0.05)
         );
-        border: 1px solid rgba(0, 188, 212, 0.3);
-        border-radius: 6px;
-        padding: 4px 10px;
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: 12px;
+        padding: 6px 12px;
         font-size: 0.75rem;
-        font-family: "Courier New", monospace;
+        font-family: "Segoe UI", sans-serif;
         color: var(--text);
         display: flex;
         align-items: center;
-        gap: 5px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        gap: 6px;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: capitalize;
+        letter-spacing: 0.3px;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(139, 92, 246, 0.1);
+      }
+
+      .tech-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(139, 92, 246, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .tech-badge:hover::before {
+        left: 100%;
       }
 
       .tech-badge:hover {
         background: linear-gradient(
           135deg,
-          var(--accent),
-          rgba(0, 188, 212, 0.2)
+          rgba(139, 92, 246, 0.15),
+          rgba(59, 130, 246, 0.1)
         );
-        color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+        border-color: rgba(139, 92, 246, 0.4);
+        color: var(--accent);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
       }
 
       .tech-badge i {
         font-size: 0.8rem;
         opacity: 0.8;
+        transition: all 0.3s ease;
       }
 
+      /* Premium tech badge category styles */
       .tech-badge.language {
-        border-color: #f39c12;
+        background: linear-gradient(135deg, rgba(243, 156, 18, 0.08), rgba(230, 126, 34, 0.05));
+        border-color: rgba(243, 156, 18, 0.3);
+      }
+
+      .tech-badge.language:hover {
+        background: linear-gradient(135deg, rgba(243, 156, 18, 0.15), rgba(230, 126, 34, 0.1));
+        border-color: rgba(243, 156, 18, 0.5);
+        color: #f39c12;
+        box-shadow: 0 8px 25px rgba(243, 156, 18, 0.2);
       }
 
       .tech-badge.testing {
-        border-color: #27ae60;
+        background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), rgba(46, 204, 113, 0.05));
+        border-color: rgba(39, 174, 96, 0.3);
+      }
+
+      .tech-badge.testing:hover {
+        background: linear-gradient(135deg, rgba(39, 174, 96, 0.15), rgba(46, 204, 113, 0.1));
+        border-color: rgba(39, 174, 96, 0.5);
+        color: #27ae60;
+        box-shadow: 0 8px 25px rgba(39, 174, 96, 0.2);
       }
 
       .tech-badge.security {
-        border-color: #e74c3c;
+        background: linear-gradient(135deg, rgba(231, 76, 60, 0.08), rgba(192, 57, 43, 0.05));
+        border-color: rgba(231, 76, 60, 0.3);
+      }
+
+      .tech-badge.security:hover {
+        background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(192, 57, 43, 0.1));
+        border-color: rgba(231, 76, 60, 0.5);
+        color: #e74c3c;
+        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.2);
       }
 
       .tech-badge.performance {
-        border-color: #9b59b6;
+        background: linear-gradient(135deg, rgba(155, 89, 182, 0.08), rgba(142, 68, 173, 0.05));
+        border-color: rgba(155, 89, 182, 0.3);
+      }
+
+      .tech-badge.performance:hover {
+        background: linear-gradient(135deg, rgba(155, 89, 182, 0.15), rgba(142, 68, 173, 0.1));
+        border-color: rgba(155, 89, 182, 0.5);
+        color: #9b59b6;
+        box-shadow: 0 8px 25px rgba(155, 89, 182, 0.2);
       }
 
       /* Enhanced Card Design */
@@ -2228,6 +2248,11 @@
         line-height: 1.6;
         margin: 0 0 20px 0;
         font-size: 0.95rem;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important; /* Match LinkedIn posts - 3 lines */
+        line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
       }
 
       .medium-tags {
@@ -2847,18 +2872,18 @@
       .carousel-item .test-card .project-description {
         flex: 1;
         display: -webkit-box;
-        -webkit-line-clamp: 4; /* Limit description to 4 lines */
-        line-clamp: 4;
+        -webkit-line-clamp: 3; /* Reduced to 3 lines to make room for tech badges */
+        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         line-height: 1.5;
-        margin-bottom: 15px;
-        min-height: 96px; /* Fixed height for description area (4 lines * 24px) */
+        margin-bottom: 12px;
+        min-height: 72px; /* Reduced height for description area (3 lines * 24px) */
       }
 
       .carousel-item .test-card .tech-badges {
         flex-shrink: 0;
-        margin-top: auto;
+        margin-top: 8px; /* Fixed small margin instead of auto to move badges higher */
         max-height: 80px; /* Fixed height for tech badges area */
         overflow: hidden;
       }
@@ -3021,14 +3046,14 @@
         color: var(--text);
         opacity: 0.8;
         line-height: 1.6;
-        margin: 0 0 16px 0; /* Reduced margin for better spacing */
+        margin: 0 0 16px 0;
         font-size: 0.95rem;
         flex: 1;
-        display: -webkit-box;
-        -webkit-line-clamp: 3; /* Limit excerpt to 3 lines */
-        line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important; /* Match LinkedIn posts - 3 lines */
+        line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
       }
 
       .carousel-item .medium-tags {
@@ -3248,6 +3273,25 @@
           max-width: 100%;
         }
 
+        /* Mobile carousel adjustments */
+        .carousel-item {
+          height: 580px; /* Increased height for mobile to accommodate all content */
+        }
+
+        .carousel-item .test-card {
+          padding: 18px;
+        }
+
+        .carousel-item .test-card .project-description {
+          margin-bottom: 10px;
+          min-height: 60px; /* Reduced min-height for mobile */
+        }
+
+        .carousel-item .test-card .tech-badges {
+          margin-top: 6px;
+          max-height: 100px; /* Increased max-height for mobile to show all badges */
+        }
+
         .profile-pic {
           width: 150px;
           height: 150px;
@@ -3348,6 +3392,21 @@
         .contact-info-container {
           padding: 24px;
           order: 1;
+        }
+
+        /* Extra small mobile carousel adjustments */
+        .carousel-item {
+          height: 620px; /* Even more height for very small screens */
+        }
+
+        .carousel-item .test-card {
+          padding: 16px;
+        }
+
+        .carousel-item .test-card .tech-badges {
+          margin-top: 4px;
+          max-height: 120px; /* More space for badges on small screens */
+          overflow: visible; /* Allow badges to be fully visible */
         }
 
         .contact-form {
@@ -4236,19 +4295,22 @@
           <!-- Navigation Badges -->
           <div class="carousel-badges">
             <div class="carousel-badge active" data-index="0">
-              Domain Knowledge
+              Shift-Left/Right
             </div>
-            <div class="carousel-badge" data-index="1">Database Testing</div>
-            <div class="carousel-badge" data-index="2">Testing with AI</div>
-            <div class="carousel-badge" data-index="3">Test Automation</div>
-            <div class="carousel-badge" data-index="4">DevOps Tools for QA</div>
-            <div class="carousel-badge" data-index="5">Quality Engineering</div>
-            <div class="carousel-badge" data-index="6">Linux Migration</div>
-            <div class="carousel-badge" data-index="7">Security Testing</div>
-            <div class="carousel-badge" data-index="8">Agile Methodology</div>
-            <div class="carousel-badge" data-index="9">Performance Testing</div>
-            <div class="carousel-badge" data-index="10">IFS Playwright</div>
-            <div class="carousel-badge" data-index="11">Playwright MCP</div>
+            <div class="carousel-badge" data-index="1">Security Testing</div>
+            <div class="carousel-badge" data-index="2">User Experience</div>
+            <div class="carousel-badge" data-index="3">Domain Knowledge</div>
+            <div class="carousel-badge" data-index="4">Database Testing</div>
+            <div class="carousel-badge" data-index="5">Testing with AI</div>
+            <div class="carousel-badge" data-index="6">Test Automation</div>
+            <div class="carousel-badge" data-index="7">DevOps Tools for QA</div>
+            <div class="carousel-badge" data-index="8">Quality Engineering</div>
+            <div class="carousel-badge" data-index="9">Linux Migration</div>
+            <div class="carousel-badge" data-index="10">BurpSuite</div>
+            <div class="carousel-badge" data-index="11">Agile Methodology</div>
+            <div class="carousel-badge" data-index="12">Performance Testing</div>
+            <div class="carousel-badge" data-index="13">IFS Playwright</div>
+            <div class="carousel-badge" data-index="14">Playwright MCP</div>
           </div>
 
           <!-- Navigation Arrows -->
@@ -4263,6 +4325,137 @@
           <div class="carousel-wrapper">
             <!-- Carousel Track -->
             <div class="carousel-track" id="linkedinTrack">
+              <!-- Shift-Left and Shift-Right Testing Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9090.PNG"
+                      alt="Shift-Left and Shift-Right Testing in QAOps"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Sep 2025</span>
+                    </div>
+                    <h4>Shift-Left and Shift-Right Testing in QAOps</h4>
+                    <p class="post-excerpt">
+                      Understanding the mindset shift for
+                      <span class="highlight-keyword">continuous quality</span>
+                      through
+                      <span class="highlight-keyword">shift-left</span> and
+                      <span class="highlight-keyword">shift-right testing</span>
+                      methodologies in modern QAOps practices...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag shift">
+                        Shift-Left/Right
+                      </span>
+                      <span class="post-tag qaops">
+                        QAOps
+                      </span>
+                      <span class="post-tag testing">
+                        Testing Strategy
+                      </span>
+                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_shift-left-and-shift-right-testing-in-qaops-activity-7369297694583918603-0tuz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Security Testing Non-Negotiable Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media/Article Banners/IMG_9986.PNG"
+                      alt="Why Security Testing is Non-Negotiable"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Sep 2025</span>
+                    </div>
+                    <h4>Your App Works Fine. But Is It Safe?</h4>
+                    <p class="post-excerpt">
+                      Why
+                      <span class="highlight-keyword">security testing</span>
+                      is non-negotiable for QA engineers. Understanding the
+                      critical importance of
+                      <span class="highlight-keyword">application security</span>
+                      in modern software development...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag security">
+                        Security Testing
+                      </span>
+                      <span class="post-tag quality">
+                        Quality Assurance
+                      </span>
+                      <span class="post-tag engineering">
+                        QA Engineering
+                      </span>
+                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-security-testing-is-non-negotiable-for-activity-7368899484270936070-on-0?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- QA Engineers Think Like Users Post -->
+              <div class="carousel-item">
+                <div class="linkedin-post">
+                  <div class="post-preview">
+                    <img
+                      src="media\Article Banners\IMG_9647.PNG"
+                      alt="QA Engineers Should Think Like Users"
+                    />
+                  </div>
+                  <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Sep 2025</span>
+                    </div>
+                    <h4>Why QA Engineers Should Think Like Users, Not Just Testers</h4>
+                    <p class="post-excerpt">
+                      Exploring the mindset shift from
+                      <span class="highlight-keyword">requirement checking</span>
+                      to understanding
+                      <span class="highlight-keyword">user experience</span>
+                      and the importance of user-centric testing approaches...
+                    </p>
+                    <div class="post-tags">
+                      <span class="post-tag ux">
+                        User Experience
+                      </span>
+                      <span class="post-tag testing">
+                        Testing Mindset
+                      </span>
+                      <span class="post-tag quality">
+                        Quality Engineering
+                      </span>
+                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-qa-engineers-should-think-like-users-activity-7368506178466664449-5NvE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               <!-- Domain Knowledge Post -->
               <div class="carousel-item">
                 <div class="linkedin-post">
@@ -4273,6 +4466,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Sep 2025</span>
+                    </div>
                     <h4>Why Domain Knowledge Matters More Than Tools in QA</h4>
                     <p class="post-excerpt">
                       Exploring why understanding the
@@ -4284,25 +4480,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag domain">
-                        <i class="fas fa-brain"></i> Domain Knowledge
+                        Domain Knowledge
                       </span>
                       <span class="post-tag testing">
-                        <i class="fas fa-tools"></i> QA Strategy
+                        QA Strategy
                       </span>
                       <span class="post-tag learning">
-                        <i class="fas fa-lightbulb"></i> Best Practices
+                        Best Practices
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Sep 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-domain-knowledge-matters-more-than-tools-activity-7368192852012519424-PIm5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-domain-knowledge-matters-more-than-tools-activity-7368192852012519424-PIm5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4317,6 +4510,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Aug 2025</span>
+                    </div>
                     <h4>
                       Database Testing: The Underrated Skill Every QA Should
                       Master
@@ -4331,25 +4527,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag database">
-                        <i class="fas fa-database"></i> Database Testing
+                        Database Testing
                       </span>
                       <span class="post-tag testing">
-                        <i class="fas fa-search"></i> SQL Testing
+                        SQL Testing
                       </span>
                       <span class="post-tag skills">
-                        <i class="fas fa-chart-line"></i> QA Skills
+                        QA Skills
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Aug 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_database-testing-the-underrated-skill-every-activity-7366335711697924096-jbBk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_database-testing-the-underrated-skill-every-activity-7366335711697924096-jbBk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4364,6 +4557,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Aug 2025</span>
+                    </div>
                     <h4>The Future of QA in the Age of AI</h4>
                     <p class="post-excerpt">
                       Analyzing the impact of
@@ -4375,25 +4571,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag ai">
-                        <i class="fas fa-robot"></i> AI in QA
+                        AI in QA
                       </span>
                       <span class="post-tag future">
-                        <i class="fas fa-rocket"></i> Future Trends
+                        Future Trends
                       </span>
                       <span class="post-tag career">
-                        <i class="fas fa-chart-line"></i> Career Growth
+                        Career Growth
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Aug 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_the-future-of-qa-in-the-age-of-ai-ai-activity-7366698222611804161-IzV1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_the-future-of-qa-in-the-age-of-ai-ai-activity-7366698222611804161-IzV1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4408,6 +4601,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Aug 2025</span>
+                    </div>
                     <h4>Why Every QA Engineer Should Learn Automation</h4>
                     <p class="post-excerpt">
                       Understanding the importance of
@@ -4418,25 +4614,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag automation">
-                        <i class="fas fa-cogs"></i> Test Automation
+                        Test Automation
                       </span>
                       <span class="post-tag productivity">
-                        <i class="fas fa-tachometer-alt"></i> Efficiency
+                        Efficiency
                       </span>
                       <span class="post-tag learning">
-                        <i class="fas fa-graduation-cap"></i> Learning Path
+                        Learning Path
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Aug 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-every-qa-engineer-should-learn-automation-activity-7367105682224934913-p9X8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_why-every-qa-engineer-should-learn-automation-activity-7367105682224934913-p9X8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4451,6 +4644,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Aug 2025</span>
+                    </div>
                     <h4>DevOps Tools Every QA Should Learn and Why</h4>
                     <p class="post-excerpt">
                       A comprehensive guide to essential
@@ -4463,25 +4659,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag devops">
-                        <i class="fab fa-docker"></i> DevOps
+                        DevOps
                       </span>
                       <span class="post-tag tools">
-                        <i class="fas fa-tools"></i> CI/CD
+                        CI/CD
                       </span>
                       <span class="post-tag integration">
-                        <i class="fas fa-link"></i> Integration
+                        Integration
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Aug 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_devops-tools-every-qa-should-learn-and-why-activity-7367426034012516352-bu5C?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_devops-tools-every-qa-should-learn-and-why-activity-7367426034012516352-bu5C?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4496,6 +4689,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Aug 2025</span>
+                    </div>
                     <h4>From QA to Quality Engineering: The Mindset Shift</h4>
                     <p class="post-excerpt">
                       Exploring the evolution from traditional
@@ -4509,25 +4705,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag evolution">
-                        <i class="fas fa-level-up-alt"></i> QA Evolution
+                        QA Evolution
                       </span>
                       <span class="post-tag engineering">
-                        <i class="fas fa-cog"></i> Quality Engineering
+                        Quality Engineering
                       </span>
                       <span class="post-tag mindset">
-                        <i class="fas fa-brain"></i> Mindset Shift
+                        Mindset Shift
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Aug 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_from-quality-assurance-to-quality-engineering-activity-7367848560391880705-c-hk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_from-quality-assurance-to-quality-engineering-activity-7367848560391880705-c-hk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4542,6 +4735,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Jul 2025</span>
+                    </div>
                     <h4>IFS Automation Migration: Windows to WSL</h4>
                     <p class="post-excerpt">
                       Successfully migrated my
@@ -4553,25 +4749,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag linux">
-                        <i class="fab fa-linux"></i> Linux/WSL
+                        Linux/WSL
                       </span>
                       <span class="post-tag migration">
-                        <i class="fas fa-exchange-alt"></i> Migration
+                        Migration
                       </span>
                       <span class="post-tag playwright">
-                        <i class="fas fa-theater-masks"></i> Playwright
+                        Playwright
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Jul 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-wsl-activity-7350726787338825729-Fm_6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-wsl-activity-7350726787338825729-Fm_6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4586,6 +4779,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Jul 2025</span>
+                    </div>
                     <h4>Security Testing with Burp Suite</h4>
                     <p class="post-excerpt">
                       Sharing my experience with
@@ -4598,25 +4794,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag security">
-                        <i class="fas fa-shield-alt"></i> Security Testing
+                        Security Testing
                       </span>
                       <span class="post-tag burpsuite">
-                        <i class="fas fa-bug"></i> Burp Suite
+                        Burp Suite
                       </span>
                       <span class="post-tag owasp">
-                        <i class="fas fa-lock"></i> OWASP
+                        OWASP
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Jul 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_qualityassurance-qalearning-securitytesting-activity-7348182797930414081-L0ah?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_qualityassurance-qalearning-securitytesting-activity-7348182797930414081-L0ah?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4631,6 +4824,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">June 2025</span>
+                    </div>
                     <h4>Agile in Daily Life</h4>
                     <p class="post-excerpt">
                       Implementing
@@ -4646,25 +4842,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag agile">
-                        <i class="fas fa-sync"></i> Agile
+                        Agile
                       </span>
                       <span class="post-tag kanban">
-                        <i class="fas fa-columns"></i> Kanban
+                        Kanban
                       </span>
                       <span class="post-tag productivity">
-                        <i class="fas fa-chart-bar"></i> Productivity
+                        Productivity
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">June 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_agile-studentlife-kanbanboard-activity-7343117534188945408--guN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_agile-studentlife-kanbanboard-activity-7343117534188945408--guN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4679,6 +4872,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">Jun 2025</span>
+                    </div>
                     <h4>Performance Testing with JMeter</h4>
                     <p class="post-excerpt">
                       Deep dive into
@@ -4697,25 +4893,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag performance">
-                        <i class="fas fa-tachometer-alt"></i> Performance
+                        Performance
                       </span>
                       <span class="post-tag jmeter">
-                        <i class="fas fa-bolt"></i> JMeter
+                        JMeter
                       </span>
                       <span class="post-tag api">
-                        <i class="fas fa-code"></i> API Testing
+                        API Testing
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">Jun 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_jmeter-performancetesting-apitesting-activity-7345648246268055552-w-JG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_jmeter-performancetesting-apitesting-activity-7345648246268055552-w-JG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4730,6 +4923,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">June 2025</span>
+                    </div>
                     <h4>IFS Website Testing with Playwright</h4>
                     <p class="post-excerpt">
                       Automated testing of
@@ -4744,25 +4940,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag playwright">
-                        <i class="fas fa-theater-masks"></i> Playwright
+                        Playwright
                       </span>
                       <span class="post-tag automation">
-                        <i class="fas fa-robot"></i> UI Automation
+                        UI Automation
                       </span>
                       <span class="post-tag testing">
-                        <i class="fas fa-globe"></i> Cross-browser
+                        Cross-browser
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">June 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-ai-activity-7340339130981040129-hqrY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-testautomation-ai-activity-7340339130981040129-hqrY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4777,6 +4970,9 @@
                     />
                   </div>
                   <div class="post-content">
+                    <div class="post-meta-top">
+                      <span class="post-date">June 2025</span>
+                    </div>
                     <h4>Playwright MCP Server</h4>
                     <p class="post-excerpt">
                       Exploring
@@ -4793,25 +4989,22 @@
                     </p>
                     <div class="post-tags">
                       <span class="post-tag mcp">
-                        <i class="fas fa-server"></i> MCP Server
+                        MCP Server
                       </span>
                       <span class="post-tag playwright">
-                        <i class="fas fa-theater-masks"></i> Playwright
+                        Playwright
                       </span>
                       <span class="post-tag ai">
-                        <i class="fas fa-brain"></i> AI Integration
+                        AI Integration
                       </span>
                     </div>
-                    <div class="post-meta">
-                      <span class="post-date">June 2025</span>
-                      <a
-                        href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
-                        target="_blank"
-                        class="post-link"
-                      >
-                        <i class="fab fa-linkedin"></i> View Post
-                      </a>
-                    </div>
+                    <a
+                      href="https://www.linkedin.com/posts/lakindu-de-silva-460581344_playwright-mcp-server-ai-powered-test-automation-activity-7338139158600658944-Ecxn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFY5zUgB9oVNc4iiB9PVHXuku8WFsYFPXac"
+                      target="_blank"
+                      class="post-link"
+                    >
+                      <i class="fab fa-linkedin"></i> View Post
+                    </a>
                   </div>
                 </div>
               </div>
@@ -4855,13 +5048,16 @@
           <!-- Navigation Badges -->
           <div class="carousel-badges">
             <div class="carousel-badge active" data-index="0">
-              Domain Knowledge
+              Shift-Left/Right
             </div>
-            <div class="carousel-badge" data-index="1">Quality Engineering</div>
-            <div class="carousel-badge" data-index="2">DevOps Tools for QA</div>
-            <div class="carousel-badge" data-index="3">Test Automation</div>
-            <div class="carousel-badge" data-index="4">Testing with AI</div>
-            <div class="carousel-badge" data-index="5">Database Testing</div>
+            <div class="carousel-badge" data-index="1">Security Testing</div>
+            <div class="carousel-badge" data-index="2">User Experience</div>
+            <div class="carousel-badge" data-index="3">Domain Knowledge</div>
+            <div class="carousel-badge" data-index="4">Quality Engineering</div>
+            <div class="carousel-badge" data-index="5">DevOps Tools for QA</div>
+            <div class="carousel-badge" data-index="6">Test Automation</div>
+            <div class="carousel-badge" data-index="7">Testing with AI</div>
+            <div class="carousel-badge" data-index="8">Database Testing</div>
           </div>
 
           <!-- Navigation Arrows -->
@@ -4876,7 +5072,115 @@
           <div class="carousel-wrapper">
             <!-- Carousel Track -->
             <div class="carousel-track" id="mediumTrack">
-              <!-- Article 1: Domain Knowledge -->
+              <!-- Article 1: Shift-Left and Shift-Right Testing -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9090.PNG"
+                      alt="Shift-Left and Shift-Right Testing in QAOps"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 6 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      Shift-Left and Shift-Right Testing in QAOps
+                    </h3>
+                    <p class="medium-excerpt">
+                      Understanding the paradigm shift in testing methodologies and how shift-left and shift-right approaches revolutionize modern QAOps.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">Shift-Left/Right</span>
+                      <span class="medium-tag">QAOps</span>
+                      <span class="medium-tag">Quality</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/shift-left-and-shift-right-testing-in-qaops-a-mindset-shift-for-continuous-quality-85ef943ed14f"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 2: Security Testing Non-Negotiable -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media/Article Banners/IMG_9986.PNG"
+                      alt="Why Security Testing is Non-Negotiable for QA Engineers"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 7 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      Why Security Testing is Non-Negotiable
+                    </h3>
+                    <p class="medium-excerpt">
+                      Exploring the critical importance of security testing in modern software development and why QA engineers must prioritize security practices.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">Security Testing</span>
+                      <span class="medium-tag">QE</span>
+                      <span class="medium-tag">Cybersecurity</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/why-security-testing-is-non-negotiable-for-qa-engineers-9dca25195021"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 3: QA Engineers Think Like Users -->
+              <div class="carousel-item">
+                <article class="medium-article">
+                  <div class="medium-image">
+                    <img
+                      src="media\Article Banners\IMG_9647.PNG"
+                      alt="Why QA Engineers Should Think Like Users, Not Just Testers"
+                    />
+                  </div>
+                  <div class="medium-content">
+                    <div class="medium-meta">
+                      <span class="medium-date">Published</span>
+                      <span class="medium-read-time">• 5 min read</span>
+                    </div>
+                    <h3 class="medium-title">
+                      QA Engineers Should Think Like Users
+                    </h3>
+                    <p class="medium-excerpt">
+                      Examining the mindset transformation from requirement checking to user-centric testing approaches and empathy-driven quality assurance.
+                    </p>
+                    <div class="medium-tags">
+                      <span class="medium-tag">User Experience</span>
+                      <span class="medium-tag">Mindset</span>
+                      <span class="medium-tag">UAT</span>
+                    </div>
+                    <a
+                      href="https://medium.com/@lakindudesilva007/why-qa-engineers-should-think-like-users-not-just-testers-06493d794412"
+                      target="_blank"
+                      class="medium-read-btn"
+                    >
+                      <i class="fas fa-external-link-alt"></i> Read Article
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Article 4: Domain Knowledge -->
               <div class="carousel-item">
                 <article class="medium-article">
                   <div class="medium-image">
@@ -4901,7 +5205,6 @@
                     <div class="medium-tags">
                       <span class="medium-tag">Domain Knowledge</span>
                       <span class="medium-tag">QA Strategy</span>
-                      <span class="medium-tag">Testing Philosophy</span>
                     </div>
                     <a
                       href="https://medium.com/@lakindudesilva007/why-domain-knowledge-matters-more-than-tools-in-qa-1bdb15c74237"
@@ -4937,7 +5240,7 @@
                       required for modern software development practices.
                     </p>
                     <div class="medium-tags">
-                      <span class="medium-tag">Quality Engineering</span>
+                      <span class="medium-tag">QE</span>
                       <span class="medium-tag">Mindset</span>
                       <span class="medium-tag">Career Growth</span>
                     </div>
@@ -5093,7 +5396,7 @@
                     <div class="medium-tags">
                       <span class="medium-tag">Database Testing</span>
                       <span class="medium-tag">SQL</span>
-                      <span class="medium-tag">Backend Testing</span>
+                      <span class="medium-tag">Validation</span>
                     </div>
                     <a
                       href="https://medium.com/@lakindudesilva007/database-testing-the-underrated-skill-every-qa-should-master-a2239235bedc"
