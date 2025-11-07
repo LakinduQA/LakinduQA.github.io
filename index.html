@@ -3677,14 +3677,6 @@
             <span class="stat-number" id="skillCount">0</span>
             <div class="stat-label">Skills & Tools</div>
           </div>
-          <div class="stat-card">
-            <span class="stat-number" id="monthsCount">2</span>
-            <div class="stat-label">Months in QA</div>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">100%</span>
-            <div class="stat-label">Commitment</div>
-          </div>
         </div>
       </section>
 
@@ -5710,18 +5702,9 @@
         const skillTags = document.querySelectorAll(".skill-card");
         const skillCount = skillTags.length;
 
-        // Calculate months in QA (started May 2025, so about 2-3 months)
-        const qaStartDate = new Date("2025-05-01"); // Change to your actual start date
-        const currentDate = new Date();
-        const monthsDiff = Math.floor(
-          (currentDate - qaStartDate) / (1000 * 60 * 60 * 24 * 30.44)
-        ); // Average days per month
-        const monthsInQA = Math.max(1, monthsDiff); // At least 1 month
-
         // Update the counters with animation
         animateCounter("projectCount", projectCount, "+");
         animateCounter("skillCount", skillCount, "+");
-        animateCounter("monthsCount", monthsInQA, "");
       }
 
       // Animate counter with counting effect
