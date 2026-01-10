@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --text: #ffffff;
+  --text-dim: #8b949e;
+  --text-muted: #484f58;
+  --green: #3fb950;
+  --green-glow: rgba(63, 185, 80, 0.3);
+  --yellow: #d29922;
+  --blue: #58a6ff;
+  --border: #1e2228;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Courier New", "JetBrains Mono", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Matrix-style background grid */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(30, 34, 40, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 34, 40, 0.3) 1px, transparent 1px);
+  background-size: 25px 25px;
+  opacity: 0.4;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(25px, 25px);
+  }
+}
+
+.loading-container {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 900px;
+  padding: 40px;
+}
+
+/* System Header */
+.system-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.system-info .system-name {
+  font-size: 14px;
+  color: var(--green);
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px var(--green-glow);
+}
+
+.system-info .system-memory {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.system-status {
+  display: flex;
+  gap: 20px;
+}
+
+.status-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* Boot Sequence */
+.boot-sequence {
+  margin-bottom: 30px;
+}
+
+.boot-line {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateX(-10px);
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.5px;
+}
+
+.boot-line .success {
+  color: var(--green);
+}
+
+.boot-line .info {
+  color: var(--blue);
+}
+
+.boot-line .warning {
+  color: var(--yellow);
+}
+
+/* Test Execution */
+.test-execution {
+  background: rgba(15, 17, 21, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  opacity: 0;
+}
+
+.test-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.test-title {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.test-title .highlight {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.test-cases {
+  margin-bottom: 15px;
+}
+
+.test-case {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.test-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.test-icon.success {
+  color: var(--green);
+  text-shadow: 0 0 8px var(--green-glow);
+}
+
+.test-name {
+  flex: 1;
+  color: var(--text-dim);
+}
+
+.test-time {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Test Summary */
+.test-summary {
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.summary-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  opacity: 0;
+}
+
+.summary-line.success-line {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.summary-icon {
+  font-size: 14px;
+}
+
+.summary-stats {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* System Load Progress */
+.system-load {
+  margin-top: 40px;
+  opacity: 0;
+}
+
+.load-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--blue), var(--green));
+  background-size: 200% 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--green-glow);
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.load-percentage {
+  text-align: right;
+  font-size: 14px;
+  color: var(--green);
+  margin-top: 8px;
+  font-weight: bold;
+  text-shadow: 0 0 10px var(--green-glow);
+}
+
+/* Final Status */
+.final-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(63, 185, 80, 0.1);
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.status-icon {
+  font-size: 20px;
+  color: var(--green);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.status-message {
+  font-size: 16px;
+  color: var(--green);
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px var(--green-glow);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bootLineAppear {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes testCaseAppear {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes finalStatusAppear {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loading-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .system-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .system-status {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .boot-line,
+  .test-case,
+  .test-title {
+    font-size: 11px;
+  }
+
+  .test-execution {
+    padding: 15px;
+  }
+
+  .status-message {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-container {
+    padding: 15px;
+  }
+
+  .system-name {
+    font-size: 12px !important;
+  }
+
+  .boot-line {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .test-case {
+    font-size: 10px;
+  }
+
+  .test-icon {
+    font-size: 14px;
+  }
+}
+
+/* Fade out animation for page transition */
+.fade-out {
+  animation: fadeOut 0.8s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
