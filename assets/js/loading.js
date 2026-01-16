@@ -45,41 +45,41 @@ document.addEventListener("DOMContentLoaded", () => {
   async function runSequence() {
     // Phase 1: Boot lines appear one by one
     for (const line of bootLines) {
-      await showElement(line, 200);
-      await sleep(300 + Math.random() * 200); // Random delay for realism
+      await showElement(line, 120);
+      await sleep(140 + Math.random() * 60); // Random delay for realism
     }
 
-    await sleep(400);
+    await sleep(150);
 
     // Phase 2: Show test execution section
-    testExecution.style.transition = "opacity 0.4s ease";
+    testExecution.style.transition = "opacity 0.25s ease";
     testExecution.style.opacity = "1";
-    await sleep(500);
+    await sleep(200);
 
     // Phase 3: Test cases pass one by one
     for (const testCase of testCases) {
-      await showElement(testCase, 250);
-      await sleep(400 + Math.random() * 300); // Simulate test running
+      await showElement(testCase, 150);
+      await sleep(250 + Math.random() * 100); // Simulate test running
     }
 
-    await sleep(300);
+    await sleep(150);
 
     // Phase 4: Show summary
     for (const line of summaryLines) {
-      line.style.transition = "opacity 0.3s ease";
+      line.style.transition = "opacity 0.2s ease";
       line.style.opacity = "1";
-      await sleep(200);
+      await sleep(120);
     }
 
-    await sleep(300);
+    await sleep(150);
 
     // Phase 5: Show system load progress
-    systemLoad.style.transition = "opacity 0.4s ease";
+    systemLoad.style.transition = "opacity 0.25s ease";
     systemLoad.style.opacity = "1";
 
     // Animate progress bar
     let progress = 0;
-    const progressDuration = 1500;
+    const progressDuration = 800;
     const progressStart = Date.now();
 
     await new Promise((resolve) => {
@@ -93,20 +93,20 @@ document.addEventListener("DOMContentLoaded", () => {
           clearInterval(progressInterval);
           resolve();
         }
-      }, 30);
+      }, 20);
     });
 
-    await sleep(300);
+    await sleep(150);
 
     // Phase 6: Show final status
-    await showElement(finalStatus, 400);
-    await sleep(800);
+    await showElement(finalStatus, 250);
+    await sleep(400);
 
     // Phase 7: Fade out everything and redirect
-    loadingContainer.style.transition = "opacity 0.6s ease";
+    loadingContainer.style.transition = "opacity 0.5s ease";
     loadingContainer.style.opacity = "0";
 
-    await sleep(700);
+    await sleep(550);
 
     // Redirect to home
     window.location.href = "home.html";
