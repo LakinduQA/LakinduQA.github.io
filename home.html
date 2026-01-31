@@ -3846,7 +3846,7 @@
               </div>
               <span class="project-category">Data Validation</span>
             </div>
-            <h3 class="project-title">HackerNews Sorting Test</h3>
+            <h3 class="project-title">HackerNews Sorting Validator</h3>
             <p class="project-desc">
               Playwright tests validating 100 articles sorting logic. Data
               integrity verification with automated assertions.
@@ -3860,7 +3860,7 @@
             </div>
             <div class="project-link-wrap">
               <a
-                href="https://github.com/LakinduQA/hacker-news-sorting-test"
+                href="https://github.com/LakinduQA/hacker-news-sorting-validator"
                 target="_blank"
                 class="project-link"
                 ><i class="fab fa-github"></i> View on GitHub</a
@@ -4026,10 +4026,7 @@
 
         <div class="articles-grid">
           <div class="article-card">
-            <img
-              src="media\Article Banners\IMG_9321.PNG"
-              alt="From QA to QE"
-            />
+            <img src="media\Article Banners\IMG_9321.PNG" alt="From QA to QE" />
             <div class="article-content">
               <div class="article-platform">LINKEDIN</div>
               <h4>From Quality Assurance to Quality Engineering</h4>
@@ -4449,7 +4446,7 @@
       // Scroll Reveal Animation
       function revealOnScroll() {
         const reveals = document.querySelectorAll(
-          ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+          ".reveal, .reveal-left, .reveal-right, .reveal-scale",
         );
         const windowHeight = window.innerHeight;
         const revealPoint = 120;
@@ -4520,7 +4517,7 @@
             tipColor = interpolateColor(
               colors[i].color,
               colors[i + 1].color,
-              localProgress
+              localProgress,
             );
             break;
           }
@@ -4694,11 +4691,11 @@
 
         // Prepare elements: store their original segment texts so we can re-render on every scroll-in
         const decryptEls = Array.from(
-          document.querySelectorAll('[data-decrypt="true"]')
+          document.querySelectorAll('[data-decrypt="true"]'),
         );
         decryptEls.forEach((el) => {
           const segments = Array.from(el.querySelectorAll("span")).map(
-            (s) => s.textContent || ""
+            (s) => s.textContent || "",
           );
           // fallback: if no child spans, use textContent split by spaces
           if (segments.length === 0)
@@ -4718,7 +4715,7 @@
               }
             });
           },
-          { threshold: 0.35 }
+          { threshold: 0.35 },
         );
 
         decryptEls.forEach((el) => obs.observe(el));
