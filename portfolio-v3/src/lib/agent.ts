@@ -51,6 +51,7 @@ function documentResponse(document: PortfolioDocument, input: string): AgentResp
     id: makeId(), kind: "document", input,
     message: plainTextFromMarkdown(section),
     documentPath: document.path,
+    document,
     suggestions: document.id === "projects" ? ["/tools", "/experience", "/contact"] : ["/projects", "/skills", "/contact"],
   };
 }
@@ -64,6 +65,13 @@ export function resolveAgentQuery(rawInput: string, _theme: Theme = "dark"): Age
   const normalized = normalize(input);
   if (normalized === "/clear") return { id: makeId(), kind: "system", input, message: "Conversation cleared.", action: "clear" };
   if (normalized === "/ide" || normalized === "/ui") return { id: makeId(), kind: "system", input, message: "Opening the portfolio workspace…", documentPath: ROOT_DOCUMENT_PATH, action: "enter-ide" };
+  if (normalized.startsWith("/ide ")) {
+    const requestedId = normalized.slice(5).trim().replace(/\.md$/, "");
+    const requestedDocument = portfolioDocuments.find((document) => document.id === requestedId || document.shortTitle.replace(/\.md$/, "") === requestedId);
+    if (requestedDocument) {
+      return { id: makeId(), kind: "system", input, message: `Opening ${requestedDocument.path}…`, documentPath: requestedDocument.path, document: requestedDocument, action: "enter-ide" };
+    }
+  }
   if (normalized === "/theme") return { id: makeId(), kind: "system", input, message: "Theme changed.", action: "toggle-theme" };
   if (normalized === "/help" || normalized === "help") {
     return {

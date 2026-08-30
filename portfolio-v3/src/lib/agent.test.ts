@@ -8,6 +8,7 @@ describe("portfolio agent", () => {
     const result = resolveAgentQuery("/experience");
     expect(result.kind).toBe("document");
     expect(result.documentPath).toBe("portfolio/career/experience.md");
+    expect(result.document?.markdown).toContain("# Experience");
     expect(result.message).toContain("Quality Engineering Intern at Codimite");
   });
 
@@ -38,6 +39,7 @@ describe("portfolio agent", () => {
 
   it("returns explicit workspace actions", () => {
     expect(resolveAgentQuery("/ide").action).toBe("enter-ide");
+    expect(resolveAgentQuery("/ide experience").documentPath).toBe("portfolio/career/experience.md");
     expect(resolveAgentQuery("/theme").action).toBe("toggle-theme");
     expect(resolveAgentQuery("/clear").action).toBe("clear");
   });

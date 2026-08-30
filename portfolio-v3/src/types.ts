@@ -34,8 +34,45 @@ export interface AgentResponse {
   input?: string;
   message: string;
   documentPath?: string;
+  document?: PortfolioDocument;
   suggestions?: string[];
   action?: "enter-ide" | "clear" | "toggle-theme";
+}
+
+export type TerminalRunState = "idle" | "thinking" | "streaming" | "completed" | "cancelled" | "error";
+
+export type TerminalInlineToken = {
+  type: "text" | "emphasis" | "strong" | "code" | "link";
+  text: string;
+  href?: string;
+};
+
+export interface TerminalOutputBlock {
+  id: string;
+  type: "heading" | "paragraph" | "list" | "code" | "link" | "spacer" | "divider";
+  content: string;
+  level?: number;
+  ordered?: boolean;
+  language?: string;
+  href?: string;
+  tokens?: TerminalInlineToken[];
+}
+
+export interface TerminalExecutionMetrics {
+  startedAt: number;
+  elapsedMs: number;
+  linesPrinted: number;
+}
+
+export interface TerminalTranscriptEntry {
+  id: string;
+  command: string;
+  state: TerminalRunState;
+  phase?: string;
+  response: AgentResponse;
+  blocks: TerminalOutputBlock[];
+  activeBlock?: TerminalOutputBlock;
+  metrics: TerminalExecutionMetrics;
 }
 
 export interface ChatMessage {
