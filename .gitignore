@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.npm-cache/
+.npm-prefix/
+playwright-report/
+test-results/
+coverage/
+*.local
+.env
+.DS_Store
