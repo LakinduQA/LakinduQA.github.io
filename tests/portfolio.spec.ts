@@ -76,7 +76,7 @@ test("standalone intro types Assert and hands off to the rendered terminal", asy
   await expect(intro).toContainText("lakindu@portfolio:~$");
   await expect(intro).not.toContainText(/PowerShell|Windows/i);
   await expect(page.locator("#root")).toHaveAttribute("aria-hidden", "true");
-  expect(await page.locator("#root").evaluate((element) => element.inert)).toBe(true);
+  expect(await page.locator("#root").evaluate((element) => (element as HTMLElement).inert)).toBe(true);
 
   await expect(page.locator("#assert-intro-command")).toHaveText("assert");
   await expect(page.locator("#assert-intro-initializing")).toBeVisible();
