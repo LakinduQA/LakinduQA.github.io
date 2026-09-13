@@ -1,12 +1,11 @@
-# Portfolio V3 agent instructions
+# Portfolio agent instructions
 
 ## Scope
 
-- Treat this directory as the complete source root for Portfolio V3.
-- During development, create and edit application files only inside this directory.
-- Files in `D:/lakindu-portfolio/` outside this directory are read-only references for verified personal content.
-- Do not import legacy components, styles, dependencies, or build configuration.
-- The final release may promote this directory's contents to the repository root and remove the legacy site only because the user explicitly approved that cutover.
+- Treat this repository as the complete and current source of truth for the portfolio.
+- Work only with files and structure present in this repository.
+- Do not read, copy, or import application code, content, styles, dependencies, or configuration from other directories or older checkouts unless the user explicitly asks for it.
+- Inspect the current repository before making changes; do not rely on paths or architecture from previous versions.
 
 ## Product rules
 
@@ -20,7 +19,7 @@
 
 ## Quality and Git
 
-- Run type checking, tests, and a production build before commits.
-- Use focused Conventional Commits and `v3/`-prefixed milestone branches.
+- Run `npm run check` before commits, plus relevant end-to-end tests when a change affects browser workflows.
+- Use focused Conventional Commits.
 - Never commit generated builds, caches, dependencies, secrets, or local environment files.
 - Do not push, force-push, or alter remotes without explicit user approval.

@@ -65,6 +65,7 @@ export function Terminal({ theme, active = true, compact = false, focusRequest =
   themeRef.current = theme;
 
   const running = runState === "thinking" || runState === "streaming";
+  const commandPlaceholder = running ? `${agentName} is working…` : `Ask ${agentName} about Lakindu or type / for commands`;
   const matches = useMemo(() => {
     if (!suggestionsOpen || !input.startsWith("/")) return [];
     return slashCommands.filter((item) => item.command.startsWith(input.toLowerCase())).slice(0, 7);
@@ -437,7 +438,10 @@ export function Terminal({ theme, active = true, compact = false, focusRequest =
           <form onSubmit={submit}>
             <span className="terminal-prompt-mark" aria-hidden="true">›</span>
             <label className="sr-only" htmlFor={compact ? "dock-command" : "terminal-command"}>Terminal command</label>
-            <input ref={inputRef} id={compact ? "dock-command" : "terminal-command"} value={input} maxLength={300} disabled={running} onChange={(event) => { setInput(event.target.value); setSelectedSuggestion(0); setSuggestionsOpen(event.target.value.startsWith("/")); }} onKeyDown={onKeyDown} placeholder={running ? `${agentName} is working…` : `Ask ${agentName} about Lakindu or type / for commands`} autoComplete="off" spellCheck="false" autoFocus={!compact && active} />
+            <div className="terminal-command-input">
+              <input ref={inputRef} id={compact ? "dock-command" : "terminal-command"} value={input} maxLength={300} disabled={running} onChange={(event) => { setInput(event.target.value); setSelectedSuggestion(0); setSuggestionsOpen(event.target.value.startsWith("/")); }} onKeyDown={onKeyDown} placeholder={commandPlaceholder} autoComplete="off" spellCheck="false" autoFocus={!compact && active} />
+              {!input && <span className="terminal-input-placeholder" aria-hidden="true">{commandPlaceholder}</span>}
+            </div>
             <button type="submit" aria-label="Run command" disabled={running || !input.trim()}><TerminalSquare size={16} /></button>
           </form>
           <div className="terminal-shortcuts" aria-hidden="true"><span>↑↓ history</span><span>tab complete</span><span>ctrl+l clear</span><span>ctrl+c cancel</span></div>
