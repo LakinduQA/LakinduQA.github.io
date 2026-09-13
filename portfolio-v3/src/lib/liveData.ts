@@ -1,6 +1,6 @@
-import { fallbackArticles } from "../data/articles";
 import { featuredProjects } from "../data/projects";
-import type { Article, Project } from "../types";
+import { portfolioSettings } from "../data/settings";
+import type { Project } from "../types";
 
 interface GitHubRepository {
   name: string;
@@ -27,7 +27,9 @@ async function fetchWithTimeout(url: string, timeoutMs = 5500): Promise<Response
 
 export async function loadProjects(): Promise<LiveResult<Project[]>> {
   try {
-    const response = await fetchWithTimeout("https://api.github.com/users/LakinduQA/repos?per_page=100&sort=updated");
+    const account = new URL(portfolioSettings["contact.github"]).pathname.split("/").filter(Boolean)[0];
+    if (!account) throw new Error("GitHub profile URL has no account name");
+    const response = await fetchWithTimeout(`https://api.github.com/users/${encodeURIComponent(account)}/repos?per_page=100&sort=updated`);
     if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
     const repositories = (await response.json()) as GitHubRepository[];
     if (!Array.isArray(repositories)) throw new Error("Unexpected GitHub response");
@@ -38,7 +40,6 @@ export async function loadProjects(): Promise<LiveResult<Project[]>> {
       return live ? {
         ...project,
         url: live.html_url || project.url,
-        description: live.description || project.description,
         stars: live.stargazers_count,
         updatedAt: live.updated_at,
       } : project;
@@ -46,17 +47,5 @@ export async function loadProjects(): Promise<LiveResult<Project[]>> {
     return { data: merged, source: "live" };
   } catch {
     return { data: featuredProjects, source: "fallback" };
-  }
-}
-
-export async function loadArticles(): Promise<LiveResult<Article[]>> {
-  try {
-    const response = await fetchWithTimeout(`${import.meta.env.BASE_URL}data/medium.json`, 3500);
-    if (!response.ok) throw new Error("Medium snapshot unavailable");
-    const articles = (await response.json()) as Article[];
-    if (!Array.isArray(articles) || articles.length === 0) throw new Error("Medium snapshot empty");
-    return { data: articles, source: "live" };
-  } catch {
-    return { data: fallbackArticles, source: "fallback" };
   }
 }

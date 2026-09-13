@@ -18,7 +18,7 @@ export interface Article { title: string; description: string; url: string; cate
 export interface SkillGroup { title: string; skills: string[] }
 
 export interface PortfolioDocument {
-  id: string;
+  id: PortfolioDocumentId;
   path: string;
   title: string;
   shortTitle: string;
@@ -83,3 +83,4 @@ export interface ChatMessage {
   suggestions?: string[];
   error?: boolean;
 }
+import type { PortfolioDocumentId } from "./lib/contentConfig";

@@ -9,13 +9,15 @@ describe("portfolio agent", () => {
     expect(result.kind).toBe("document");
     expect(result.documentPath).toBe("portfolio/career/experience.md");
     expect(result.document?.markdown).toContain("# Experience");
-    expect(result.message).toContain("Quality Engineering Intern at Codimite");
+    expect(result.message).toContain("Quality Engineering career at Codimite");
+    expect(result.document?.markdown).toContain("Associate QA Engineer");
+    expect(result.document?.markdown).toContain("Intern QA Engineer");
   });
 
   it("resolves bounded natural-language questions", () => {
     const result = resolveAgentQuery("Which tools does he use?");
     expect(result.documentPath).toBe("portfolio/toolbox/tools.md");
-    expect(result.message).toContain("Playwright");
+    expect(result.document?.markdown).toContain("Playwright");
   });
 
   it("rejects unrelated prompts with useful suggestions", () => {

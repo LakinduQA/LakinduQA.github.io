@@ -1,13 +1,17 @@
-import { ArrowDown, ExternalLink, FastForward, Square, TerminalSquare } from "lucide-react";
-import { type FormEvent, type KeyboardEvent, type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ArrowDown, Command, ExternalLink, FastForward, Moon, Square, Sun, TerminalSquare } from "lucide-react";
+import { type FormEvent, type KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { portfolioSettings } from "../data/settings";
 import { resolveAgentQuery, slashCommands } from "../lib/agent";
 import { parseMarkdownForTerminal, parseTerminalInline } from "../lib/terminalMarkdown";
 import { deterministicThinkingDelay, streamSlices, terminalLineCount } from "../lib/terminalRuntime";
 import type { AgentResponse, TerminalOutputBlock, TerminalRunState, TerminalTranscriptEntry, Theme } from "../types";
+import { AgentMarkdownBlock } from "./AgentMarkdown";
 
 interface TerminalProps {
   theme: Theme;
+  active?: boolean;
   compact?: boolean;
+  focusRequest?: number;
   onOpenDocument: (path: string) => void;
   onEnterIde: () => void;
   onToggleTheme: () => void;
@@ -23,39 +27,20 @@ interface ActiveRun {
 }
 
 const phaseLabels = ["Matching portfolio context", "Formatting terminal output"];
+const INITIAL_PROFILE_DELAY_MS = 500;
+const INTRO_COMPLETE_EVENT = "portfolio:intro-complete";
 
 function formatElapsed(elapsedMs: number): string {
   return `${(elapsedMs / 1000).toFixed(2)}s`;
-}
-
-function tokensFor(block: TerminalOutputBlock): ReactNode {
-  return (block.tokens ?? parseTerminalInline(block.content)).map((token, index) => {
-    const key = `${block.id}-${index}`;
-    if (token.type === "link") return <a key={key} href={token.href} target="_blank" rel="noreferrer">{token.text} <span aria-hidden="true">↗</span><span className="terminal-link-destination">{token.href}</span></a>;
-    if (token.type === "code") return <code key={key}>{token.text}</code>;
-    if (token.type === "strong") return <strong key={key}>{token.text}</strong>;
-    if (token.type === "emphasis") return <em key={key}>{token.text}</em>;
-    return <span key={key}>{token.text}</span>;
-  });
-}
-
-function OutputBlock({ block, active = false }: { block: TerminalOutputBlock; active?: boolean }) {
-  const content = tokensFor(block);
-  const cursor = active ? <span className="terminal-stream-cursor" aria-hidden="true" /> : null;
-  if (block.type === "spacer") return <div className="terminal-output-spacer" aria-hidden="true" />;
-  if (block.type === "divider") return <div className="terminal-output-divider" aria-hidden="true">────────────────────────────────</div>;
-  if (block.type === "heading") return <div className={`terminal-output-heading terminal-output-heading--${block.level ?? 2}`} role="heading" aria-level={block.level ?? 2}><span className="terminal-heading-mark">{"#".repeat(block.level ?? 2)}</span> {content}{cursor}</div>;
-  if (block.type === "list") return <div className="terminal-output-list"><span aria-hidden="true">{block.ordered ? "1." : "•"}</span><div>{content}{cursor}</div></div>;
-  if (block.type === "code") return <pre className="terminal-output-code"><span className="terminal-code-language">{block.language || "text"}</span><code>{block.content}</code>{cursor}</pre>;
-  if (block.type === "link") return <div className="terminal-output-link">{content}{cursor}</div>;
-  return <p className="terminal-output-paragraph">{content}{cursor}</p>;
 }
 
 function createFrames(blocks: TerminalOutputBlock[]) {
   return blocks.flatMap((block, blockIndex) => streamSlices(block.content, block.type).map((content) => ({ blockIndex, content })));
 }
 
-export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, onToggleTheme }: TerminalProps) {
+export function Terminal({ theme, active = true, compact = false, focusRequest = 0, onOpenDocument, onEnterIde, onToggleTheme }: TerminalProps) {
+  const agentName = portfolioSettings["agent.name"];
+  const agentMark = portfolioSettings["agent.mark"];
   const [input, setInput] = useState("");
   const [entries, setEntries] = useState<TerminalTranscriptEntry[]>([]);
   const [runState, setRunState] = useState<TerminalRunState>("idle");
@@ -70,6 +55,14 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
   const activeRunRef = useRef<ActiveRun | null>(null);
   const timersRef = useRef<Array<ReturnType<typeof setTimeout> | ReturnType<typeof setInterval>>>([]);
   const followOutputRef = useRef(true);
+  const visitorStartedRef = useRef(false);
+  const activeRef = useRef(active);
+  const wasActiveRef = useRef(active);
+  const themeRef = useRef(theme);
+  const initialProfileStateRef = useRef<"idle" | "waiting" | "scheduled" | "attempted">("idle");
+
+  activeRef.current = active;
+  themeRef.current = theme;
 
   const running = runState === "thinking" || runState === "streaming";
   const matches = useMemo(() => {
@@ -109,7 +102,7 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
       : active.response.message);
     activeRunRef.current = null;
     setRunState(finalState);
-    requestAnimationFrame(() => inputRef.current?.focus());
+    if (activeRef.current) requestAnimationFrame(() => inputRef.current?.focus());
   }, [clearTimers, updateEntry]);
 
   const cancelRun = useCallback(() => {
@@ -127,7 +120,7 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
     activeRunRef.current = null;
     setRunState("cancelled");
     setAccessibleResult("Command cancelled.");
-    requestAnimationFrame(() => inputRef.current?.focus());
+    if (activeRef.current) requestAnimationFrame(() => inputRef.current?.focus());
   }, [clearTimers, updateEntry]);
 
   const showNow = useCallback(() => {
@@ -212,6 +205,7 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
     if (activeRunRef.current) return;
     const query = rawQuery.trim();
     if (!query) return;
+    visitorStartedRef.current = true;
     const response = resolveAgentQuery(query, theme);
     setInput("");
     setSuggestionsOpen(false);
@@ -258,6 +252,38 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
   useEffect(() => () => clearTimers(), [clearTimers]);
 
   useEffect(() => {
+    if (compact || initialProfileStateRef.current === "attempted") return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const scheduleInitialProfile = () => {
+      if (initialProfileStateRef.current === "scheduled" || initialProfileStateRef.current === "attempted") return;
+      initialProfileStateRef.current = "scheduled";
+      timer = setTimeout(() => {
+        initialProfileStateRef.current = "attempted";
+        if (visitorStartedRef.current || activeRunRef.current) return;
+        runAnimatedResponse("read portfolio/README.md", resolveAgentQuery("/home", themeRef.current));
+      }, INITIAL_PROFILE_DELAY_MS);
+    };
+
+    if (document.documentElement.classList.contains("assert-intro-active")) {
+      initialProfileStateRef.current = "waiting";
+      window.addEventListener(INTRO_COMPLETE_EVENT, scheduleInitialProfile, { once: true });
+    } else {
+      scheduleInitialProfile();
+    }
+
+    return () => {
+      window.removeEventListener(INTRO_COMPLETE_EVENT, scheduleInitialProfile);
+      if (timer) {
+        clearTimeout(timer);
+        if (initialProfileStateRef.current === "scheduled") initialProfileStateRef.current = "idle";
+      } else if (initialProfileStateRef.current === "waiting") {
+        initialProfileStateRef.current = "idle";
+      }
+    };
+  }, [compact, runAnimatedResponse]);
+
+  useEffect(() => {
+    if (!active) return;
     const onWindowKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.ctrlKey && event.key.toLowerCase() === "l") {
         event.preventDefault();
@@ -275,12 +301,22 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
     };
     window.addEventListener("keydown", onWindowKeyDown);
     return () => window.removeEventListener("keydown", onWindowKeyDown);
-  }, [cancelRun, clearTranscript, showNow]);
+  }, [active, cancelRun, clearTranscript, showNow]);
 
   useEffect(() => {
     const log = logRef.current;
     if (log && followOutputRef.current) log.scrollTop = log.scrollHeight;
   }, [entries]);
+
+  useEffect(() => {
+    if (active && focusRequest > 0 && !running) inputRef.current?.focus();
+  }, [active, focusRequest, running]);
+
+  useEffect(() => {
+    const wasActive = wasActiveRef.current;
+    wasActiveRef.current = active;
+    if (active && !wasActive && !running) requestAnimationFrame(() => inputRef.current?.focus());
+  }, [active, running]);
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
@@ -340,16 +376,28 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
   };
 
   return (
-    <section className={`agent-terminal ${compact ? "agent-terminal--compact" : ""}`} aria-label="Lakindu portfolio terminal">
+    <section className={`agent-terminal ${compact ? "agent-terminal--compact" : ""}`} aria-label={`${portfolioSettings["identity.name"]} portfolio terminal`}>
+      {!compact && (
+        <nav className="terminal-utilitybar" aria-label="Terminal actions">
+          <span><TerminalSquare size={14} /> portfolio terminal</span>
+          <div>
+            <button type="button" onClick={onToggleTheme} aria-label={`Use ${theme === "dark" ? "light" : "dark"} theme`}>{theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}</button>
+            <button type="button" onClick={onEnterIde}><Command size={14} /> Switch to IDE</button>
+          </div>
+        </nav>
+      )}
       <div className="terminal-session">
         <div className="terminal-log" ref={logRef} onScroll={onLogScroll} role="log" aria-live="off" aria-label="Terminal transcript">
           {!compact ? (
-            <div className="terminal-boot" aria-label="Lakindu Portfolio Codex startup">
-              <pre>{`╭──────────────────────────────────────────────╮\n│ >_ LAKINDU PORTFOLIO CODEX                   │\n│ local agent · read-only portfolio workspace  │\n╰──────────────────────────────────────────────╯`}</pre>
-              <dl><div><dt>workspace</dt><dd>~/portfolio</dd></div><div><dt>profile</dt><dd>Quality Engineering Intern</dd></div><div><dt>source</dt><dd>verified Markdown documents</dd></div></dl>
+            <div className="terminal-boot" aria-label={`${agentName} portfolio agent startup`}>
+              <div className="terminal-boot-box">
+                <span className="terminal-boot-mark">{agentMark}</span>
+                <span>local agent · read-only portfolio workspace</span>
+              </div>
+              <dl><div><dt>workspace</dt><dd>~/portfolio</dd></div><div><dt>profile</dt><dd>{portfolioSettings["identity.role"]}</dd></div><div><dt>source</dt><dd>verified Markdown documents</dd></div></dl>
               <p>Type <button type="button" onClick={() => runQuery("/help")}>/help</button> for commands or ask a question.</p>
             </div>
-          ) : <div className="terminal-compact-boot"><span>&gt;_ portfolio</span><span>read-only session</span></div>}
+          ) : <div className="terminal-compact-boot"><span>{agentMark}</span><span>read-only session</span></div>}
 
           {entries.map((entry) => (
             <article className={`terminal-entry terminal-entry--${entry.state}`} key={entry.id} data-state={entry.state}>
@@ -362,14 +410,14 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
                 </div>
               )}
               <div className="terminal-document-output">
-                {entry.blocks.map((block) => <OutputBlock key={block.id} block={block} />)}
-                {entry.activeBlock && <OutputBlock block={entry.activeBlock} active />}
+                {entry.blocks.map((block) => <AgentMarkdownBlock key={block.id} block={block} />)}
+                {entry.activeBlock && <AgentMarkdownBlock block={entry.activeBlock} active />}
               </div>
               {entry.state === "cancelled" && <div className="terminal-cancelled">^C  Command cancelled after {formatElapsed(entry.metrics.elapsedMs)}</div>}
               {(entry.state === "completed" || entry.state === "error") && entry.response.kind !== "system" && (
                 <footer className="terminal-completion">
                   <div><span>{entry.state === "error" ? "error" : "done"}</span><span>{formatElapsed(entry.metrics.elapsedMs)}</span><span>{entry.metrics.linesPrinted} lines</span></div>
-                  {entry.response.documentPath && <div className="terminal-source"><span>source</span><code>{entry.response.documentPath}</code><button type="button" onClick={() => onOpenDocument(entry.response.documentPath!)}>Open in IDE <ExternalLink size={13} /></button></div>}
+                  {entry.response.documentPath && <div className="terminal-source"><span>source</span><code>{entry.response.documentPath}</code><button type="button" aria-label={`Open in IDE: ${entry.response.documentPath}`} onClick={() => onOpenDocument(entry.response.documentPath!)}>Open in IDE <ExternalLink size={13} /></button></div>}
                   {entry.response.suggestions?.length ? <div className="terminal-next"><span>next</span>{entry.response.suggestions.map((suggestion) => <button type="button" key={suggestion} onClick={() => runQuery(suggestion)}>{suggestion}</button>)}</div> : null}
                 </footer>
               )}
@@ -389,7 +437,7 @@ export function Terminal({ theme, compact = false, onOpenDocument, onEnterIde, o
           <form onSubmit={submit}>
             <span className="terminal-prompt-mark" aria-hidden="true">›</span>
             <label className="sr-only" htmlFor={compact ? "dock-command" : "terminal-command"}>Terminal command</label>
-            <input ref={inputRef} id={compact ? "dock-command" : "terminal-command"} value={input} maxLength={300} disabled={running} onChange={(event) => { setInput(event.target.value); setSelectedSuggestion(0); setSuggestionsOpen(event.target.value.startsWith("/")); }} onKeyDown={onKeyDown} placeholder={running ? "Command running…" : "Ask about Lakindu or type / for commands"} autoComplete="off" spellCheck="false" autoFocus={!compact} />
+            <input ref={inputRef} id={compact ? "dock-command" : "terminal-command"} value={input} maxLength={300} disabled={running} onChange={(event) => { setInput(event.target.value); setSelectedSuggestion(0); setSuggestionsOpen(event.target.value.startsWith("/")); }} onKeyDown={onKeyDown} placeholder={running ? `${agentName} is working…` : `Ask ${agentName} about Lakindu or type / for commands`} autoComplete="off" spellCheck="false" autoFocus={!compact && active} />
             <button type="submit" aria-label="Run command" disabled={running || !input.trim()}><TerminalSquare size={16} /></button>
           </form>
           <div className="terminal-shortcuts" aria-hidden="true"><span>↑↓ history</span><span>tab complete</span><span>ctrl+l clear</span><span>ctrl+c cancel</span></div>

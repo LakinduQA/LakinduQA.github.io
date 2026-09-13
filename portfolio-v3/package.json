@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc -b && vite build && node scripts/fetch-medium.mjs",
+    "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc -b --pretty false",
     "test": "vitest run",
@@ -39,4 +39,3 @@
     "vitest": "^2.1.8"
   }
 }
-

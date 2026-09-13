@@ -2,11 +2,15 @@
 
 ## Summary
 
-Lakindu can be contacted by email at lakindudesilva007@gmail.com or through LinkedIn and GitHub for quality engineering opportunities, project conversations, and discussions about thoughtful testing.
+Lakindu is open to conversations around quality engineering, automation, software engineering, AI-assisted development, projects, and opportunities to learn or collaborate.
 
-## Direct links
+## Get in touch
 
-- [Email Lakindu](mailto:lakindudesilva007@gmail.com)
-- [LinkedIn](https://www.linkedin.com/in/lakindu-de-silva)
-- [GitHub](https://github.com/LakinduQA)
-- [Medium](https://medium.com/@lakindudesilva007)
+If you'd like to talk about quality engineering, automation, software, projects, or something I've written, feel free to reach out.
+
+- [Email Lakindu](mailto:{{contact.email}})
+- [LinkedIn]({{contact.linkedin}})
+- [GitHub]({{contact.github}})
+- [Medium]({{contact.medium}})
+- [Portfolio]({{contact.website}})
+

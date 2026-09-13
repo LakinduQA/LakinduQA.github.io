@@ -4,31 +4,444 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#090b0f" />
-    <meta name="description" content="Lakindu De Silva is a Quality Engineering intern and Information Technology for Business undergraduate focused on automation, APIs, performance, security, and thoughtful software quality." />
-    <meta name="author" content="Lakindu De Silva" />
+    <meta name="description" content="{{seo.description}}" />
+    <meta name="author" content="{{identity.name}}" />
+    <meta name="google-site-verification" content="dO4eFPMtvHbfTNPqoY8zkGnM1XNC778ci9Ug_Z_XPsU" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lakinduqa.github.io/" />
-    <meta property="og:title" content="Lakindu De Silva — Quality Engineer" />
-    <meta property="og:description" content="Explore Lakindu's quality engineering work through a guided portfolio agent and VS Code-inspired workspace." />
-    <meta property="og:image" content="https://lakinduqa.github.io/profile-lakindu.jpeg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://lakinduqa.github.io/" />
+    <meta property="og:url" content="{{contact.website}}" />
+    <meta property="og:title" content="{{seo.title}}" />
+    <meta property="og:description" content="{{seo.socialDescription}}" />
+    <meta property="og:site_name" content="{{identity.name}}" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="{{seo.image}}" />
+    <meta property="og:image:secure_url" content="{{seo.image}}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1661" />
+    <meta property="og:image:alt" content="{{portrait.alt}}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{seo.title}}" />
+    <meta name="twitter:description" content="{{seo.socialDescription}}" />
+    <meta name="twitter:image" content="{{seo.image}}" />
+    <meta name="twitter:image:alt" content="{{portrait.alt}}" />
+    <link rel="canonical" href="{{contact.website}}" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090b0f'/%3E%3Cpath d='m16 21 10 11-10 11M31 43h17' fill='none' stroke='%237ee787' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-    <title>Lakindu De Silva — Quality Engineer</title>
+    <script>
+      (() => {
+        const page = document.documentElement;
+        page.classList.add("js-enabled");
+        try {
+          if (localStorage.getItem("portfolio-theme") === "light") page.dataset.theme = "light";
+        } catch {
+          // Storage can be unavailable in privacy-restricted browser contexts.
+        }
+        if (location.hash === "" || location.hash === "#terminal") {
+          page.classList.add("assert-intro-active");
+          page.dataset.assertIntroMotion = matchMedia("(prefers-reduced-motion: reduce)").matches ? "reduced" : "full";
+        }
+      })();
+    </script>
+    <style>
+      .skip-link { position: fixed; top: 8px; left: 8px; transform: translateY(-160%); }
+      .skip-link:focus { transform: translateY(0); }
+      .js-enabled [data-static-profile="true"] { display: none; }
+      #assert-intro { display: none; }
+      #assert-intro [hidden] { display: none; }
+      .assert-intro-active body { margin: 0; min-width: 320px; overflow: hidden; background: #090b0f; }
+      .assert-intro-active[data-theme="light"] body { background: #edf0f4; }
+      .assert-intro-active #root { visibility: hidden; }
+      .assert-intro-active #assert-intro {
+        --intro-bg: #090b0f;
+        --intro-chrome: #101319;
+        --intro-border: #262c36;
+        --intro-border-soft: #1c222b;
+        --intro-text: #edf1f7;
+        --intro-text-2: #bdc5d1;
+        --intro-muted: #77808e;
+        --intro-accent: #76e58a;
+        --intro-blue: #72a7ff;
+        position: fixed;
+        z-index: 900;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: var(--intro-bg);
+        color: var(--intro-text-2);
+        opacity: 1;
+        transition: opacity 180ms ease;
+        font: 13px/1.62 "JetBrains Mono", monospace;
+      }
+      .assert-intro-active[data-theme="light"] #assert-intro {
+        --intro-bg: #edf0f4;
+        --intro-chrome: #f5f6f8;
+        --intro-border: #cfd5df;
+        --intro-border-soft: #e1e5eb;
+        --intro-text: #17202b;
+        --intro-text-2: #495363;
+        --intro-muted: #727c8b;
+        --intro-accent: #168b3c;
+        --intro-blue: #1664c0;
+      }
+      .assert-intro-active.assert-intro-leaving #root { visibility: visible; }
+      .assert-intro-active.assert-intro-leaving #assert-intro { pointer-events: none; opacity: 0; }
+      .assert-intro-utilitybar {
+        min-height: 39px;
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0 clamp(18px, 4vw, 52px);
+        border-bottom: 1px solid var(--intro-border-soft);
+        background: var(--intro-chrome);
+        color: var(--intro-muted);
+        font-size: 10px;
+      }
+      .assert-intro-utilitybar > span,
+      .assert-intro-utilitybar > div { display: flex; align-items: center; gap: 7px; }
+      .assert-intro-terminal-icon { color: var(--intro-accent); font-size: 13px; font-weight: 600; }
+      .assert-intro-utilitybar button {
+        min-height: 30px;
+        display: inline-flex;
+        align-items: center;
+        border: 0;
+        border-radius: 3px;
+        padding: 0 8px;
+        background: transparent;
+        color: var(--intro-text-2);
+        cursor: pointer;
+        font: 10px "JetBrains Mono", monospace;
+      }
+      .assert-intro-utilitybar button:hover { background: var(--intro-border-soft); color: var(--intro-accent); }
+      .assert-intro-utilitybar button:focus-visible { outline: 2px solid var(--intro-accent); outline-offset: 2px; }
+      #assert-intro-reload { color: #ff7b72; }
+      .assert-intro-session {
+        position: relative;
+        width: min(980px, 100%);
+        min-height: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin: 0 auto;
+        padding: 0 clamp(18px, 4vw, 52px) max(12px, env(safe-area-inset-bottom));
+      }
+      .assert-intro-log {
+        min-width: 0;
+        min-height: 0;
+        flex: 1;
+        overflow: auto;
+        padding: clamp(28px, 6vh, 58px) 2px 28px;
+        overflow-wrap: anywhere;
+      }
+      .assert-intro-prompt { margin: 0; color: var(--intro-text); overflow-wrap: anywhere; }
+      .assert-intro-prompt-user { color: var(--intro-accent); }
+      #assert-intro-prompt[data-complete="true"] .assert-intro-cursor { display: none; }
+      .assert-intro-cursor {
+        display: inline-block;
+        width: 7px;
+        height: 1.05em;
+        margin-left: 3px;
+        vertical-align: -2px;
+        background: var(--intro-accent);
+        animation: assert-intro-blink .7s steps(1) infinite;
+      }
+      .assert-intro-initializing { margin: clamp(30px, 5vh, 48px) 0 0 22px; }
+      .assert-intro-brand {
+        max-width: 100%;
+        overflow: hidden;
+        margin: 0 0 13px;
+        color: var(--intro-accent);
+        font: 600 clamp(7px, 1.45vw, 13px)/1.05 "JetBrains Mono", monospace;
+        letter-spacing: 0;
+        white-space: pre;
+      }
+      .assert-intro-subtitle { margin: 0 0 24px; color: var(--intro-muted); font-size: 10px; letter-spacing: .08em; }
+      .assert-intro-status-heading { display: flex; align-items: center; gap: 10px; margin: 0 0 9px; color: var(--intro-text); }
+      .assert-intro-status-heading::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--intro-accent); box-shadow: 0 0 9px rgba(118, 229, 138, .45); }
+      .assert-intro-statuses { display: grid; gap: 5px; margin: 0 0 20px 4px; padding: 0; list-style: none; color: var(--intro-muted); }
+      .assert-intro-statuses li { display: grid; grid-template-columns: 26px minmax(0, 250px) auto; gap: 8px; align-items: baseline; }
+      .assert-intro-statuses li::before { content: "|--"; color: var(--intro-border); white-space: nowrap; }
+      .assert-intro-statuses li span:last-child { color: var(--intro-muted); }
+      .assert-intro-statuses li[data-state="active"] { color: var(--intro-text-2); }
+      .assert-intro-statuses li[data-state="active"]::before { color: var(--intro-blue); }
+      .assert-intro-statuses li[data-state="active"] span:last-child { color: var(--intro-blue); }
+      .assert-intro-statuses li[data-state="ready"] { color: var(--intro-text-2); }
+      .assert-intro-statuses li[data-state="ready"]::before,
+      .assert-intro-statuses li[data-state="ready"] span:last-child { color: var(--intro-accent); }
+      .assert-intro-ready { margin: 0 0 16px; color: var(--intro-accent); }
+      .assert-intro-entering { margin: 0; color: var(--intro-text); }
+      .assert-intro-entering span { color: var(--intro-accent); }
+      .assert-intro-composer { position: sticky; bottom: 0; flex: none; padding-top: 8px; background: linear-gradient(transparent, var(--intro-bg) 10px); }
+      .assert-intro-composer-line { min-height: 48px; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 5px; align-items: center; border-top: 1px solid var(--intro-border); color: var(--intro-muted); }
+      .assert-intro-composer-line span:first-child { color: var(--intro-accent); font-size: 20px; }
+      .assert-intro-shortcuts { min-height: 22px; display: flex; gap: 16px; align-items: center; border-top: 1px solid var(--intro-border-soft); color: var(--intro-muted); font-size: 9px; }
+      @keyframes assert-intro-blink { 50% { opacity: 0; } }
+      @media (max-width: 767px) {
+        .assert-intro-session { width: calc(100% - 26px); padding: 28px 0 max(12px, env(safe-area-inset-bottom)); }
+        .assert-intro-log { padding-top: 20px; }
+        .assert-intro-initializing { margin-left: 0; }
+        .assert-intro-subtitle { font-size: 8px; letter-spacing: .04em; }
+        .assert-intro-statuses li { grid-template-columns: 26px minmax(0, 1fr) auto; gap: 6px; }
+        .assert-intro-composer { padding-top: 4px; }
+        .assert-intro-composer-line { min-height: 54px; padding-left: 10px; }
+        .assert-intro-shortcuts { overflow: hidden; white-space: nowrap; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .assert-intro-active #assert-intro { transition: none; }
+        .assert-intro-cursor { animation: none; }
+      }
+    </style>
+    <title>{{seo.title}}</title>
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Person","name":"Lakindu De Silva","url":"https://lakinduqa.github.io/","jobTitle":"Quality Engineering Intern","sameAs":["https://github.com/LakinduQA","https://www.linkedin.com/in/lakindu-de-silva","https://medium.com/@lakindudesilva007"],"knowsAbout":["Software Testing","Test Automation","Playwright","API Testing","Performance Testing","Security Testing"]}
+      {{seo.jsonLd}}
     </script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to portfolio content</a>
-    <div id="root"></div>
-    <noscript>
-      <main style="font-family:system-ui;max-width:760px;margin:40px auto;padding:24px">
-        <h1>Lakindu De Silva — Quality Engineer</h1>
-        <p>Quality Engineering intern and Information Technology for Business undergraduate focused on manual testing, automation, APIs, performance, security, and accessibility.</p>
-        <p><a href="mailto:lakindudesilva007@gmail.com">Email</a> · <a href="https://github.com/LakinduQA">GitHub</a> · <a href="https://www.linkedin.com/in/lakindu-de-silva">LinkedIn</a> · <a href="https://medium.com/@lakindudesilva007">Medium</a></p>
+    <section id="assert-intro" aria-label="Assert loading intro">
+      <nav class="assert-intro-utilitybar" aria-label="Intro controls">
+        <span><span class="assert-intro-terminal-icon" aria-hidden="true">&gt;_</span> portfolio terminal</span>
+        <div>
+          <button id="assert-intro-reload" type="button" hidden>Reload portfolio</button>
+          <button id="assert-intro-skip" type="button">Skip intro</button>
+        </div>
+      </nav>
+      <div class="assert-intro-session">
+        <div class="assert-intro-log">
+          <div id="assert-intro-prompt">
+            <p class="assert-intro-prompt"><span class="assert-intro-prompt-user">lakindu@portfolio</span>:~$ <span id="assert-intro-command" aria-hidden="true"></span><span class="assert-intro-cursor" aria-hidden="true"></span></p>
+            <p id="assert-intro-typing-description" hidden>Typing the Assert command</p>
+          </div>
+          <div class="assert-intro-initializing" id="assert-intro-initializing" hidden>
+            <pre class="assert-intro-brand" role="img" aria-label="Assert">&gt;_       _        _____ _____ ______ _____ _______
+        / \      / ____/ ____|  ____|  __ \__   __|
+       / _ \    | (___| (___ | |__  | |__) | | |
+      / ___ \    \___ \\___ \|  __| |  _  /  | |
+     / /   \ \   ____) |___) | |____| | \ \  | |
+    /_/     \_\ |_____/_____/|______|_|  \_\ |_|</pre>
+            <p class="assert-intro-subtitle">LOCAL AGENT&nbsp; | &nbsp;PORTFOLIO WORKSPACE&nbsp; | &nbsp;READ-ONLY MODE</p>
+            <div aria-live="polite">
+              <p class="assert-intro-status-heading" id="assert-intro-status-heading">Initializing agent...</p>
+              <ul class="assert-intro-statuses">
+                <li id="assert-intro-workspace" data-state="active"><span>reading workspace</span><span>[ .. ]</span></li>
+                <li id="assert-intro-discovery"><span>discovering portfolio</span><span>[ -- ]</span></li>
+                <li id="assert-intro-index"><span>indexing knowledge</span><span>[ -- ]</span></li>
+                <li id="assert-intro-terminal"><span>preparing terminal</span><span>[ -- ]</span></li>
+              </ul>
+              <p class="assert-intro-ready" id="assert-intro-ready" hidden>Ready.</p>
+              <p class="assert-intro-entering" id="assert-intro-entering" hidden>&gt; entering <span>~/portfolio</span><span class="assert-intro-cursor" aria-hidden="true"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="assert-intro-composer" aria-hidden="true">
+          <div class="assert-intro-composer-line"><span>&gt;</span><span>Assert is preparing the portfolio terminal...</span></div>
+          <div class="assert-intro-shortcuts"><span>read-only workspace</span><span>verified Markdown</span><span>local agent</span></div>
+        </div>
+      </div>
+    </section>
+    <div id="root">
+      <main class="welcome-editor" id="main-content" data-static-profile="true">
+        <div class="welcome-main">
+          <div class="welcome-copy">
+            <div class="welcome-kicker"><span></span> PORTFOLIO WORKSPACE</div>
+            <h1>{{identity.name}}</h1>
+            <h2>{{identity.role}}</h2>
+            <p>{{identity.summary}}</p>
+            <nav class="static-profile-links" aria-label="Profile links">
+              <a href="mailto:{{contact.email}}">Email</a>
+              <a href="{{contact.github}}">GitHub</a>
+              <a href="{{contact.linkedin}}">LinkedIn</a>
+              <a href="{{contact.medium}}">Medium</a>
+            </nav>
+          </div>
+          <figure class="welcome-portrait">
+            <img src="/{{portrait.src}}" alt="{{portrait.alt}}" width="1200" height="1661" />
+            <figcaption><span>{{portrait.label}}</span><strong>{{portrait.caption}}</strong></figcaption>
+          </figure>
+        </div>
       </main>
-    </noscript>
+    </div>
+    <script>
+      (() => {
+        const page = document.documentElement;
+        if (!page.classList.contains("assert-intro-active")) return;
+
+        const root = document.getElementById("root");
+        const intro = document.getElementById("assert-intro");
+        const prompt = document.getElementById("assert-intro-prompt");
+        const initializing = document.getElementById("assert-intro-initializing");
+        const command = document.getElementById("assert-intro-command");
+        const workspaceStatus = document.getElementById("assert-intro-workspace");
+        const discoveryStatus = document.getElementById("assert-intro-discovery");
+        const indexStatus = document.getElementById("assert-intro-index");
+        const terminalStatus = document.getElementById("assert-intro-terminal");
+        const statusHeading = document.getElementById("assert-intro-status-heading");
+        const readyStatus = document.getElementById("assert-intro-ready");
+        const enteringStatus = document.getElementById("assert-intro-entering");
+        const skipButton = document.getElementById("assert-intro-skip");
+        const reloadButton = document.getElementById("assert-intro-reload");
+        const statuses = [workspaceStatus, discoveryStatus, indexStatus, terminalStatus];
+        const reducedMotion = page.dataset.assertIntroMotion === "reduced";
+        const sequenceTimers = [];
+        const introStartedAt = performance.now();
+        let applicationReady = false;
+        let animationReady = false;
+        let skipRequested = false;
+        let finished = false;
+
+        root.setAttribute("aria-hidden", "true");
+        root.inert = true;
+        intro.setAttribute("aria-describedby", "assert-intro-typing-description");
+
+        const schedule = (callback, delay) => {
+          const timer = setTimeout(callback, delay);
+          sequenceTimers.push(timer);
+        };
+        const clearSequence = () => {
+          while (sequenceTimers.length) clearTimeout(sequenceTimers.pop());
+        };
+        const setStatus = (status, state) => {
+          status.dataset.state = state;
+          status.lastElementChild.textContent = state === "ready" ? "[ OK ]" : state === "active" ? "[ .. ]" : "[ -- ]";
+        };
+        const showInitializing = () => {
+          prompt.dataset.complete = "true";
+          initializing.hidden = false;
+          intro.removeAttribute("aria-describedby");
+        };
+        const showReadyState = () => {
+          command.textContent = "assert";
+          showInitializing();
+          statuses.forEach((status) => setStatus(status, "ready"));
+          statusHeading.textContent = "Initializing agent...";
+          readyStatus.hidden = false;
+          enteringStatus.hidden = false;
+          intro.dataset.stage = "ready";
+        };
+        const focusTerminalWhenAvailable = () => {
+          const focusInput = () => {
+            const input = document.getElementById("terminal-command");
+            if (!(input instanceof HTMLInputElement) || input.disabled) return false;
+            input.focus({ preventScroll: true });
+            return true;
+          };
+          if (focusInput()) return;
+          const focusObserver = new MutationObserver(() => {
+            if (focusInput()) focusObserver.disconnect();
+          });
+          focusObserver.observe(root, { attributes: true, childList: true, subtree: true, attributeFilter: ["disabled"] });
+          setTimeout(() => focusObserver.disconnect(), 15000);
+        };
+        const handoff = () => {
+          if (finished || !applicationReady || (!animationReady && !skipRequested)) return;
+          finished = true;
+          clearSequence();
+          clearTimeout(failureTimer);
+          observer.disconnect();
+          root.inert = false;
+          root.removeAttribute("aria-hidden");
+          root.dataset.assertIntroDuration = String(Math.round(performance.now() - introStartedAt));
+          root.dataset.assertIntroMotion = reducedMotion ? "reduced" : "full";
+          root.dataset.assertIntroStage = intro.dataset.stage || "ready";
+          root.dataset.assertIntroTyped = command.textContent;
+          page.classList.add("assert-intro-leaving");
+          requestAnimationFrame(focusTerminalWhenAvailable);
+          setTimeout(() => {
+            intro.remove();
+            page.classList.remove("assert-intro-active", "assert-intro-leaving");
+            delete page.dataset.assertIntroMotion;
+            window.dispatchEvent(new Event("portfolio:intro-complete"));
+          }, reducedMotion ? 0 : 180);
+        };
+        const requestSkip = () => {
+          if (finished) return;
+          skipRequested = true;
+          clearSequence();
+          if (applicationReady) {
+            showReadyState();
+          } else {
+            command.textContent = "assert";
+            showInitializing();
+            statuses.forEach((status) => setStatus(status, "queued"));
+            setStatus(workspaceStatus, "active");
+            statusHeading.textContent = "Waiting for portfolio application...";
+            readyStatus.hidden = true;
+            enteringStatus.hidden = true;
+            intro.dataset.stage = "waiting";
+          }
+          handoff();
+        };
+
+        skipButton.addEventListener("click", requestSkip);
+        reloadButton.addEventListener("click", () => location.reload());
+        addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !finished) {
+            event.preventDefault();
+            requestSkip();
+          }
+        });
+
+        const observer = new MutationObserver(() => {
+          if (!root.firstElementChild) return;
+          applicationReady = true;
+          if (skipRequested) showReadyState();
+          handoff();
+        });
+        observer.observe(root, { childList: true });
+
+        if (reducedMotion) {
+          showReadyState();
+          schedule(() => {
+            animationReady = true;
+            handoff();
+          }, 180);
+        } else {
+          [..."assert"].forEach((character, index) => schedule(() => { command.textContent += character; }, 240 + (index * 85)));
+          schedule(showInitializing, 900);
+          schedule(() => {
+            setStatus(workspaceStatus, "ready");
+            setStatus(discoveryStatus, "active");
+          }, 1150);
+          schedule(() => {
+            setStatus(discoveryStatus, "ready");
+            setStatus(indexStatus, "active");
+          }, 1400);
+          schedule(() => {
+            setStatus(indexStatus, "ready");
+            setStatus(terminalStatus, "active");
+          }, 1650);
+          schedule(() => {
+            setStatus(terminalStatus, "ready");
+            readyStatus.hidden = false;
+          }, 1900);
+          schedule(() => {
+            enteringStatus.hidden = false;
+            intro.dataset.stage = "ready";
+          }, 2050);
+          schedule(() => {
+            animationReady = true;
+            handoff();
+          }, 2400);
+        }
+
+        const failureTimer = setTimeout(() => {
+          if (applicationReady || finished) return;
+          clearSequence();
+          command.textContent = "assert";
+          showInitializing();
+          statuses.forEach((status) => setStatus(status, "queued"));
+          setStatus(terminalStatus, "active");
+          statusHeading.textContent = "The portfolio did not start. Reload to try again.";
+          readyStatus.hidden = true;
+          enteringStatus.hidden = true;
+          reloadButton.hidden = false;
+          reloadButton.focus();
+          intro.dataset.stage = "failed";
+        }, 12000);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

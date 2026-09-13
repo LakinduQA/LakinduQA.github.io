@@ -2,26 +2,47 @@
 
 ## Summary
 
-Lakindu works with Playwright, JavaScript, TypeScript, Postman, JMeter, Burp Suite, SQL, GitHub Actions, and supporting quality practices including API, accessibility, performance, security, and database testing.
+Lakindu works with tools and technologies across automation, APIs, data, performance, test management, and software delivery, while building practical fundamentals in cloud, DevOps, and security to support his quality engineering work.
 
-## Automation and APIs
+## Automation and Programming
 
 - Playwright
-- JavaScript and TypeScript
+- JavaScript
+- Python
+
+## API and Data
+
 - Postman
-- API testing
+- SQL
+
+## Performance
+
+- Grafana k6
+- Apache JMeter
+
+## Test Management and Collaboration
+
+- QMetry
+- Zephyr
+- Jira
+
+## Version Control and CI/CD
+
+- Git
+- GitHub
 - GitHub Actions
 
-## Performance and security
+## Cloud and DevOps Fundamentals
 
-- Apache JMeter
-- Load and stress testing
+Working knowledge used to support quality engineering, investigation, and application monitoring:
+
+- Google Cloud Platform (GCP)
+- Docker
+- Linux / WSL
+
+## Security Fundamentals
+
+Foundational knowledge used to support security-aware quality engineering:
+
 - Burp Suite
 - OWASP Top 10
-
-## Supporting technologies
-
-- SQL and database testing
-- Git and GitHub
-- CI/CD workflows
-- Accessibility checks
