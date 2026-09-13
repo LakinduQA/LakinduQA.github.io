@@ -545,10 +545,28 @@ test("the first paint hides the skip link and IDE navigation switches back to te
 });
 
 test("mobile terminal has no horizontal overflow and touch controls work", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
+  await page.setViewportSize({ width: 768, height: 844 });
   await page.goto("/");
   await finishInitialProfile(page);
   const input = page.getByLabel("Terminal command");
+  await expect(input).toHaveAttribute("placeholder", "Ask Assert about Lakindu or type / for commands");
+  const mobilePlaceholder = page.locator(".terminal-input-placeholder");
+  await expect(mobilePlaceholder).toBeHidden();
+  await page.setViewportSize({ width: 320, height: 568 });
+  await expect(input).toHaveAttribute("placeholder", "Ask Assert about Lakindu or type / for commands");
+  await expect(mobilePlaceholder).toBeVisible();
+  await expect(mobilePlaceholder).toHaveText("Ask Assert about Lakindu or type / for commands");
+  const placeholderFits = await mobilePlaceholder.evaluate((element) => (
+    element.scrollWidth <= element.clientWidth && element.scrollHeight <= element.clientHeight
+  ));
+  expect(placeholderFits).toBe(true);
+  const [inputShellBox, runButtonBox] = await Promise.all([
+    page.locator(".terminal-command-input").boundingBox(),
+    page.getByRole("button", { name: "Run command" }).boundingBox(),
+  ]);
+  expect(inputShellBox).not.toBeNull();
+  expect(runButtonBox).not.toBeNull();
+  expect(Math.abs((inputShellBox!.y + inputShellBox!.height / 2) - (runButtonBox!.y + runButtonBox!.height / 2))).toBeLessThan(2);
   await input.fill("/projects");
   await input.press("Enter");
   await expect(page.getByRole("button", { name: /Cancel/ })).toBeVisible();

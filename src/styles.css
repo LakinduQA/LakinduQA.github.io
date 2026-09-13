@@ -122,8 +122,10 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 .terminal-composer { position: sticky; z-index: 15; bottom: 0; flex: none; padding: 8px 0 0; background: linear-gradient(transparent, var(--bg) 10px); }
 .terminal-composer form { display: grid; grid-template-columns: 20px minmax(0, 1fr) 34px; gap: 5px; min-height: 48px; align-items: center; border-top: 1px solid var(--border); background: var(--bg); }
 .terminal-prompt-mark { color: var(--accent); font-size: 20px; }
+.terminal-command-input { position: relative; min-width: 0; }
 .terminal-composer input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: 13px "JetBrains Mono", monospace; }
 .terminal-composer input::placeholder { color: var(--muted); }
+.terminal-input-placeholder { display: none; }
 .terminal-composer input:disabled { cursor: wait; opacity: .7; }
 .terminal-composer form > button { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 4px; background: var(--panel); color: var(--accent); cursor: pointer; }
 .terminal-composer form > button:disabled { color: var(--muted); cursor: default; opacity: .45; }
@@ -349,7 +351,10 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .agent-response { font-size: 12px; }
   .terminal-composer { position: sticky; bottom: 0; padding-top: 4px; background: var(--bg); }
   .terminal-composer form { min-height: 54px; padding-left: 10px; }
+  .terminal-command-input { min-height: 48px; display: flex; align-items: center; }
   .terminal-composer input { font-size: 16px; }
+  .terminal-command-input input::placeholder { color: transparent; }
+  .terminal-input-placeholder { position: absolute; inset: 0; display: flex; align-items: center; color: var(--muted); font: 16px/1.35 "JetBrains Mono", monospace; overflow-wrap: anywhere; pointer-events: none; }
   .terminal-hints { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
   .terminal-hints > span, .terminal-hints button { flex: none; }
   .slash-menu button { grid-template-columns: 102px 1fr; min-height: 44px; }
@@ -416,7 +421,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .terminal-intro { grid-template-columns: 1fr; }
   .terminal-intro__icon { display: none; }
   .terminal-version { font-size: 9px; }
-  .terminal-composer form > svg { display: none; }
+  .terminal-prompt-mark { display: none; }
   .terminal-composer form { grid-template-columns: 1fr auto; }
   .welcome-copy h1 { font-size: 39px; }
 }
